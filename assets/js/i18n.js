@@ -41,6 +41,7 @@ const translations = {
       intro: "Des de 2023, els Veterans Bàsquet Sitges organitzen anualment un torneig de bàsquet solidari al Pavelló Pins Vens de Sitges. Cada edició reuneix equips veterans de tot Catalunya i la resta d'Espanya per recaptar fons destinats a una causa diferent. Esport i solidaritat, junts a la pista.",
       timeline_label: "Edicions",
       next_badge: "Pròxima",
+      total_raised: "recaptats en 3 edicions",
     },
     editions: {
       section_title: "Historial d'edicions",
@@ -144,6 +145,7 @@ const translations = {
       intro: "Desde 2023, los Veterans Bàsquet Sitges organizan anualmente un torneo de baloncesto solidario en el Pabellón Pins Vens de Sitges. Cada edición reúne equipos veteranos de toda Cataluña y el resto de España para recaudar fondos destinados a una causa diferente. Deporte y solidaridad, juntos en la pista.",
       timeline_label: "Ediciones",
       next_badge: "Próxima",
+      total_raised: "recaudados en 3 ediciones",
     },
     editions: {
       section_title: "Historial de ediciones",
@@ -247,6 +249,7 @@ const translations = {
       intro: "Since 2023, Veterans Bàsquet Sitges organizes an annual charity basketball tournament at the Pins Vens Sports Hall in Sitges. Each edition brings together veteran teams from across Catalonia and Spain to raise funds for a different cause. Sport and solidarity, together on the court.",
       timeline_label: "Editions",
       next_badge: "Next",
+      total_raised: "raised across 3 editions",
     },
     editions: {
       section_title: "Tournament history",
@@ -350,6 +353,7 @@ const translations = {
       intro: "Depuis 2023, les Veterans Bàsquet Sitges organisent chaque année un tournoi de basket-ball caritatif au Palais des Sports Pins Vens de Sitges. Chaque édition réunit des équipes de vétérans de toute la Catalogne et du reste de l'Espagne pour collecter des fonds au profit d'une cause différente. Sport et solidarité, ensemble sur le terrain.",
       timeline_label: "Éditions",
       next_badge: "Prochaine",
+      total_raised: "collectés en 3 éditions",
     },
     editions: {
       section_title: "Historique des éditions",

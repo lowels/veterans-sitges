@@ -248,7 +248,54 @@
 })();
 
 /* ──────────────────────────────────────────────────────────
-   8. ANY ACTUAL AL FOOTER
+   8. CONTADOR TOTAL RECAPTAT — count-up animation
+────────────────────────────────────────────────────────── */
+(function initCounter() {
+  const el = document.querySelector('.raised-counter__number');
+  if (!el) return;
+
+  const target = parseInt(el.dataset.target, 10);
+  const duration = 1800;
+  let started = false;
+
+  function easeOutQuart(t) {
+    return 1 - Math.pow(1 - t, 4);
+  }
+
+  function formatNumber(n) {
+    return n.toLocaleString('ca-ES');
+  }
+
+  function runCounter() {
+    if (started) return;
+    started = true;
+    const start = performance.now();
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      el.textContent = formatNumber(Math.round(easeOutQuart(progress) * target));
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          runCounter();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(el);
+  } else {
+    runCounter();
+  }
+})();
+
+/* ──────────────────────────────────────────────────────────
+   9. ANY ACTUAL AL FOOTER
 ────────────────────────────────────────────────────────── */
 (function setYear() {
   const el = document.getElementById('footer-year');
