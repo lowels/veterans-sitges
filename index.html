@@ -20,9 +20,6 @@
   <!-- Preload del LCP (hero) per millorar Core Web Vitals -->
   <link rel="preload" as="image" href="assets/img/hero-sitges.jpg" fetchpriority="high" />
 
-  <!-- DNS prefetch + preconnect a tercers -->
-  <link rel="dns-prefetch" href="https://unpkg.com" />
-
   <!-- Web manifest (PWA) -->
   <link rel="manifest" href="manifest.webmanifest" />
 
@@ -55,13 +52,10 @@
 
   <title>Veterans Bàsquet Sitges — Torneig Solidari 2026</title>
 
-  <!-- Google Fonts: Space Grotesk + Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <!-- Fonts self-hosted: Space Grotesk + Inter -->
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Inter-400-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Space-Grotesk-700-latin.woff2" crossorigin />
+  <link rel="stylesheet" href="assets/fonts/fonts.css" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/styles.css?v=2" />
@@ -152,6 +146,33 @@
 </head>
 
 <body>
+
+  <!-- ============================================================
+       SVG SPRITE — Icones inline (substitueix Lucide CDN)
+       ============================================================ -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>
+    </symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 7v14"/><path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5"/><rect x="3" y="7" width="18" height="4" rx="1"/>
+    </symbol>
+    <symbol id="i-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>
+    </symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
+    </symbol>
+    <symbol id="i-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>
+    </symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978"/><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978"/><path d="M18 9h1.5a1 1 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"/><path d="M6 9H4.5a1 1 0 0 1 0-5H6"/>
+    </symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/>
+    </symbol>
+  </svg>
 
   <!-- ============================================================
        NAV — Navegació sticky
@@ -262,28 +283,28 @@
 
             <div class="value-card animate-on-scroll animate-delay-1">
               <div class="value-card__icon" aria-hidden="true">
-                <i data-lucide="trophy"></i>
+                <svg aria-hidden="true"><use href="#i-trophy"/></svg>
               </div>
               <span class="value-card__text" data-i18n="veterans.values.sport">Esport i formació integral</span>
             </div>
 
             <div class="value-card animate-on-scroll animate-delay-2">
               <div class="value-card__icon" aria-hidden="true">
-                <i data-lucide="users"></i>
+                <svg aria-hidden="true"><use href="#i-users"/></svg>
               </div>
               <span class="value-card__text" data-i18n="veterans.values.team">Treball en equip i superació</span>
             </div>
 
             <div class="value-card animate-on-scroll animate-delay-3">
               <div class="value-card__icon" aria-hidden="true">
-                <i data-lucide="handshake"></i>
+                <svg aria-hidden="true"><use href="#i-handshake"/></svg>
               </div>
               <span class="value-card__text" data-i18n="veterans.values.fellowship">Companyerisme i responsabilitat</span>
             </div>
 
             <div class="value-card animate-on-scroll animate-delay-4">
               <div class="value-card__icon" aria-hidden="true">
-                <i data-lucide="heart"></i>
+                <svg aria-hidden="true"><use href="#i-heart"/></svg>
               </div>
               <span class="value-card__text" data-i18n="veterans.values.solidarity">Solidaritat activa</span>
             </div>
@@ -735,12 +756,12 @@
           <h2 class="next2026-title" id="title-2026" data-i18n="next2026.title">4t Torneig Veterans Sitges</h2>
 
           <p class="next2026-date">
-            <i data-lucide="calendar" style="width:20px;height:20px;" aria-hidden="true"></i>
+            <svg style="width:20px;height:20px;" aria-hidden="true"><use href="#i-calendar"/></svg>
             <span data-i18n="next2026.date">20 de juny de 2026</span>
           </p>
 
           <p class="next2026-location">
-            <i data-lucide="map-pin" style="width:16px;height:16px;" aria-hidden="true"></i>
+            <svg style="width:16px;height:16px;" aria-hidden="true"><use href="#i-map-pin"/></svg>
             <span data-i18n="next2026.location">Pavelló Pins Vens, Sitges</span>
           </p>
 
@@ -820,7 +841,7 @@
       <div class="activities-list">
         <div class="activity-card animate-on-scroll">
           <div class="activity-card__icon" aria-hidden="true">
-            <i data-lucide="gift"></i>
+            <svg aria-hidden="true"><use href="#i-gift"/></svg>
           </div>
           <div>
             <p class="activity-card__date">Desembre 2023</p>
@@ -829,7 +850,7 @@
         </div>
         <div class="activity-card animate-on-scroll animate-delay-1">
           <div class="activity-card__icon" aria-hidden="true">
-            <i data-lucide="gift"></i>
+            <svg aria-hidden="true"><use href="#i-gift"/></svg>
           </div>
           <div>
             <p class="activity-card__date">Desembre 2024</p>
@@ -859,25 +880,25 @@
       <div class="collabs-premium animate-on-scroll" aria-label="Col·laboradors principals">
         <a href="https://www.instagram.com/seayousitges/" class="collab-card collab-card--premium" target="_blank" rel="sponsored noopener" aria-label="Sea You Sitges">
           <span class="collab-card__media">
-            <img src="assets/img/sponsors/sea-you-sitges.jpg" alt="Logo Sea You Sitges" loading="lazy" />
+            <img src="assets/img/sponsors/sea-you-sitges.webp" alt="Logo Sea You Sitges" loading="lazy" />
           </span>
           <span class="collab-card__name">Sea You Sitges</span>
         </a>
         <a href="https://pizzeriafrancesco.com/" class="collab-card collab-card--premium" target="_blank" rel="sponsored noopener" aria-label="Francesco">
           <span class="collab-card__media">
-            <img src="assets/img/sponsors/francesco.jpg" alt="Logo Francesco" loading="lazy" />
+            <img src="assets/img/sponsors/francesco.webp" alt="Logo Francesco" loading="lazy" />
           </span>
           <span class="collab-card__name">Francesco</span>
         </a>
         <a href="https://sunway.es/" class="collab-card collab-card--premium" target="_blank" rel="sponsored noopener" aria-label="Hotel Sunway">
           <span class="collab-card__media">
-            <img src="assets/img/sponsors/sunway.jpg" alt="Logo Hotel Sunway" loading="lazy" />
+            <img src="assets/img/sponsors/sunway.webp" alt="Logo Hotel Sunway" loading="lazy" />
           </span>
           <span class="collab-card__name">Hotel Sunway</span>
         </a>
         <a href="https://hotelsabaticsitges.com/" class="collab-card collab-card--premium" target="_blank" rel="sponsored noopener" aria-label="Hotel Sabàtic">
           <span class="collab-card__media">
-            <img src="assets/img/sponsors/sabatic.jpg" alt="Logo Hotel Sabàtic" loading="lazy" />
+            <img src="assets/img/sponsors/sabatic.webp" alt="Logo Hotel Sabàtic" loading="lazy" />
           </span>
           <span class="collab-card__name">Hotel Sabàtic</span>
         </a>
@@ -886,107 +907,107 @@
       <!-- Standard · resta de col·laboradors -->
       <div class="collabs-grid animate-on-scroll animate-delay-1" aria-label="Resta de col·laboradors">
         <a href="https://www.sitges.cat/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Ajuntament de Sitges">
-          <span class="collab-card__media"><img src="assets/img/sponsors/ajuntament-sitges.jpg" alt="Logo Ajuntament de Sitges" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/ajuntament-sitges.webp" alt="Logo Ajuntament de Sitges" loading="lazy" /></span>
           <span class="collab-card__name">Ajuntament de Sitges</span>
         </a>
         <a href="https://www.scored.es/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Scored">
-          <span class="collab-card__media"><img src="assets/img/sponsors/scored.jpg" alt="Logo Scored" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/scored.webp" alt="Logo Scored" loading="lazy" /></span>
           <span class="collab-card__name">Scored</span>
         </a>
         <a href="https://lasitgetana.cat/es/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="La Sitgetana">
-          <span class="collab-card__media"><img src="assets/img/sponsors/la-sitgetana.jpg" alt="Logo La Sitgetana" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/la-sitgetana.webp" alt="Logo La Sitgetana" loading="lazy" /></span>
           <span class="collab-card__name">La Sitgetana</span>
         </a>
         <a href="https://www.instagram.com/fetambfusta/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Fet amb Fusta">
-          <span class="collab-card__media"><img src="assets/img/sponsors/fet-amb-fusta.jpg" alt="Logo Fet amb Fusta" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/fet-amb-fusta.webp" alt="Logo Fet amb Fusta" loading="lazy" /></span>
           <span class="collab-card__name">Fet amb Fusta</span>
         </a>
         <a href="https://sitgesfilmfestival.com/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Festival Cine Fantàstic">
-          <span class="collab-card__media"><img src="assets/img/sponsors/cine-fantastic.jpg" alt="Logo Festival Cine Fantàstic" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/cine-fantastic.webp" alt="Logo Festival Cine Fantàstic" loading="lazy" /></span>
           <span class="collab-card__name">Festival Cine Fantàstic</span>
         </a>
         <a href="https://elretirositges.cat/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Societat Recreativa El Retiro">
-          <span class="collab-card__media"><img src="assets/img/sponsors/societat-recreativa-el-retiro.png" alt="Logo Societat Recreativa El Retiro" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/societat-recreativa-el-retiro.webp" alt="Logo Societat Recreativa El Retiro" loading="lazy" /></span>
           <span class="collab-card__name">Societat Recreativa El Retiro</span>
         </a>
         <a href="https://www.casinoprado.cat/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Casino Prado">
-          <span class="collab-card__media"><img src="assets/img/sponsors/casino-prado.png" alt="Logo Casino Prado" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/casino-prado.webp" alt="Logo Casino Prado" loading="lazy" /></span>
           <span class="collab-card__name">Casino Prado</span>
         </a>
         <a href="https://museusdesitges.cat/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Museus de Sitges">
-          <span class="collab-card__media"><img src="assets/img/sponsors/museus-de-sitges.jpg" alt="Logo Museus de Sitges" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/museus-de-sitges.webp" alt="Logo Museus de Sitges" loading="lazy" /></span>
           <span class="collab-card__name">Museus de Sitges</span>
         </a>
         <a href="https://www.instagram.com/latrattositges/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="La Tratto Sitges">
-          <span class="collab-card__media"><img src="assets/img/sponsors/la-tratto-sitges.jpg" alt="Logo La Tratto Sitges" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/la-tratto-sitges.webp" alt="Logo La Tratto Sitges" loading="lazy" /></span>
           <span class="collab-card__name">La Tratto Sitges</span>
         </a>
         <a href="https://www.instagram.com/el_raco_del_vi/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="El Racó del Vi">
-          <span class="collab-card__media"><img src="assets/img/sponsors/el-raco-del-vi.jpg" alt="Logo El Racó del Vi" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/el-raco-del-vi.webp" alt="Logo El Racó del Vi" loading="lazy" /></span>
           <span class="collab-card__name">El Racó del Vi</span>
         </a>
         <a href="https://www.instagram.com/mammothskate/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Mammothskate">
-          <span class="collab-card__media"><img src="assets/img/sponsors/mammothskate.jpg" alt="Logo Mammothskate" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/mammothskate.webp" alt="Logo Mammothskate" loading="lazy" /></span>
           <span class="collab-card__name">Mammothskate</span>
         </a>
         <a href="https://kelasitges.com/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Kela Sitges">
-          <span class="collab-card__media"><img src="assets/img/sponsors/kela-sitges.jpg" alt="Logo Kela Sitges" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/kela-sitges.webp" alt="Logo Kela Sitges" loading="lazy" /></span>
           <span class="collab-card__name">Kela Sitges</span>
         </a>
         <a href="https://indiamonamour.shop/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Índia Mon Amour">
-          <span class="collab-card__media"><img src="assets/img/sponsors/india-mon-amour.jpg" alt="Logo Índia Mon Amour" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/india-mon-amour.webp" alt="Logo Índia Mon Amour" loading="lazy" /></span>
           <span class="collab-card__name">Índia Mon Amour</span>
         </a>
         <a href="https://www.instagram.com/xiringuitoblancasubur/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Xiringuito Blanca Subur">
-          <span class="collab-card__media"><img src="assets/img/sponsors/xiringuito-blanca-subur.jpg" alt="Logo Xiringuito Blanca Subur" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/xiringuito-blanca-subur.webp" alt="Logo Xiringuito Blanca Subur" loading="lazy" /></span>
           <span class="collab-card__name">Xiringuito Blanca Subur</span>
         </a>
         <a href="https://www.abcgrup.com/tiendas/sitges/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="ABC Sitges Castelldefels">
-          <span class="collab-card__media"><img src="assets/img/sponsors/abc-sitges-castelldefels.jpg" alt="Logo ABC Sitges Castelldefels" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/abc-sitges-castelldefels.webp" alt="Logo ABC Sitges Castelldefels" loading="lazy" /></span>
           <span class="collab-card__name">ABC Sitges Castelldefels</span>
         </a>
         <a href="https://www.instagram.com/elsjardinsdelretiro/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Els Jardins del Retiro">
-          <span class="collab-card__media"><img src="assets/img/sponsors/els-jardins-del-retiro.jpg" alt="Logo Els Jardins del Retiro" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/els-jardins-del-retiro.webp" alt="Logo Els Jardins del Retiro" loading="lazy" /></span>
           <span class="collab-card__name">Els Jardins del Retiro</span>
         </a>
         <a href="https://www.instagram.com/araselcciovins/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Ara Selecció Vins">
-          <span class="collab-card__media"><img src="assets/img/sponsors/ara-seleccio-vins.jpg" alt="Logo Ara Selecció Vins" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/ara-seleccio-vins.webp" alt="Logo Ara Selecció Vins" loading="lazy" /></span>
           <span class="collab-card__name">Ara Selecció Vins</span>
         </a>
         <a href="https://www.facebook.com/PastisseriaSN" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Serrarols Nin (Pastisseria SN)">
-          <span class="collab-card__media"><img src="assets/img/sponsors/serrarols-nin.jpg" alt="Logo Serrarols Nin" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/serrarols-nin.webp" alt="Logo Serrarols Nin" loading="lazy" /></span>
           <span class="collab-card__name">Serrarols Nin</span>
         </a>
         <a href="https://fontdevila.art/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Daniel Fontdevila">
-          <span class="collab-card__media"><img src="assets/img/sponsors/daniel-fontdevila.png" alt="Logo Daniel Fontdevila" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/daniel-fontdevila.webp" alt="Logo Daniel Fontdevila" loading="lazy" /></span>
           <span class="collab-card__name">Daniel Fontdevila</span>
         </a>
         <a href="https://www.instagram.com/calpinxositges/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Cal Pinxo Sitges">
-          <span class="collab-card__media"><img src="assets/img/sponsors/cal-pinxo-sitges.jpg" alt="Logo Cal Pinxo Sitges" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/cal-pinxo-sitges.webp" alt="Logo Cal Pinxo Sitges" loading="lazy" /></span>
           <span class="collab-card__name">Cal Pinxo Sitges</span>
         </a>
         <a href="https://www.instagram.com/nouiclassic/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Nou i Clàssic">
-          <span class="collab-card__media"><img src="assets/img/sponsors/nou-i-classic.jpg" alt="Logo Nou i Clàssic" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/nou-i-classic.webp" alt="Logo Nou i Clàssic" loading="lazy" /></span>
           <span class="collab-card__name">Nou i Clàssic</span>
         </a>
         <a href="https://www.instagram.com/perbaccositges/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Perbacco">
-          <span class="collab-card__media"><img src="assets/img/sponsors/perbacco.jpg" alt="Logo Perbacco" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/perbacco.webp" alt="Logo Perbacco" loading="lazy" /></span>
           <span class="collab-card__name">Perbacco</span>
         </a>
         <a href="https://www.nemsitges.com/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Nem">
-          <span class="collab-card__media"><img src="assets/img/sponsors/nem.jpg" alt="Logo Nem" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/nem.webp" alt="Logo Nem" loading="lazy" /></span>
           <span class="collab-card__name">Nem</span>
         </a>
         <a href="https://www.hotelsitges.com/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Hotel Sitges">
-          <span class="collab-card__media"><img src="assets/img/sponsors/hotel-sitges.jpg" alt="Logo Hotel Sitges" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/hotel-sitges.webp" alt="Logo Hotel Sitges" loading="lazy" /></span>
           <span class="collab-card__name">Hotel Sitges</span>
         </a>
         <a href="https://www.instagram.com/acquasitges/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Restaurant Acqua">
-          <span class="collab-card__media"><img src="assets/img/sponsors/acqua-restaurant.jpg" alt="Logo Restaurant Acqua" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/acqua-restaurant.webp" alt="Logo Restaurant Acqua" loading="lazy" /></span>
           <span class="collab-card__name">Restaurant Acqua</span>
         </a>
         <a href="https://www.bacardi.com/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Casa Bacardí">
-          <span class="collab-card__media"><img src="assets/img/sponsors/bacardi.jpg" alt="Logo Casa Bacardí" loading="lazy" /></span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/bacardi.webp" alt="Logo Casa Bacardí" loading="lazy" /></span>
           <span class="collab-card__name">Casa Bacardí</span>
         </a>
       </div>
@@ -1043,15 +1064,6 @@
        ============================================================ -->
   <script src="assets/js/i18n.js?v=2"></script>
   <script src="assets/js/main.js?v=2"></script>
-
-  <!-- Inicialitza Lucide Icons -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-      }
-    });
-  </script>
 
 </body>
 </html>

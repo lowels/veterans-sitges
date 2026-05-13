@@ -1813,6 +1813,14 @@ strong { font-weight: var(--fw-semibold); color: var(--color-text); }
   font-size: 1.2rem;
 }
 
+.activity-card__icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
 .activity-card__date {
   font-size: var(--text-xs);
   font-weight: var(--fw-semibold);
