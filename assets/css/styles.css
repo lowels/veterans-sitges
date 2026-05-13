@@ -598,11 +598,19 @@ strong { font-weight: var(--fw-semibold); color: var(--color-text); }
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('../img/hero-sitges.jpg');
+  background-image: url('../img/hero-sitges.webp');
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
   z-index: 0;
+}
+
+/* Variant mobile per al hero (estalvia ~200 KB en mòbils) */
+@media (max-width: 900px) {
+  .hero-bg {
+    background-image: url('../img/hero-sitges-mobile.webp');
+    background-attachment: scroll;
+  }
 }
 
 /* Fallback si no hi ha imatge */

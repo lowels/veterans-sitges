@@ -17,8 +17,9 @@
   <link rel="alternate" hreflang="fr" href="https://veterans.clubbasquetsitges.com/" />
   <link rel="alternate" hreflang="x-default" href="https://veterans.clubbasquetsitges.com/" />
 
-  <!-- Preload del LCP (hero) per millorar Core Web Vitals -->
-  <link rel="preload" as="image" href="assets/img/hero-sitges.jpg" fetchpriority="high" />
+  <!-- Preload del LCP (hero) — variant segons amplada de pantalla -->
+  <link rel="preload" as="image" href="assets/img/hero-sitges.webp" media="(min-width: 901px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/img/hero-sitges-mobile.webp" media="(max-width: 900px)" fetchpriority="high" />
 
   <!-- Web manifest (PWA) -->
   <link rel="manifest" href="manifest.webmanifest" />
@@ -104,7 +105,7 @@
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "sport": "Basketball",
     "url": "https://veterans.clubbasquetsitges.com/#section-2026",
-    "image": "https://veterans.clubbasquetsitges.com/assets/img/cartell-2026.jpg",
+    "image": "https://veterans.clubbasquetsitges.com/assets/img/cartell-2026.webp",
     "location": {
       "@type": "Place",
       "name": "Pavelló Pins Vens",
@@ -329,7 +330,7 @@
         <!-- Columna foto equip -->
         <div class="veterans-photo animate-on-scroll animate-delay-2">
           <div class="veterans-photo__img">
-            <img src="assets/img/foto-equip-veterans.jpg" alt="Veterans CBS — Equip actual" width="2156" height="1403" loading="lazy" />
+            <img src="assets/img/foto-equip-veterans.webp" alt="Veterans CBS — Equip actual" width="1920" height="1250" loading="lazy" />
           </div>
           <div class="veterans-photo__caption" aria-hidden="true">Veterans CBS</div>
         </div>
@@ -737,10 +738,10 @@
               Fins aleshores s'utilitza la ruta relativa des d'aquesta carpeta:
             -->
             <img
-              src="assets/img/cartell-2026.jpg"
+              src="assets/img/cartell-2026.webp"
               alt="Cartell oficial 4t Torneig de Veterans Sitges 2026 — Lluita contra el Parkinson"
-              width="2696"
-              height="4042"
+              width="1600"
+              height="2399"
               loading="eager"
               fetchpriority="high"
             />
