@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 120" role="img" aria-label="Logo pendent">
+  <rect x="1" y="1" width="238" height="118" rx="8" ry="8"
+        fill="#F5F5F5" stroke="#D4D4D8" stroke-width="2" stroke-dasharray="6 4"/>
+  <g fill="#9CA3AF" font-family="Space Grotesk, Inter, sans-serif">
+    <text x="120" y="60" text-anchor="middle" font-size="22" font-weight="700" letter-spacing="2">LOGO</text>
+    <text x="120" y="84" text-anchor="middle" font-size="10" letter-spacing="1.5">PENDENT</text>
+  </g>
+</svg>

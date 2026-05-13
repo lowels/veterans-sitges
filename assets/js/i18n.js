@@ -12,6 +12,7 @@ const translations = {
     nav: {
       veterans: "Els Veterans",
       torneig: "El Torneig",
+      colabs: "Col·laboradors",
       proper: "2026",
       segueix: "Segueix-nos",
     },
@@ -96,6 +97,11 @@ const translations = {
       edition_title: "Col·laboradors per edició",
       placeholder: "El teu logo aquí",
     },
+    collaborators: {
+      eyebrow: "Suport local",
+      title: "Col·laboradors",
+      intro: "Empreses i comerços que fan possible el Torneig Solidari de Veterans Sitges any rere any. Gràcies pel vostre suport.",
+    },
     activities: {
       title: "Altres activitats solidàries",
       toys2023: "Recollida de joguines · Càritas Sitges + Creu Roja Sitges",
@@ -116,6 +122,7 @@ const translations = {
     nav: {
       veterans: "Los Veteranos",
       torneig: "El Torneo",
+      colabs: "Colaboradores",
       proper: "2026",
       segueix: "Síguenos",
     },
@@ -200,6 +207,11 @@ const translations = {
       edition_title: "Colaboradores por edición",
       placeholder: "Tu logo aquí",
     },
+    collaborators: {
+      eyebrow: "Apoyo local",
+      title: "Colaboradores",
+      intro: "Empresas y comercios que hacen posible el Torneo Solidario de Veteranos Sitges año tras año. Gracias por vuestro apoyo.",
+    },
     activities: {
       title: "Otras actividades solidarias",
       toys2023: "Recogida de juguetes · Càritas Sitges + Creu Roja Sitges",
@@ -220,6 +232,7 @@ const translations = {
     nav: {
       veterans: "The Veterans",
       torneig: "The Tournament",
+      colabs: "Sponsors",
       proper: "2026",
       segueix: "Follow us",
     },
@@ -304,6 +317,11 @@ const translations = {
       edition_title: "Collaborators by edition",
       placeholder: "Your logo here",
     },
+    collaborators: {
+      eyebrow: "Local support",
+      title: "Sponsors",
+      intro: "Businesses and shops that make the Veterans Sitges Charity Tournament possible year after year. Thank you for your support.",
+    },
     activities: {
       title: "Other charity activities",
       toys2023: "Toy drive · Càritas Sitges + Creu Roja Sitges",
@@ -324,6 +342,7 @@ const translations = {
     nav: {
       veterans: "Les Vétérans",
       torneig: "Le Tournoi",
+      colabs: "Partenaires",
       proper: "2026",
       segueix: "Suivez-nous",
     },
@@ -407,6 +426,11 @@ const translations = {
       annual_title: "Sponsors annuels de l'équipe",
       edition_title: "Collaborateurs par édition",
       placeholder: "Votre logo ici",
+    },
+    collaborators: {
+      eyebrow: "Soutien local",
+      title: "Partenaires",
+      intro: "Entreprises et commerces qui rendent possible le Tournoi Caritatif des Vétérans de Sitges année après année. Merci pour votre soutien.",
     },
     activities: {
       title: "Autres activités solidaires",

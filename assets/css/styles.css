@@ -1482,45 +1482,6 @@ strong { font-weight: var(--fw-semibold); color: var(--color-text); }
   opacity: 0.4;
 }
 
-/* Col·laboradors */
-.edition-collaborators {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border);
-}
-
-.edition-collaborators__title {
-  font-size: var(--text-xs);
-  font-weight: var(--fw-semibold);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: 0.75rem;
-}
-
-.collaborators-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.375rem;
-}
-
-.collaborator-tag {
-  display: inline-block;
-  padding: 0.3rem 0.75rem;
-  background: var(--color-bg-alt);
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
-  white-space: nowrap;
-  transition: var(--transition-fast);
-}
-
-.collaborator-tag:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
 /* ================================================================
    12. SECCIO 2026 — HERO SECUNDARI (secció destacada)
    ================================================================ */
@@ -2097,6 +2058,138 @@ strong { font-weight: var(--fw-semibold); color: var(--color-text); }
 @media (min-width: 768px) {
   .edition-body {
     gap: 0;
+  }
+}
+
+/* ================================================================
+   17b. COL·LABORADORS — Secció dedicada
+   ================================================================ */
+.collaborators-section {
+  background: var(--color-bg-alt);
+}
+
+.collaborators-section .section__intro {
+  max-width: 640px;
+  margin: 1rem auto 0;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.collaborators-section .section__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.collabs-premium {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.collabs-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.collab-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--color-text-muted);
+  transition: var(--transition);
+}
+
+.collab-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+  color: var(--color-primary);
+}
+
+.collab-card__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70px;
+}
+
+.collab-card__media img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.85;
+  transition: var(--transition);
+}
+
+.collab-card:hover .collab-card__media img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.collab-card__name {
+  font-family: var(--font-title);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
+  text-align: center;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+/* Premium — més grans i destacats */
+.collab-card--premium {
+  padding: 2rem 1.5rem;
+  border-width: 2px;
+}
+
+.collab-card--premium .collab-card__media {
+  height: 110px;
+}
+
+.collab-card--premium .collab-card__name {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+}
+
+@media (max-width: 960px) {
+  .collabs-premium {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .collabs-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .collabs-premium {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .collabs-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  .collab-card {
+    padding: 1rem 0.5rem;
+  }
+  .collab-card--premium {
+    padding: 1.25rem 1rem;
+  }
+  .collab-card--premium .collab-card__media {
+    height: 80px;
+  }
+  .collab-card__media {
+    height: 55px;
   }
 }
 
