@@ -16,9 +16,9 @@
       "type": "image/x-icon"
     },
     {
-      "src": "assets/img/equips/cb-sitges.jpg",
+      "src": "assets/img/equips/cb-sitges.webp",
       "sizes": "512x512",
-      "type": "image/jpeg",
+      "type": "image/webp",
       "purpose": "any"
     }
   ]
