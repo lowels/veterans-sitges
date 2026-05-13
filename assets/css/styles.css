@@ -2136,6 +2136,15 @@ strong { font-weight: var(--fw-semibold); color: var(--color-text); }
   opacity: 1;
 }
 
+/* Logos pensats per a fons fosc — els invertim sobre fons blanc */
+.collab-card__media img[src*="casino-prado"] {
+  filter: grayscale(100%) invert(1);
+}
+
+.collab-card:hover .collab-card__media img[src*="casino-prado"] {
+  filter: invert(1);
+}
+
 .collab-card__name {
   font-family: var(--font-title);
   font-size: var(--text-xs);
