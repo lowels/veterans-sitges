@@ -1,0 +1,25 @@
+{
+  "name": "Veterans Bàsquet Sitges",
+  "short_name": "Veterans CBS",
+  "description": "Veterans Bàsquet Sitges — Torneig solidari anual al Pavelló Pins Vens. Esport i solidaritat des de 1957.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#1A1A1A",
+  "theme_color": "#1A1A1A",
+  "orientation": "portrait-primary",
+  "lang": "ca",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "assets/img/equips/cb-sitges.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

@@ -18,6 +18,7 @@ const translations = {
     },
     hero: {
       title: "Veterans Bàsquet Sitges",
+      title_seo: "— Torneig Solidari de Bàsquet a Sitges contra el Parkinson",
       subtitle: "Esport i solidaritat des de 1957",
       cta: "Torneig 2026 · 20 de juny",
       scroll: "Descobreix qui som",
@@ -128,6 +129,7 @@ const translations = {
     },
     hero: {
       title: "Veterans Bàsquet Sitges",
+      title_seo: "— Torneo Solidario de Baloncesto en Sitges contra el Parkinson",
       subtitle: "Deporte y solidaridad desde 1957",
       cta: "Torneo 2026 · 20 de junio",
       scroll: "Descubre quiénes somos",
@@ -238,6 +240,7 @@ const translations = {
     },
     hero: {
       title: "Veterans Bàsquet Sitges",
+      title_seo: "— Charity Veterans Basketball Tournament in Sitges against Parkinson's",
       subtitle: "Sport and solidarity since 1957",
       cta: "2026 Tournament · June 20",
       scroll: "Discover who we are",
@@ -348,6 +351,7 @@ const translations = {
     },
     hero: {
       title: "Veterans Bàsquet Sitges",
+      title_seo: "— Tournoi Caritatif de Basket à Sitges contre la maladie de Parkinson",
       subtitle: "Sport et solidarité depuis 1957",
       cta: "Tournoi 2026 · 20 juin",
       scroll: "Découvrez qui nous sommes",

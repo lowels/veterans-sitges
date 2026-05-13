@@ -142,6 +142,19 @@ strong { font-weight: var(--fw-semibold); color: var(--color-text); }
 .text-red { color: var(--color-club-red); }
 .text-muted { color: var(--color-text-muted); }
 
+/* Accessible: només per a lectors de pantalla i motors de cerca */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ================================================================
    4. LAYOUT UTILITIES
    ================================================================ */

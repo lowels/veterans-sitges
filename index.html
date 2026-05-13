@@ -3,9 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Veterans Bàsquet Sitges — Esport i solidaritat des de 1957. Torneig solidari anual al Pavelló Pins Vens de Sitges." />
+  <meta name="description" content="Torneig Solidari de Veterans de Bàsquet a Sitges. 20 de juny de 2026 al Pavelló Pins Vens — 10 equips contra el Parkinson, amb l'Hospital Clínic i la Fundació Clínic-IDIBAPS. Esport i solidaritat des de 1957." />
+  <meta name="keywords" content="bàsquet Sitges, veterans bàsquet, torneig solidari, Pavelló Pins Vens, Parkinson, Club Bàsquet Sitges, esport solidari, Sitges 2026" />
+  <meta name="author" content="Club Bàsquet Sitges" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#1A1A1A" />
   <link rel="canonical" href="https://veterans.clubbasquetsitges.com/" />
+
+  <!-- hreflang (4 idiomes amb mateixa URL) -->
+  <link rel="alternate" hreflang="ca" href="https://veterans.clubbasquetsitges.com/" />
+  <link rel="alternate" hreflang="es" href="https://veterans.clubbasquetsitges.com/" />
+  <link rel="alternate" hreflang="en" href="https://veterans.clubbasquetsitges.com/" />
+  <link rel="alternate" hreflang="fr" href="https://veterans.clubbasquetsitges.com/" />
+  <link rel="alternate" hreflang="x-default" href="https://veterans.clubbasquetsitges.com/" />
+
+  <!-- Preload del LCP (hero) per millorar Core Web Vitals -->
+  <link rel="preload" as="image" href="assets/img/hero-sitges.jpg" fetchpriority="high" />
+
+  <!-- DNS prefetch + preconnect a tercers -->
+  <link rel="dns-prefetch" href="https://unpkg.com" />
+
+  <!-- Web manifest (PWA) -->
+  <link rel="manifest" href="manifest.webmanifest" />
 
   <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
   <meta property="og:site_name" content="Veterans Bàsquet Sitges" />
@@ -46,6 +65,90 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/styles.css?v=2" />
+
+  <!-- JSON-LD: SportsOrganization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsOrganization",
+    "name": "Veterans Bàsquet Sitges",
+    "alternateName": "Veterans CBS",
+    "url": "https://veterans.clubbasquetsitges.com/",
+    "logo": "https://veterans.clubbasquetsitges.com/assets/img/equips/cb-sitges.jpg",
+    "image": "https://veterans.clubbasquetsitges.com/assets/img/og-image.jpg",
+    "description": "Secció de veterans del Club Bàsquet Sitges, fundat el 1957. Organitza el Torneig Solidari anual al Pavelló Pins Vens.",
+    "foundingDate": "1957",
+    "sport": "Basketball",
+    "parentOrganization": {
+      "@type": "SportsOrganization",
+      "name": "Club Bàsquet Sitges",
+      "foundingDate": "1957"
+    },
+    "location": {
+      "@type": "Place",
+      "name": "Pavelló Pins Vens",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sitges",
+        "addressRegion": "Barcelona",
+        "addressCountry": "ES"
+      }
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: SportsEvent (Torneig 2026) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    "name": "4t Torneig Solidari de Veterans Bàsquet Sitges",
+    "description": "Torneig solidari de veterans de bàsquet a benefici de la lluita contra el Parkinson, amb l'Hospital Clínic de Barcelona i la Fundació Clínic-IDIBAPS. 10 equips, 1 causa.",
+    "startDate": "2026-06-20",
+    "endDate": "2026-06-20",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "sport": "Basketball",
+    "url": "https://veterans.clubbasquetsitges.com/#section-2026",
+    "image": "https://veterans.clubbasquetsitges.com/assets/img/cartell-2026.jpg",
+    "location": {
+      "@type": "Place",
+      "name": "Pavelló Pins Vens",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pavelló Pins Vens",
+        "addressLocality": "Sitges",
+        "addressRegion": "Barcelona",
+        "postalCode": "08870",
+        "addressCountry": "ES"
+      }
+    },
+    "organizer": {
+      "@type": "SportsOrganization",
+      "name": "Veterans Bàsquet Sitges",
+      "url": "https://veterans.clubbasquetsitges.com/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://veterans.clubbasquetsitges.com/#section-2026",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-01-01"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite (per al search box i sitelinks) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Veterans Bàsquet Sitges",
+    "url": "https://veterans.clubbasquetsitges.com/",
+    "inLanguage": ["ca", "es", "en", "fr"]
+  }
+  </script>
 </head>
 
 <body>
@@ -111,7 +214,10 @@
       <p class="hero-eyebrow" aria-hidden="true">
         Club Bàsquet Sitges · 1957
       </p>
-      <h1 class="hero-title" data-i18n="hero.title">Veterans Bàsquet Sitges</h1>
+      <h1 class="hero-title">
+        <span data-i18n="hero.title">Veterans Bàsquet Sitges</span>
+        <span class="visually-hidden" data-i18n="hero.title_seo">— Torneig Solidari de Bàsquet a Sitges contra el Parkinson</span>
+      </h1>
       <p class="hero-subtitle" data-i18n="hero.subtitle">Esport i solidaritat des de 1957</p>
       <div class="hero-cta">
         <a href="#section-2026" class="btn btn--accent btn--lg" data-i18n="hero.cta">
@@ -202,7 +308,7 @@
         <!-- Columna foto equip -->
         <div class="veterans-photo animate-on-scroll animate-delay-2">
           <div class="veterans-photo__img">
-            <img src="assets/img/foto-equip-veterans.jpg" alt="Veterans CBS — Equip actual" loading="lazy" />
+            <img src="assets/img/foto-equip-veterans.jpg" alt="Veterans CBS — Equip actual" width="2156" height="1403" loading="lazy" />
           </div>
           <div class="veterans-photo__caption" aria-hidden="true">Veterans CBS</div>
         </div>
@@ -612,7 +718,10 @@
             <img
               src="assets/img/cartell-2026.jpg"
               alt="Cartell oficial 4t Torneig de Veterans Sitges 2026 — Lluita contra el Parkinson"
+              width="2696"
+              height="4042"
               loading="eager"
+              fetchpriority="high"
             />
           </div>
           <div class="next2026-poster__glow" aria-hidden="true"></div>
@@ -748,25 +857,25 @@
 
       <!-- Premium · principals -->
       <div class="collabs-premium animate-on-scroll" aria-label="Col·laboradors principals">
-        <a href="https://www.instagram.com/seayousitges/" class="collab-card collab-card--premium" target="_blank" rel="noopener" aria-label="Sea You Sitges">
+        <a href="https://www.instagram.com/seayousitges/" class="collab-card collab-card--premium" target="_blank" rel="sponsored noopener" aria-label="Sea You Sitges">
           <span class="collab-card__media">
             <img src="assets/img/sponsors/sea-you-sitges.jpg" alt="Logo Sea You Sitges" loading="lazy" />
           </span>
           <span class="collab-card__name">Sea You Sitges</span>
         </a>
-        <a href="https://pizzeriafrancesco.com/" class="collab-card collab-card--premium" target="_blank" rel="noopener" aria-label="Francesco">
+        <a href="https://pizzeriafrancesco.com/" class="collab-card collab-card--premium" target="_blank" rel="sponsored noopener" aria-label="Francesco">
           <span class="collab-card__media">
             <img src="assets/img/sponsors/francesco.jpg" alt="Logo Francesco" loading="lazy" />
           </span>
           <span class="collab-card__name">Francesco</span>
         </a>
-        <a href="https://sunway.es/" class="collab-card collab-card--premium" target="_blank" rel="noopener" aria-label="Hotel Sunway">
+        <a href="https://sunway.es/" class="collab-card collab-card--premium" target="_blank" rel="sponsored noopener" aria-label="Hotel Sunway">
           <span class="collab-card__media">
             <img src="assets/img/sponsors/sunway.jpg" alt="Logo Hotel Sunway" loading="lazy" />
           </span>
           <span class="collab-card__name">Hotel Sunway</span>
         </a>
-        <a href="https://hotelsabaticsitges.com/" class="collab-card collab-card--premium" target="_blank" rel="noopener" aria-label="Hotel Sabàtic">
+        <a href="https://hotelsabaticsitges.com/" class="collab-card collab-card--premium" target="_blank" rel="sponsored noopener" aria-label="Hotel Sabàtic">
           <span class="collab-card__media">
             <img src="assets/img/sponsors/sabatic.jpg" alt="Logo Hotel Sabàtic" loading="lazy" />
           </span>
@@ -776,107 +885,107 @@
 
       <!-- Standard · resta de col·laboradors -->
       <div class="collabs-grid animate-on-scroll animate-delay-1" aria-label="Resta de col·laboradors">
-        <a href="https://www.sitges.cat/" class="collab-card" target="_blank" rel="noopener" aria-label="Ajuntament de Sitges">
+        <a href="https://www.sitges.cat/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Ajuntament de Sitges">
           <span class="collab-card__media"><img src="assets/img/sponsors/ajuntament-sitges.jpg" alt="Logo Ajuntament de Sitges" loading="lazy" /></span>
           <span class="collab-card__name">Ajuntament de Sitges</span>
         </a>
-        <a href="https://www.scored.es/" class="collab-card" target="_blank" rel="noopener" aria-label="Scored">
+        <a href="https://www.scored.es/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Scored">
           <span class="collab-card__media"><img src="assets/img/sponsors/scored.jpg" alt="Logo Scored" loading="lazy" /></span>
           <span class="collab-card__name">Scored</span>
         </a>
-        <a href="https://lasitgetana.cat/es/" class="collab-card" target="_blank" rel="noopener" aria-label="La Sitgetana">
+        <a href="https://lasitgetana.cat/es/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="La Sitgetana">
           <span class="collab-card__media"><img src="assets/img/sponsors/la-sitgetana.jpg" alt="Logo La Sitgetana" loading="lazy" /></span>
           <span class="collab-card__name">La Sitgetana</span>
         </a>
-        <a href="https://www.instagram.com/fetambfusta/" class="collab-card" target="_blank" rel="noopener" aria-label="Fet amb Fusta">
+        <a href="https://www.instagram.com/fetambfusta/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Fet amb Fusta">
           <span class="collab-card__media"><img src="assets/img/sponsors/fet-amb-fusta.jpg" alt="Logo Fet amb Fusta" loading="lazy" /></span>
           <span class="collab-card__name">Fet amb Fusta</span>
         </a>
-        <a href="https://sitgesfilmfestival.com/" class="collab-card" target="_blank" rel="noopener" aria-label="Festival Cine Fantàstic">
+        <a href="https://sitgesfilmfestival.com/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Festival Cine Fantàstic">
           <span class="collab-card__media"><img src="assets/img/sponsors/cine-fantastic.jpg" alt="Logo Festival Cine Fantàstic" loading="lazy" /></span>
           <span class="collab-card__name">Festival Cine Fantàstic</span>
         </a>
-        <a href="https://elretirositges.cat/" class="collab-card" target="_blank" rel="noopener" aria-label="Societat Recreativa El Retiro">
+        <a href="https://elretirositges.cat/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Societat Recreativa El Retiro">
           <span class="collab-card__media"><img src="assets/img/sponsors/societat-recreativa-el-retiro.png" alt="Logo Societat Recreativa El Retiro" loading="lazy" /></span>
           <span class="collab-card__name">Societat Recreativa El Retiro</span>
         </a>
-        <a href="https://www.casinoprado.cat/" class="collab-card" target="_blank" rel="noopener" aria-label="Casino Prado">
+        <a href="https://www.casinoprado.cat/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Casino Prado">
           <span class="collab-card__media"><img src="assets/img/sponsors/casino-prado.png" alt="Logo Casino Prado" loading="lazy" /></span>
           <span class="collab-card__name">Casino Prado</span>
         </a>
-        <a href="https://museusdesitges.cat/" class="collab-card" target="_blank" rel="noopener" aria-label="Museus de Sitges">
+        <a href="https://museusdesitges.cat/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Museus de Sitges">
           <span class="collab-card__media"><img src="assets/img/sponsors/museus-de-sitges.jpg" alt="Logo Museus de Sitges" loading="lazy" /></span>
           <span class="collab-card__name">Museus de Sitges</span>
         </a>
-        <a href="https://www.instagram.com/latrattositges/" class="collab-card" target="_blank" rel="noopener" aria-label="La Tratto Sitges">
+        <a href="https://www.instagram.com/latrattositges/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="La Tratto Sitges">
           <span class="collab-card__media"><img src="assets/img/sponsors/la-tratto-sitges.jpg" alt="Logo La Tratto Sitges" loading="lazy" /></span>
           <span class="collab-card__name">La Tratto Sitges</span>
         </a>
-        <a href="https://www.instagram.com/el_raco_del_vi/" class="collab-card" target="_blank" rel="noopener" aria-label="El Racó del Vi">
+        <a href="https://www.instagram.com/el_raco_del_vi/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="El Racó del Vi">
           <span class="collab-card__media"><img src="assets/img/sponsors/el-raco-del-vi.jpg" alt="Logo El Racó del Vi" loading="lazy" /></span>
           <span class="collab-card__name">El Racó del Vi</span>
         </a>
-        <a href="https://www.instagram.com/mammothskate/" class="collab-card" target="_blank" rel="noopener" aria-label="Mammothskate">
+        <a href="https://www.instagram.com/mammothskate/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Mammothskate">
           <span class="collab-card__media"><img src="assets/img/sponsors/mammothskate.jpg" alt="Logo Mammothskate" loading="lazy" /></span>
           <span class="collab-card__name">Mammothskate</span>
         </a>
-        <a href="https://kelasitges.com/" class="collab-card" target="_blank" rel="noopener" aria-label="Kela Sitges">
+        <a href="https://kelasitges.com/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Kela Sitges">
           <span class="collab-card__media"><img src="assets/img/sponsors/kela-sitges.jpg" alt="Logo Kela Sitges" loading="lazy" /></span>
           <span class="collab-card__name">Kela Sitges</span>
         </a>
-        <a href="https://indiamonamour.shop/" class="collab-card" target="_blank" rel="noopener" aria-label="Índia Mon Amour">
+        <a href="https://indiamonamour.shop/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Índia Mon Amour">
           <span class="collab-card__media"><img src="assets/img/sponsors/india-mon-amour.jpg" alt="Logo Índia Mon Amour" loading="lazy" /></span>
           <span class="collab-card__name">Índia Mon Amour</span>
         </a>
-        <a href="https://www.instagram.com/xiringuitoblancasubur/" class="collab-card" target="_blank" rel="noopener" aria-label="Xiringuito Blanca Subur">
+        <a href="https://www.instagram.com/xiringuitoblancasubur/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Xiringuito Blanca Subur">
           <span class="collab-card__media"><img src="assets/img/sponsors/xiringuito-blanca-subur.jpg" alt="Logo Xiringuito Blanca Subur" loading="lazy" /></span>
           <span class="collab-card__name">Xiringuito Blanca Subur</span>
         </a>
-        <a href="https://www.abcgrup.com/tiendas/sitges/" class="collab-card" target="_blank" rel="noopener" aria-label="ABC Sitges Castelldefels">
+        <a href="https://www.abcgrup.com/tiendas/sitges/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="ABC Sitges Castelldefels">
           <span class="collab-card__media"><img src="assets/img/sponsors/abc-sitges-castelldefels.jpg" alt="Logo ABC Sitges Castelldefels" loading="lazy" /></span>
           <span class="collab-card__name">ABC Sitges Castelldefels</span>
         </a>
-        <a href="https://www.instagram.com/elsjardinsdelretiro/" class="collab-card" target="_blank" rel="noopener" aria-label="Els Jardins del Retiro">
+        <a href="https://www.instagram.com/elsjardinsdelretiro/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Els Jardins del Retiro">
           <span class="collab-card__media"><img src="assets/img/sponsors/els-jardins-del-retiro.jpg" alt="Logo Els Jardins del Retiro" loading="lazy" /></span>
           <span class="collab-card__name">Els Jardins del Retiro</span>
         </a>
-        <a href="https://www.instagram.com/araselcciovins/" class="collab-card" target="_blank" rel="noopener" aria-label="Ara Selecció Vins">
+        <a href="https://www.instagram.com/araselcciovins/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Ara Selecció Vins">
           <span class="collab-card__media"><img src="assets/img/sponsors/ara-seleccio-vins.jpg" alt="Logo Ara Selecció Vins" loading="lazy" /></span>
           <span class="collab-card__name">Ara Selecció Vins</span>
         </a>
-        <a href="https://www.facebook.com/PastisseriaSN" class="collab-card" target="_blank" rel="noopener" aria-label="Serrarols Nin (Pastisseria SN)">
+        <a href="https://www.facebook.com/PastisseriaSN" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Serrarols Nin (Pastisseria SN)">
           <span class="collab-card__media"><img src="assets/img/sponsors/serrarols-nin.jpg" alt="Logo Serrarols Nin" loading="lazy" /></span>
           <span class="collab-card__name">Serrarols Nin</span>
         </a>
-        <a href="https://fontdevila.art/" class="collab-card" target="_blank" rel="noopener" aria-label="Daniel Fontdevila">
+        <a href="https://fontdevila.art/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Daniel Fontdevila">
           <span class="collab-card__media"><img src="assets/img/sponsors/daniel-fontdevila.png" alt="Logo Daniel Fontdevila" loading="lazy" /></span>
           <span class="collab-card__name">Daniel Fontdevila</span>
         </a>
-        <a href="https://www.instagram.com/calpinxositges/" class="collab-card" target="_blank" rel="noopener" aria-label="Cal Pinxo Sitges">
+        <a href="https://www.instagram.com/calpinxositges/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Cal Pinxo Sitges">
           <span class="collab-card__media"><img src="assets/img/sponsors/cal-pinxo-sitges.jpg" alt="Logo Cal Pinxo Sitges" loading="lazy" /></span>
           <span class="collab-card__name">Cal Pinxo Sitges</span>
         </a>
-        <a href="https://www.instagram.com/nouiclassic/" class="collab-card" target="_blank" rel="noopener" aria-label="Nou i Clàssic">
+        <a href="https://www.instagram.com/nouiclassic/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Nou i Clàssic">
           <span class="collab-card__media"><img src="assets/img/sponsors/nou-i-classic.jpg" alt="Logo Nou i Clàssic" loading="lazy" /></span>
           <span class="collab-card__name">Nou i Clàssic</span>
         </a>
-        <a href="https://www.instagram.com/perbaccositges/" class="collab-card" target="_blank" rel="noopener" aria-label="Perbacco">
+        <a href="https://www.instagram.com/perbaccositges/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Perbacco">
           <span class="collab-card__media"><img src="assets/img/sponsors/perbacco.jpg" alt="Logo Perbacco" loading="lazy" /></span>
           <span class="collab-card__name">Perbacco</span>
         </a>
-        <a href="https://www.nemsitges.com/" class="collab-card" target="_blank" rel="noopener" aria-label="Nem">
+        <a href="https://www.nemsitges.com/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Nem">
           <span class="collab-card__media"><img src="assets/img/sponsors/nem.jpg" alt="Logo Nem" loading="lazy" /></span>
           <span class="collab-card__name">Nem</span>
         </a>
-        <a href="https://www.hotelsitges.com/" class="collab-card" target="_blank" rel="noopener" aria-label="Hotel Sitges">
+        <a href="https://www.hotelsitges.com/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Hotel Sitges">
           <span class="collab-card__media"><img src="assets/img/sponsors/hotel-sitges.jpg" alt="Logo Hotel Sitges" loading="lazy" /></span>
           <span class="collab-card__name">Hotel Sitges</span>
         </a>
-        <a href="https://www.instagram.com/acquasitges/" class="collab-card" target="_blank" rel="noopener" aria-label="Restaurant Acqua">
+        <a href="https://www.instagram.com/acquasitges/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Restaurant Acqua">
           <span class="collab-card__media"><img src="assets/img/sponsors/acqua-restaurant.jpg" alt="Logo Restaurant Acqua" loading="lazy" /></span>
           <span class="collab-card__name">Restaurant Acqua</span>
         </a>
-        <a href="https://www.bacardi.com/" class="collab-card" target="_blank" rel="noopener" aria-label="Casa Bacardí">
+        <a href="https://www.bacardi.com/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Casa Bacardí">
           <span class="collab-card__media"><img src="assets/img/sponsors/bacardi.jpg" alt="Logo Casa Bacardí" loading="lazy" /></span>
           <span class="collab-card__name">Casa Bacardí</span>
         </a>
