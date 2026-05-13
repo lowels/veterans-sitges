@@ -34,8 +34,8 @@
   <meta property="og:locale:alternate" content="es_ES" />
   <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:locale:alternate" content="fr_FR" />
-  <meta property="og:image" content="https://veterans.clubbasquetsitges.com/assets/img/og-image.webp?v=202605140015" />
-  <meta property="og:image:secure_url" content="https://veterans.clubbasquetsitges.com/assets/img/og-image.webp?v=202605140015" />
+  <meta property="og:image" content="https://veterans.clubbasquetsitges.com/assets/img/og-image.webp?v=202605140017" />
+  <meta property="og:image:secure_url" content="https://veterans.clubbasquetsitges.com/assets/img/og-image.webp?v=202605140017" />
   <meta property="og:image:type" content="image/webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -45,7 +45,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Veterans Bàsquet Sitges — Torneig Solidari 2026" />
   <meta name="twitter:description" content="20 de juny de 2026 · Pavelló Pins Vens. Torneig solidari de veterans contra el Parkinson." />
-  <meta name="twitter:image" content="https://veterans.clubbasquetsitges.com/assets/img/og-image.webp?v=202605140015" />
+  <meta name="twitter:image" content="https://veterans.clubbasquetsitges.com/assets/img/og-image.webp?v=202605140017" />
   <meta name="twitter:image:alt" content="Veterans Bàsquet Sitges — Torneig Solidari" />
 
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -53,13 +53,14 @@
 
   <title>Veterans Bàsquet Sitges — Torneig Solidari 2026</title>
 
-  <!-- Fonts self-hosted: Space Grotesk + Inter -->
+  <!-- Fonts self-hosted: Space Grotesk + Inter (càrrega no bloquejant) -->
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Inter-400-latin.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Space-Grotesk-700-latin.woff2" crossorigin />
-  <link rel="stylesheet" href="assets/fonts/fonts.css" />
+  <link rel="preload" as="style" href="assets/fonts/fonts.css" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="assets/fonts/fonts.css" /></noscript>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=202605140015" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=202605140017" />
 
   <!-- JSON-LD: SportsOrganization -->
   <script type="application/ld+json">
@@ -330,7 +331,7 @@
         <!-- Columna foto equip -->
         <div class="veterans-photo animate-on-scroll animate-delay-2">
           <div class="veterans-photo__img">
-            <img src="assets/img/foto-equip-veterans.webp" alt="Veterans CBS — Equip actual" width="1920" height="1250" loading="lazy" />
+            <img src="assets/img/foto-equip-veterans.webp" alt="Veterans CBS — Equip actual" width="1400" height="911" loading="lazy" />
           </div>
           <div class="veterans-photo__caption" aria-hidden="true">Veterans CBS</div>
         </div>
@@ -1063,8 +1064,8 @@
        SCRIPTS
        Ordre important: i18n primer, main després
        ============================================================ -->
-  <script src="assets/js/i18n.js?v=202605140015"></script>
-  <script src="assets/js/main.js?v=202605140015"></script>
+  <script src="assets/js/i18n.js?v=202605140017"></script>
+  <script src="assets/js/main.js?v=202605140017"></script>
 
 </body>
 </html>
