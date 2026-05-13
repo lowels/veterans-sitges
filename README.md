@@ -17,7 +17,8 @@ web/
 │   │   ├── i18n.js             # Traduccions CA/ES/EN/FR + lògica de canvi d'idioma
 │   │   └── main.js             # Nav sticky, hamburger, scroll, lightbox, animacions
 │   └── img/
-│       ├── hero-sitges.jpg     # [PENDENT] Foto aèria de Sitges pel fons del hero
+│       ├── hero-sitges.webp    # Foto de família de tots els equips del CB Sitges (fons del hero, desktop)
+│       ├── hero-sitges-mobile.webp # Variant per a mòbils del hero (≤900 px)
 │       ├── cartell-2026.jpg    # [COPIAR] 2026.jpeg del client
 │       ├── foto-equip.jpg      # [PENDENT] Foto grup Veterans CBS actual
 │       ├── torneig-2023/       # Fotos torneig 2023 (format: foto-01.jpg, foto-02.jpg...)
@@ -45,9 +46,9 @@ No cal npm, Node, ni cap eina de build.
 ## Afegir imatges (instruccions pel client)
 
 ### Hero (imatge de fons principal)
-1. Posa una foto de Sitges (preferiblement aèria) amb nom `hero-sitges.jpg` a `assets/img/`.
-2. Mida recomanada: 1920x1080px o superior. Format WebP o JPG.
-3. La propietat CSS `background-attachment: fixed` fa l'efecte parallax automàticament.
+1. Posa la foto de família de tots els equips del CB Sitges amb nom `hero-sitges.webp` a `assets/img/` (variant desktop, 2560 px d'amplada).
+2. Afegeix també una variant per a mòbils `hero-sitges-mobile.webp` (~1600 px d'amplada).
+3. La propietat CSS `background-attachment: fixed` fa l'efecte parallax automàticament (només en desktop).
 
 ### Cartell 2026
 - Copia el fitxer `2026.jpeg` a `assets/img/` amb nom `cartell-2026.jpg`.
