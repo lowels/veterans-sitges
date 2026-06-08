@@ -167,8 +167,6 @@
   const HAS_SHEET = !!CONFIG.sheetCsvUrl;
   let results = {};   // { matchId: {home, away, so} }
   let bracket = {};   // { sf1:{home,away,so}, sf2:{...}, final:{...} }
-  let lastUpdated = null;
-  let loadState = 'ok'; // 'ok' | 'loading' | 'error'
 
   /* ──────────────────────────────────────────
      4. CARREGA DES DEL GOOGLE SHEET (CSV)
@@ -238,22 +236,14 @@
 
   function loadFromSheet() {
     if (!HAS_SHEET) return;
-    loadState = (lastUpdated ? 'ok' : 'loading');
-    renderToolbar();
     const url = CONFIG.sheetCsvUrl + (CONFIG.sheetCsvUrl.includes('?') ? '&' : '?') + '_=' + Date.now();
     fetch(url, { cache: 'no-store' })
       .then(res => { if (!res.ok) throw new Error('HTTP ' + res.status); return res.text(); })
       .then(text => {
         applySheetRows(parseCSV(text));
-        lastUpdated = new Date();
-        loadState = 'ok';
         renderAll();
       })
-      .catch(err => {
-        console.error('[torneig] Error carregant el Sheet:', err);
-        loadState = 'error';
-        renderToolbar();
-      });
+      .catch(err => { console.error('[torneig] Error carregant el Sheet:', err); });
   }
 
   /* ──────────────────────────────────────────
@@ -419,27 +409,7 @@
   }
 
   /* ──────────────────────────────────────────
-     8. RENDER — TOOLBAR "en directe"
-  ────────────────────────────────────────── */
-  function renderToolbar() {
-    const wrap = document.getElementById('results-toolbar');
-    if (!wrap) return;
-    if (!HAS_SHEET) { wrap.innerHTML = ''; return; }
-
-    let status;
-    if (loadState === 'loading') status = `<span class="live-status">${t('loading')}</span>`;
-    else if (loadState === 'error') status = `<span class="live-status live-status--err">⚠ ${t('loadError')}</span>`;
-    else status = `<span class="live-status">${t('updated')}: ${lastUpdated ? lastUpdated.toLocaleTimeString(lang()) : '—'}</span>`;
-
-    wrap.innerHTML = `
-      <span class="live-badge"><span class="live-dot"></span>${t('live')}</span>
-      <span class="live-spacer">${status}
-        <button type="button" id="refresh-results" class="btn-reset" style="color:var(--color-primary);border-color:rgba(45,106,79,0.3);background:rgba(45,106,79,0.05);">↻ ${t('refresh')}</button>
-      </span>`;
-  }
-
-  /* ──────────────────────────────────────────
-     9. RENDER — RESULTATS (només lectura)
+     8. RENDER — RESULTATS (només lectura)
   ────────────────────────────────────────── */
   function renderResults() {
     const wrap = document.getElementById('results-list');
@@ -602,7 +572,6 @@
   ────────────────────────────────────────── */
   function renderAll() {
     renderGroups();
-    renderToolbar();
     renderResults();
     renderBracket();
     renderStaticLabels();
@@ -615,11 +584,6 @@
   ────────────────────────────────────────── */
   function init() {
     renderAll();
-
-    // Botó d'actualitzar manual (mode Sheet)
-    document.addEventListener('click', e => {
-      if (e.target.closest('#refresh-results')) loadFromSheet();
-    });
 
     // Re-render del contingut dinàmic en canviar d'idioma
     document.querySelectorAll('.lang-btn').forEach(btn => {
