@@ -46,6 +46,37 @@
 .t-hero__meta span { display: inline-flex; align-items: center; gap: 0.5rem; }
 .t-hero__meta svg { width: 18px; height: 18px; color: var(--color-accent); }
 
+/* Causa solidària */
+.t-hero__cause {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 0.85rem;
+  margin-top: 1.5rem; padding: 0.7rem 1.25rem;
+  background: rgba(192, 57, 43, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  text-align: left;
+}
+.t-hero__cause-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; flex-shrink: 0;
+  background: var(--color-club-red); color: #fff; border-radius: 50%;
+}
+.t-hero__cause-icon svg { width: 18px; height: 18px; }
+.t-hero__cause-text { display: flex; flex-direction: column; line-height: 1.25; }
+.t-hero__cause-label {
+  font-family: var(--font-title); font-size: 0.7rem; font-weight: var(--fw-semibold);
+  letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255, 255, 255, 0.7);
+}
+.t-hero__cause-name {
+  font-family: var(--font-title); font-weight: var(--fw-bold);
+  font-size: var(--text-base); color: #fff;
+}
+.t-hero__cause-found { font-size: var(--text-xs); color: rgba(255, 255, 255, 0.75); }
+
+@media (max-width: 560px) {
+  .t-hero__cause { border-radius: var(--radius-lg); }
+}
+
 /* Tabs d'ancoratge ràpides */
 .t-tabs {
   position: relative; z-index: 1;
