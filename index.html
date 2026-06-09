@@ -451,22 +451,40 @@ header{
               radial-gradient(20% 120% at 90% -20%, rgba(232,194,102,.10), transparent 70%);
   pointer-events:none;
 }
-.team-chips{
-  display:flex; flex-wrap:wrap; justify-content:center;
-  gap: 14px; padding: 0 8vw; max-width: 1100px; margin: 0 auto;
+.team-grid{
+  display:grid; grid-template-columns: repeat(5, 1fr);
+  gap: 16px; padding: 0 8vw; max-width: 1240px; margin: 0 auto;
 }
-.team-chips .chip{
-  display:inline-flex; align-items:center; gap:10px;
-  font-family: var(--mono); font-size: 13px; white-space:nowrap;
-  border: 1px solid rgba(242,239,230,.16); border-radius: 999px;
-  padding: 10px 22px; color: var(--ink-dim);
-  transition: color .3s ease, border-color .3s ease;
+.team-card{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap: 16px; padding: 30px 14px 24px;
+  background: rgba(242,239,230,.04);
+  border: 1px solid rgba(242,239,230,.12);
+  border-radius: 12px;
+  transition: border-color .3s ease, background .3s ease, transform .25s cubic-bezier(.2,1.6,.4,1);
 }
-.team-chips .chip img{ width: 24px; height: 24px; object-fit: contain; }
-.team-chips .chip:hover{ color: var(--gold); border-color: var(--gold-line); }
-@media (max-width:600px){
-  .team-chips{ gap: 10px; }
-  .team-chips .chip{ padding: 8px 16px; font-size: 12px; }
+.team-card:hover{
+  border-color: var(--gold-line);
+  background: rgba(232,194,102,.06);
+  transform: translateY(-4px);
+}
+.team-card img{
+  height: 84px; width: 84px; object-fit: contain;
+  background: #fff; border-radius: 12px; padding: 9px;
+}
+.team-card span{
+  font-family: var(--mono); font-size: 12px; letter-spacing:.05em;
+  color: var(--ink-dim); text-align:center; line-height: 1.35;
+}
+.team-card:hover span{ color: var(--gold); }
+@media (max-width: 1000px){
+  .team-grid{ gap: 12px; }
+  .team-card img{ height: 64px; width: 64px; padding: 7px; }
+  .team-card{ padding: 22px 10px 18px; }
+}
+@media (max-width: 760px){
+  .team-grid{ grid-template-columns: repeat(2, 1fr); }
+  .team-card img{ height: 76px; width: 76px; }
 }
 
 /* ============================================================
@@ -788,8 +806,17 @@ footer a{ color: var(--gold); text-decoration:none; }
     </p>
   </div>
   <div class="pass-rail">
-    <div class="team-chips" aria-label="Els deu equips del 2026">
-      <span class="chip"><img src="assets/img/equips/fcbarcelona-veterans.webp" alt="">FC Barcelona Veterans</span><span class="chip"><img src="assets/img/equips/valencia-basket.webp" alt="">València Basket</span><span class="chip"><img src="assets/img/equips/espanyol.webp" alt="">S.D. Espanyol</span><span class="chip"><img src="assets/img/equips/veterans-girona.webp" alt="">Veterans Girona</span><span class="chip"><img src="assets/img/equips/no-surrender-towers.webp" alt="">No Surrender Towers</span><span class="chip"><img src="assets/img/equips/french-connection.webp" alt="">French Connection</span><span class="chip"><img src="assets/img/equips/veterans-sedis.webp" alt="">Veterans del Sedis</span><span class="chip"><img src="assets/img/equips/mvps.webp" alt="">MVPs</span><span class="chip"><img src="assets/img/equips/tehran.webp" alt="">Tehran</span><span class="chip"><img src="assets/img/equips/cb-sitges.webp" alt="">C.B. Sitges</span>
+    <div class="team-grid" aria-label="Els deu equips del 2026">
+      <div class="team-card"><img src="assets/img/equips/fcbarcelona-veterans.webp" alt="" loading="lazy"><span>FC Barcelona Veterans</span></div>
+      <div class="team-card"><img src="assets/img/equips/valencia-basket.webp" alt="" loading="lazy"><span>València Basket</span></div>
+      <div class="team-card"><img src="assets/img/equips/espanyol.webp" alt="" loading="lazy"><span>S.D. Espanyol</span></div>
+      <div class="team-card"><img src="assets/img/equips/veterans-girona.webp" alt="" loading="lazy"><span>Veterans Girona</span></div>
+      <div class="team-card"><img src="assets/img/equips/no-surrender-towers.webp" alt="" loading="lazy"><span>No Surrender Towers</span></div>
+      <div class="team-card"><img src="assets/img/equips/french-connection.webp" alt="" loading="lazy"><span>French Connection</span></div>
+      <div class="team-card"><img src="assets/img/equips/veterans-sedis.webp" alt="" loading="lazy"><span>Veterans del Sedis</span></div>
+      <div class="team-card"><img src="assets/img/equips/mvps.webp" alt="" loading="lazy"><span>MVPs</span></div>
+      <div class="team-card"><img src="assets/img/equips/tehran.webp" alt="" loading="lazy"><span>Tehran</span></div>
+      <div class="team-card"><img src="assets/img/equips/cb-sitges.webp" alt="" loading="lazy"><span>C.B. Sitges</span></div>
     </div>
   </div>
 </section>
