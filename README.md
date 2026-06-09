@@ -175,7 +175,7 @@ Tots els colors principals estan com a variables CSS a l'inici de `assets/css/st
 :root {
   --color-primary:   #2D6A4F;   /* Verd esmeralda */
   --color-accent:    #D4A843;   /* Daurat */
-  --color-dark:      #1A1A1A;   /* Negre profund */
+  --color-dark:      #141613;   /* Negre profund amb matís verd */
   --color-club-red:  #C0392B;   /* Vermell CBS */
 }
 ```
