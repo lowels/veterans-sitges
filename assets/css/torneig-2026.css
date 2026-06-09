@@ -395,7 +395,7 @@
   /* L'hora deixa de ser una columna lateral i passa a ser una línia
      pròpia a sobre dels partits, alliberant tota l'amplada per a les
      targetes (abans els noms de l'equip visitant quedaven tallats). */
-  .slot { display: block; margin-bottom: 1.75rem; }
+  .slot { display: block; margin-bottom: 1.75rem; text-align: center; }
   .slot__time {
     flex-direction: row;
     position: static;
@@ -406,7 +406,7 @@
     font-size: var(--text-xs);
     border-radius: 999px;
   }
-  .slot__matches { gap: 1.1rem; }
+  .slot__matches { gap: 1.1rem; text-align: left; }
 
   .match-side__logo { width: 40px; height: 40px; }
   .match-side__name { font-size: var(--text-xs); }
