@@ -57,32 +57,32 @@
   };
 
   const GROUPS = {
-    A: ['sitges', 'valencia', 'mvps', 'girona', 'sedis'],
-    B: ['espanyol', 'towers', 'tehran', 'barca', 'french'],
+    A: ['sitges', 'valencia', 'towers', 'girona', 'sedis'],
+    B: ['espanyol', 'mvps', 'tehran', 'barca', 'french'],
   };
 
   // Calendari oficial (round-robin). court = pista, group = grup.
   const MATCHES = [
     { id: 'g1',  time: '13:00', court: 1, group: 'A', home: 'sitges',   away: 'girona' },
-    { id: 'g2',  time: '13:00', court: 2, group: 'B', home: 'espanyol', away: 'towers' },
+    { id: 'g2',  time: '13:00', court: 2, group: 'B', home: 'espanyol', away: 'mvps' },
     { id: 'g3',  time: '13:30', court: 1, group: 'A', home: 'valencia', away: 'sedis' },
     { id: 'g4',  time: '13:30', court: 2, group: 'B', home: 'tehran',     away: 'barca' },
-    { id: 'g5',  time: '14:00', court: 1, group: 'A', home: 'sitges',   away: 'mvps' },
+    { id: 'g5',  time: '14:00', court: 1, group: 'A', home: 'sitges',   away: 'towers' },
     { id: 'g6',  time: '14:00', court: 2, group: 'B', home: 'espanyol', away: 'french' },
     { id: 'g7',  time: '14:30', court: 1, group: 'A', home: 'sedis',    away: 'girona' },
-    { id: 'g8',  time: '14:30', court: 2, group: 'B', home: 'towers',   away: 'tehran' },
-    { id: 'g9',  time: '15:00', court: 1, group: 'A', home: 'mvps',   away: 'valencia' },
+    { id: 'g8',  time: '14:30', court: 2, group: 'B', home: 'mvps',   away: 'tehran' },
+    { id: 'g9',  time: '15:00', court: 1, group: 'A', home: 'towers',   away: 'valencia' },
     { id: 'g10', time: '15:00', court: 2, group: 'B', home: 'barca',    away: 'french' },
     { id: 'g11', time: '15:30', court: 1, group: 'A', home: 'sitges',   away: 'sedis' },
     { id: 'g12', time: '15:30', court: 2, group: 'B', home: 'espanyol', away: 'tehran' },
-    { id: 'g13', time: '16:00', court: 1, group: 'A', home: 'girona',   away: 'mvps' },
-    { id: 'g14', time: '16:00', court: 2, group: 'B', home: 'towers',   away: 'french' },
+    { id: 'g13', time: '16:00', court: 1, group: 'A', home: 'girona',   away: 'towers' },
+    { id: 'g14', time: '16:00', court: 2, group: 'B', home: 'mvps',   away: 'french' },
     { id: 'g15', time: '16:30', court: 1, group: 'A', home: 'valencia', away: 'sitges' },
     { id: 'g16', time: '16:30', court: 2, group: 'B', home: 'barca',    away: 'espanyol' },
-    { id: 'g17', time: '17:00', court: 1, group: 'A', home: 'sedis',    away: 'mvps' },
+    { id: 'g17', time: '17:00', court: 1, group: 'A', home: 'sedis',    away: 'towers' },
     { id: 'g18', time: '17:00', court: 2, group: 'B', home: 'tehran',     away: 'french' },
     { id: 'g19', time: '17:30', court: 1, group: 'A', home: 'girona',   away: 'valencia' },
-    { id: 'g20', time: '17:30', court: 2, group: 'B', home: 'barca',    away: 'towers' },
+    { id: 'g20', time: '17:30', court: 2, group: 'B', home: 'barca',    away: 'mvps' },
   ];
 
   const BRACKET_IDS = ['sf1', 'sf2', 'final'];
