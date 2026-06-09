@@ -190,8 +190,33 @@
 
 @media (max-width: 560px) {
   .st-hide-sm { display: none; }
-  .st-name { font-size: var(--text-xs); }
-  .st-logo { width: 24px; height: 24px; }
+  .st-logo { width: 22px; height: 22px; }
+
+  /* En mòbil, els equips amb noms llargs (Grup B: "Veterans FC Barcelona",
+     "No Surrender Towers", "French Connection") feien que la taula fos més
+     ampla que la targeta i la columna de Punts quedava tallada fora de
+     pantalla. Amb table-layout:fixed la taula s'ajusta al 100% de l'amplada
+     i el nom llarg passa a dues línies, així totes les columnes hi caben. */
+  .standings-table { table-layout: fixed; }
+  .standings-table th,
+  .standings-table td { padding: 0.55rem 0.25rem; }
+  .standings-table thead th { letter-spacing: 0; }
+  .standings-table .st-pos { width: 1.6rem; }
+  .standings-table th:not(.st-team):not(.st-pos),
+  .standings-table td:not(.st-team):not(.st-pos) { width: 2.8rem; }
+  .standings-table th.st-team { padding-left: 0.5rem; }
+  .st-team {
+    gap: 0.4rem;
+    white-space: normal;
+    padding-left: 0.5rem !important;
+  }
+  .st-name {
+    font-size: var(--text-xs);
+    white-space: normal;
+    min-width: 0;
+    line-height: 1.2;
+  }
+  .st-pts { font-size: var(--text-base); }
 }
 
 /* ================================================================
