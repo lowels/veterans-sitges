@@ -128,27 +128,6 @@ header{
 #clock b{ color: var(--gold); font-weight:500; }
 @media (max-width: 700px){ #clock{ display:none; } }
 
-/* ---------- CTA fixa: reserva grada ---------- */
-#cta-float{
-  position: fixed; right: 24px; bottom: 24px; z-index: 150;
-  text-decoration:none;
-  display:flex; align-items:center; gap:12px;
-  background: var(--gold); color:#120D03;
-  padding: 14px 22px; border-radius: 999px;
-  font-family: var(--mono); font-weight:600; font-size: 14px; letter-spacing:.02em;
-  box-shadow: 0 8px 30px rgba(232,194,102,.35);
-  transition: transform .25s cubic-bezier(.2,1.6,.4,1), box-shadow .25s ease;
-}
-#cta-float .dot{
-  width:8px; height:8px; border-radius:50%; background:#120D03;
-  animation: blink 1.6s ease infinite;
-}
-@keyframes blink{ 50%{ opacity:.25; } }
-#cta-float:hover{ transform: translateY(-3px) scale(1.04); box-shadow: 0 14px 40px rgba(232,194,102,.5); }
-@media (max-width:700px){
-  #cta-float{ right:14px; bottom:14px; padding:12px 18px; font-size:13px; }
-}
-
 /* ---------- raïl de quarts ---------- */
 #rail{
   position: fixed; left: 22px; top: 50%; transform: translateY(-50%);
@@ -618,10 +597,6 @@ footer a{ color: var(--gold); text-decoration:none; }
   <a href="#act-causa" data-act-link="causa" data-cursor="Som-hi">3r · LA CAUSA</a>
   <a href="#act-2026" data-act-link="d2026" data-cursor="Som-hi">4t · 20 DE JUNY</a>
 </nav>
-
-<a id="cta-float" href="torneig-2026.html" data-cursor="Cap a la grada!">
-  <span class="dot"></span> Reserva la grada
-</a>
 
 <!-- ════════════════ SALT INICIAL (hero) ════════════════ -->
 <section class="act" id="hero" data-scene="hero">
