@@ -1,0 +1,216 @@
+/* ================================================================
+   torneig-2026-skin.css — Pell editorial "El partit"
+   Es carrega DESPRÉS de styles.css i torneig-2026.css i alinea la
+   pàgina del torneig amb la home de marketing: fons fosc, or,
+   Fraunces/Archivo/IBM Plex Mono i cartes de paper.
+   No toca ni l'HTML ni el JS de l'app de resultats.
+   ================================================================ */
+
+:root{
+  --mk-bg: #0B0E0C;
+  --mk-bg-2: #0E120F;
+  --mk-ink: #F2EFE6;
+  --mk-ink-dim: #9BA69B;
+  --mk-gold: #E8C266;
+  --mk-gold-line: rgba(232,194,102,.35);
+  --mk-paper: #F7F3E8;
+  --mk-paper-ink: #19201C;
+  --mk-serif: "Fraunces", Georgia, serif;
+  --mk-sans: "Archivo", system-ui, sans-serif;
+  --mk-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+body{
+  background: var(--mk-bg);
+  color: var(--mk-ink);
+  font-family: var(--mk-sans);
+}
+::selection{ background: var(--mk-gold); color: #120D03; }
+
+/* ---------- nav ---------- */
+#main-nav,
+#main-nav.nav--scrolled{
+  background: linear-gradient(to bottom, rgba(11,14,12,.92), rgba(11,14,12,.7));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(242,239,230,.08);
+  box-shadow: none;
+}
+.nav-logo__text{ font-family: var(--mk-serif); font-size: 1rem; }
+.nav-logo__sub{ font-family: var(--mk-mono); letter-spacing: .08em; }
+.nav-link{
+  font-family: var(--mk-mono); font-size: 11.5px;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--mk-ink-dim);
+}
+.nav-link:hover{ color: var(--mk-gold); background: transparent; }
+.nav-link--cta{
+  background: var(--mk-gold); color: #120D03;
+  border-radius: 999px; box-shadow: none;
+}
+.nav-link--cta:hover{ background: var(--mk-gold); color: #120D03; transform: none; box-shadow: 0 6px 18px rgba(232,194,102,.35); }
+.nav-lang{ background: rgba(242,239,230,.06); }
+.lang-btn{ font-family: var(--mk-mono); }
+.lang-btn--active{ background: var(--mk-gold); color: #120D03 !important; }
+
+/* ---------- banner ---------- */
+.t-hero{
+  background:
+    radial-gradient(70% 60% at 85% 8%, rgba(232,194,102,.12), transparent 55%),
+    var(--mk-bg);
+  padding-bottom: 4rem;
+}
+.t-hero::after{ display: none; }
+.t-hero__badge{
+  background: transparent; color: var(--mk-gold);
+  border: 2px solid var(--mk-gold); border-radius: 4px;
+  transform: rotate(-2deg);
+  font-family: var(--mk-mono); letter-spacing: .14em;
+  box-shadow: none;
+}
+.t-hero__title{
+  font-family: var(--mk-serif); font-weight: 720;
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  letter-spacing: -.025em; line-height: 1;
+  font-variation-settings: "opsz" 144;
+}
+.t-hero__subtitle{ color: var(--mk-ink-dim) !important; }
+.t-hero__meta{ font-family: var(--mk-mono); font-size: 12.5px; color: var(--mk-ink-dim); }
+.t-hero__meta svg{ color: var(--mk-gold); }
+.t-hero__cause{
+  background: rgba(232,194,102,.07);
+  border-color: var(--mk-gold-line);
+}
+.t-hero__cause-label{ font-family: var(--mk-mono); }
+.t-hero__cause-name{ font-family: var(--mk-serif); }
+.t-hero__free{ background: var(--mk-gold); color: #120D03; }
+.t-hero__free-text strong{ font-family: var(--mk-mono); }
+.t-hero__features li{
+  background: rgba(242,239,230,.05);
+  border-color: rgba(242,239,230,.12);
+  font-family: var(--mk-mono); font-size: 12px;
+  color: var(--mk-ink-dim);
+}
+.t-hero__features svg{ color: var(--mk-gold); }
+.t-tab{
+  font-family: var(--mk-mono); font-size: 12px;
+  letter-spacing: .08em; text-transform: uppercase;
+  background: rgba(242,239,230,.06);
+  border-color: rgba(242,239,230,.14);
+}
+.t-tab:hover{
+  background: rgba(232,194,102,.14);
+  border-color: var(--mk-gold-line);
+  color: var(--mk-gold);
+}
+
+/* ---------- seccions ---------- */
+.t-section{ background: var(--mk-bg); }
+.t-section--alt{ background: var(--mk-bg-2); }
+.section__eyebrow,
+.section__eyebrow--accent{
+  background: transparent; border: none; padding: 0;
+  font-family: var(--mk-mono); font-size: 12px;
+  letter-spacing: .22em; color: var(--mk-gold);
+  border-radius: 0;
+}
+.section__eyebrow::before{ display: none; }
+.section__title{
+  font-family: var(--mk-serif); font-weight: 720;
+  color: var(--mk-ink); letter-spacing: -.02em;
+  font-variation-settings: "opsz" 144;
+}
+.section__subtitle{ color: var(--mk-ink-dim); }
+.standings-legend{ color: var(--mk-ink-dim); font-family: var(--mk-mono); }
+
+/* ---------- classificacions: cartes de paper ---------- */
+.standings-card{
+  background: var(--mk-paper);
+  border: none; border-radius: 8px;
+  box-shadow: 0 26px 70px rgba(0,0,0,.5);
+  transform: rotate(-.4deg);
+}
+.standings-grid > .standings-card:nth-child(even){ transform: rotate(.4deg); }
+.standings-card:hover{ box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+.standings-card__head{
+  background: transparent;
+  color: var(--mk-paper-ink);
+  border-bottom: 2px solid var(--mk-paper-ink);
+  font-family: var(--mk-mono);
+}
+.group-court{ color: #5a6660; opacity: 1; font-family: var(--mk-mono); }
+.standings-table thead th{ font-family: var(--mk-mono); letter-spacing: .04em; }
+.st-name{ font-family: var(--mk-mono); }
+.st-pts{ font-family: var(--mk-serif); }
+.standings-qualify{
+  background: transparent;
+  border-top: 1px dashed rgba(25,32,28,.25);
+  font-family: var(--mk-mono);
+}
+
+/* ---------- resultats: cada partit, un tiquet ---------- */
+.slot__time{
+  background: var(--mk-gold); color: #120D03;
+  font-family: var(--mk-mono); box-shadow: none;
+}
+.match{
+  background: var(--mk-paper);
+  border: none; border-radius: 8px;
+  box-shadow: 0 16px 44px rgba(0,0,0,.45);
+}
+.match:hover{ box-shadow: 0 20px 54px rgba(0,0,0,.5); border-color: transparent; }
+.match__court{ font-family: var(--mk-mono); }
+.match-side__name{ font-family: var(--mk-mono); color: var(--mk-paper-ink); }
+.match__vs{ font-family: var(--mk-mono); color: #5a6660; }
+.score-input{
+  font-family: var(--mk-mono);
+  background: #fff; border-color: rgba(25,32,28,.2);
+}
+.score-static{ font-family: var(--mk-serif); color: var(--mk-paper-ink); }
+.shootout__hint{ font-family: var(--mk-mono); }
+.shootout__btn{ font-family: var(--mk-mono); }
+.live-badge{ font-family: var(--mk-mono); }
+.live-status{ color: var(--mk-ink-dim); }
+#results-save-hint{ color: var(--mk-ink-dim); font-family: var(--mk-mono); }
+
+/* ---------- fase final ---------- */
+.bracket-section{
+  background:
+    radial-gradient(60% 50% at 80% 0%, rgba(232,194,102,.1), transparent 55%),
+    radial-gradient(70% 60% at 10% 100%, rgba(63,163,124,.12), transparent 60%),
+    var(--mk-bg);
+}
+.bracket-card{
+  background: rgba(242,239,230,.05);
+  border-color: rgba(242,239,230,.12);
+  box-shadow: 0 16px 48px rgba(0,0,0,.3);
+}
+.bracket-card__title{ color: var(--mk-gold); font-family: var(--mk-mono); }
+.bteam{ background: rgba(0,0,0,.35); }
+.bteam__name{ font-family: var(--mk-mono); }
+.bscore{ font-family: var(--mk-mono); }
+.bscore:focus{ border-color: var(--mk-gold); }
+.bracket-card--final{
+  background: rgba(232,194,102,.08);
+  border-color: var(--mk-gold-line);
+}
+.final-trophy{ background: var(--mk-gold); color: #120D03; }
+.bteam--win{ background: rgba(232,194,102,.16); box-shadow: inset 0 0 0 1.5px var(--mk-gold); }
+.bteam--win .bteam__name{ color: var(--mk-gold); }
+.champion.is-set{
+  background: var(--mk-gold); color: #120D03;
+  box-shadow: 0 8px 30px rgba(232,194,102,.35);
+}
+.champion__label{ font-family: var(--mk-mono); }
+.champion__name{ font-family: var(--mk-serif); }
+.bracket-info{ font-family: var(--mk-mono); color: var(--mk-ink-dim); }
+
+/* ---------- footer ---------- */
+#footer{
+  background: var(--mk-bg);
+  border-top: 1px solid rgba(242,239,230,.08);
+}
+.footer-logo__name{ font-family: var(--mk-serif); }
+.footer-logo__sub, .footer-tagline, .footer-rights, .footer-handle{ font-family: var(--mk-mono); }
+.footer-instagram{ font-family: var(--mk-mono); font-size: 12px; }
+.t-back{ color: var(--mk-gold); font-family: var(--mk-mono); }

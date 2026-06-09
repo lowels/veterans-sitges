@@ -365,16 +365,11 @@ header{
   border-top: 1px dashed #19202055; margin-top: 10px; padding-top: 10px;
   font-weight: 700; font-size: 12.5px;
 }
-.receipt .r-stamp{
-  position:absolute; bottom: 32px; right: 12px;
-  border: 2.5px solid #0d8a5d; color:#0d8a5d; border-radius: 6px;
-  padding: 4px 10px; font-weight: 700; letter-spacing: .08em; font-size: 12px;
-  transform: rotate(-10deg) scale(2.2); opacity: 0;
-  transition: opacity .25s ease, transform .3s cubic-bezier(.2,2.4,.4,1);
+.receipt .r-logo{
+  display:flex; align-items:center; justify-content:center;
+  height: 52px; margin-bottom: 10px;
 }
-.live-stamps .r1 .r-stamp{ opacity:.92; transform: rotate(-10deg) scale(1); }
-.live-stamps .r2 .r-stamp{ opacity:.92; transform: rotate(-10deg) scale(1); transition-delay:.25s; }
-.live-stamps .r3 .r-stamp{ opacity:.92; transform: rotate(-10deg) scale(1); transition-delay:.5s; }
+.receipt .r-logo img{ max-height: 100%; max-width: 80%; object-fit: contain; }
 
 /* ============================================================
    3r QUART — LA CAUSA · el marcador
@@ -467,8 +462,60 @@ header{
 }
 .marquee .chip img{ width: 24px; height: 24px; object-fit: contain; }
 .marquee .chip:hover{ color: var(--gold); border-color: var(--gold-line); }
-.marquee2{ animation-direction: reverse; animation-duration: 42s; margin-top:16px; }
 @keyframes pass{ to{ transform: translateX(-50%); } }
+
+/* ============================================================
+   PATROCINADORS — estàtics, jerarquia i ordre de sempre
+   ============================================================ */
+#patrocinadors{ padding: 14vh 0 16vh; }
+#patrocinadors .wrap{ padding: 0 8vw; margin-bottom: 6vh; }
+.sp-wrap{ padding: 0 8vw; }
+.sp-premium{
+  display:grid; grid-template-columns: repeat(4, 1fr);
+  gap: 18px; margin-bottom: 18px;
+}
+.sp-grid{
+  display:grid; grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+.sp-card{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap: 12px; padding: 20px 14px;
+  background: var(--paper); border-radius: 8px;
+  text-decoration:none;
+  transition: transform .25s cubic-bezier(.2,1.6,.4,1), box-shadow .25s ease;
+}
+.sp-card:hover{ transform: translateY(-4px); box-shadow: 0 18px 44px rgba(0,0,0,.45); }
+.sp-media{
+  display:flex; align-items:center; justify-content:center;
+  width: 100%; height: 64px;
+}
+.sp-media img{
+  max-width: 100%; max-height: 100%; object-fit: contain;
+  filter: grayscale(100%); opacity: .85;
+  transition: filter .3s ease, opacity .3s ease;
+}
+.sp-card:hover .sp-media img{ filter: grayscale(0%); opacity: 1; }
+/* logos pensats per a fons fosc */
+.sp-media img[src*="casino-prado"]{ filter: grayscale(100%) invert(1); }
+.sp-card:hover .sp-media img[src*="casino-prado"]{ filter: invert(1); }
+.sp-name{
+  font-family: var(--mono); font-size: 10.5px; letter-spacing:.04em;
+  color: #5a6660; text-align:center; line-height: 1.35;
+}
+.sp-premium .sp-card{ padding: 30px 18px; }
+.sp-premium .sp-media{ height: 104px; }
+.sp-premium .sp-name{ font-size: 12px; font-weight: 600; color: var(--paper-ink); }
+@media (max-width: 960px){
+  .sp-premium{ grid-template-columns: repeat(2, 1fr); }
+  .sp-grid{ grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 600px){
+  .sp-grid{ grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .sp-card{ padding: 14px 8px; }
+  .sp-media{ height: 48px; }
+  .sp-premium .sp-media{ height: 72px; }
+}
 
 /* ============================================================
    XIULET FINAL — RESERVA LA GRADA
@@ -593,10 +640,11 @@ footer a{ color: var(--gold); text-decoration:none; }
           de liniment. <strong>Juguem per amor a l'esport — i perquè el poble guanyi sempre.</strong>
         </p>
         <div class="lineup" aria-label="Alineació de valors">
-          <div class="l-head">ALINEACIÓ TITULAR · VALORS</div>
+          <div class="l-head">CINC INICIAL · VALORS</div>
           <div class="o-line"><span class="name">Esport i formació integral</span><span class="ok">titular ✓</span></div>
           <div class="o-line"><span class="name">Treball en equip i superació</span><span class="ok">titular ✓</span></div>
           <div class="o-line"><span class="name">Companyonia i responsabilitat</span><span class="ok">titular ✓</span></div>
+          <div class="o-line"><span class="name">Respecte pel joc i pel rival</span><span class="ok">titular ✓</span></div>
           <div class="o-line"><span class="name">Solidaritat activa</span><span class="ok">capitana ✓</span></div>
         </div>
       </div>
@@ -628,28 +676,28 @@ footer a{ color: var(--gold); text-decoration:none; }
       </div>
       <div class="receipts">
         <div class="receipt r1" aria-label="Acta de l'edició 2023">
+          <div class="r-logo"><img src="assets/img/fundacions/yomecorono.webp" alt="Fundació #YoMeCorono" loading="lazy"></div>
           <h4>Acta · 1a edició — 2023</h4>
           <div class="r-line"><span>Causa</span><span>la recerca</span></div>
           <div class="r-line"><span>Per a</span><span>#YoMeCorono</span></div>
           <div class="r-line"><span>Equips</span><span>4</span></div>
           <div class="r-line r-total"><span>Recaptat</span><span class="pos">1.018 €</span></div>
-          <div class="r-stamp">GRÀCIES</div>
         </div>
         <div class="receipt r2" aria-label="Acta de l'edició 2024">
+          <div class="r-logo"><img src="assets/img/fundacions/idibell.webp" alt="IDIBELL" loading="lazy"></div>
           <h4>Acta · 2a edició — 2024</h4>
           <div class="r-line"><span>Causa</span><span>la biomedicina</span></div>
           <div class="r-line"><span>Per a</span><span>IDIBELL</span></div>
           <div class="r-line"><span>Equips</span><span>4</span></div>
           <div class="r-line r-total"><span>Recaptat</span><span class="pos">950 €</span></div>
-          <div class="r-stamp">GRÀCIES</div>
         </div>
         <div class="receipt r3" aria-label="Acta de l'edició 2025">
+          <div class="r-logo"><img src="assets/img/fundacions/xana.webp" alt="Fundació Xana" loading="lazy"></div>
           <h4>Acta · 3a edició — 2025</h4>
           <div class="r-line"><span>Causa</span><span>la infància</span></div>
           <div class="r-line"><span>Per a</span><span>Fundació Xana</span></div>
           <div class="r-line"><span>Equips</span><span>7</span></div>
           <div class="r-line r-total"><span>Recaptat</span><span class="pos">3.500 €</span></div>
-          <div class="r-stamp">GRÀCIES</div>
         </div>
       </div>
     </div>
@@ -727,12 +775,11 @@ footer a{ color: var(--gold); text-decoration:none; }
 <!-- ════════════════ LA BANQUETA — equips i col·laboradors ════════════════ -->
 <section id="banqueta">
   <div class="wrap">
-    <p class="kicker rv">La banqueta · Equips i col·laboradors</p>
-    <h2 class="display rv d1" style="margin:2.5vh 0 3vh;">Deu equips<br>i mig <em>Sitges.</em></h2>
+    <p class="kicker rv">La banqueta · Els equips del 2026</p>
+    <h2 class="display rv d1" style="margin:2.5vh 0 3vh;">Deu equips,<br>un sol <em>vestidor.</em></h2>
     <p class="lede rv d2">
-      Els equips posen les cames i el comerç local posa la resta:
-      <strong>més de 25 cases de Sitges</strong> fan possible que tot el que es
-      recapta vagi sencer a la causa.
+      Del FC Barcelona a Tehran: deu plantilles de veterans que vénen a Sitges
+      <strong>a guanyar el mateix partit.</strong>
     </p>
   </div>
   <div class="pass-rail" aria-hidden="true">
@@ -740,9 +787,54 @@ footer a{ color: var(--gold); text-decoration:none; }
       <span class="chip"><img src="assets/img/equips/fcbarcelona-veterans.webp" alt="">FC Barcelona Veterans</span><span class="chip"><img src="assets/img/equips/valencia-basket.webp" alt="">València Basket</span><span class="chip"><img src="assets/img/equips/espanyol.webp" alt="">S.D. Espanyol</span><span class="chip"><img src="assets/img/equips/veterans-girona.webp" alt="">Veterans Girona</span><span class="chip"><img src="assets/img/equips/no-surrender-towers.webp" alt="">No Surrender Towers</span><span class="chip"><img src="assets/img/equips/french-connection.webp" alt="">French Connection</span><span class="chip"><img src="assets/img/equips/veterans-sedis.webp" alt="">Veterans del Sedis</span><span class="chip"><img src="assets/img/equips/mvps.webp" alt="">MVPs</span><span class="chip"><img src="assets/img/equips/tehran.webp" alt="">Tehran</span><span class="chip"><img src="assets/img/equips/cb-sitges.webp" alt="">C.B. Sitges</span>
       <span class="chip"><img src="assets/img/equips/fcbarcelona-veterans.webp" alt="">FC Barcelona Veterans</span><span class="chip"><img src="assets/img/equips/valencia-basket.webp" alt="">València Basket</span><span class="chip"><img src="assets/img/equips/espanyol.webp" alt="">S.D. Espanyol</span><span class="chip"><img src="assets/img/equips/veterans-girona.webp" alt="">Veterans Girona</span><span class="chip"><img src="assets/img/equips/no-surrender-towers.webp" alt="">No Surrender Towers</span><span class="chip"><img src="assets/img/equips/french-connection.webp" alt="">French Connection</span><span class="chip"><img src="assets/img/equips/veterans-sedis.webp" alt="">Veterans del Sedis</span><span class="chip"><img src="assets/img/equips/mvps.webp" alt="">MVPs</span><span class="chip"><img src="assets/img/equips/tehran.webp" alt="">Tehran</span><span class="chip"><img src="assets/img/equips/cb-sitges.webp" alt="">C.B. Sitges</span>
     </div>
-    <div class="marquee marquee2">
-      <span class="chip">Sea You Sitges</span><span class="chip">Francesco</span><span class="chip">Hotel Sunway</span><span class="chip">Hotel Sabàtic</span><span class="chip">Ajuntament de Sitges</span><span class="chip">La Sitgetana</span><span class="chip">Festival de Cinema Fantàstic</span><span class="chip">Casino Prado</span><span class="chip">El Retiro</span><span class="chip">Museus de Sitges</span><span class="chip">Flexic</span><span class="chip">Scored</span><span class="chip">…i tot el comerç que fa poble</span>
-      <span class="chip">Sea You Sitges</span><span class="chip">Francesco</span><span class="chip">Hotel Sunway</span><span class="chip">Hotel Sabàtic</span><span class="chip">Ajuntament de Sitges</span><span class="chip">La Sitgetana</span><span class="chip">Festival de Cinema Fantàstic</span><span class="chip">Casino Prado</span><span class="chip">El Retiro</span><span class="chip">Museus de Sitges</span><span class="chip">Flexic</span><span class="chip">Scored</span><span class="chip">…i tot el comerç que fa poble</span>
+  </div>
+</section>
+
+<!-- ════════════════ PATROCINADORS — el comerç que fa poble ════════════════ -->
+<section id="patrocinadors">
+  <div class="wrap">
+    <p class="kicker rv">Patrocinadors · Suport local</p>
+    <h2 class="display rv d1" style="margin:2.5vh 0 3vh;">El comerç<br>que fa <em>poble.</em></h2>
+    <p class="lede rv d2">
+      Empreses i comerços de Sitges que fan possible el torneig any rere any —
+      <strong>gràcies a ells, tot el que es recapta va sencer a la causa.</strong>
+    </p>
+  </div>
+  <div class="sp-wrap">
+    <div class="sp-premium rv" aria-label="Patrocinadors principals">
+      <a href="https://www.instagram.com/seayousitges/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/sea-you-sitges.webp" alt="Sea You Sitges" loading="lazy"></span><span class="sp-name">Sea You Sitges</span></a>
+      <a href="https://pizzeriafrancesco.com/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/francesco.webp" alt="Francesco" loading="lazy"></span><span class="sp-name">Francesco</span></a>
+      <a href="https://sunway.es/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/sunway.webp" alt="Hotel Sunway" loading="lazy"></span><span class="sp-name">Hotel Sunway</span></a>
+      <a href="https://hotelsabaticsitges.com/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/sabatic.webp" alt="Hotel Sabàtic" loading="lazy"></span><span class="sp-name">Hotel Sabàtic</span></a>
+    </div>
+    <div class="sp-grid rv d1" aria-label="Resta de col·laboradors">
+      <a href="https://www.sitges.cat/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/ajuntament-sitges.webp" alt="Ajuntament de Sitges" loading="lazy"></span><span class="sp-name">Ajuntament de Sitges</span></a>
+      <a href="https://www.scored.es/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/scored.webp" alt="Scored" loading="lazy"></span><span class="sp-name">Scored</span></a>
+      <a href="https://lasitgetana.cat/es/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/la-sitgetana.webp" alt="La Sitgetana" loading="lazy"></span><span class="sp-name">La Sitgetana</span></a>
+      <a href="https://www.instagram.com/fetambfusta/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/fet-amb-fusta.webp" alt="Fet amb Fusta" loading="lazy"></span><span class="sp-name">Fet amb Fusta</span></a>
+      <a href="https://sitgesfilmfestival.com/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/cine-fantastic.webp" alt="Festival Cine Fantàstic" loading="lazy"></span><span class="sp-name">Festival Cine Fantàstic</span></a>
+      <a href="https://elretirositges.cat/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/societat-recreativa-el-retiro.webp" alt="Societat Recreativa El Retiro" loading="lazy"></span><span class="sp-name">Societat Recreativa El Retiro</span></a>
+      <a href="https://www.casinoprado.cat/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/casino-prado.webp" alt="Casino Prado" loading="lazy"></span><span class="sp-name">Casino Prado</span></a>
+      <a href="https://museusdesitges.cat/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/museus-de-sitges.webp" alt="Museus de Sitges" loading="lazy"></span><span class="sp-name">Museus de Sitges</span></a>
+      <a href="https://www.instagram.com/latrattositges/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/la-tratto-sitges.webp" alt="La Tratto Sitges" loading="lazy"></span><span class="sp-name">La Tratto Sitges</span></a>
+      <a href="https://www.instagram.com/el_raco_del_vi/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/el-raco-del-vi.webp" alt="El Racó del Vi" loading="lazy"></span><span class="sp-name">El Racó del Vi</span></a>
+      <a href="https://www.instagram.com/mammothskate/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/mammothskate.webp" alt="Mammothskate" loading="lazy"></span><span class="sp-name">Mammothskate</span></a>
+      <a href="https://kelasitges.com/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/kela-sitges.webp" alt="Kela Sitges" loading="lazy"></span><span class="sp-name">Kela Sitges</span></a>
+      <a href="https://indiamonamour.shop/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/india-mon-amour.webp" alt="Índia Mon Amour" loading="lazy"></span><span class="sp-name">Índia Mon Amour</span></a>
+      <a href="https://www.instagram.com/xiringuitoblancasubur/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/xiringuito-blanca-subur.webp" alt="Xiringuito Blanca Subur" loading="lazy"></span><span class="sp-name">Xiringuito Blanca Subur</span></a>
+      <a href="https://www.abcgrup.com/tiendas/sitges/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/abc-sitges-castelldefels.webp" alt="ABC Sitges Castelldefels" loading="lazy"></span><span class="sp-name">ABC Sitges Castelldefels</span></a>
+      <a href="https://www.instagram.com/elsjardinsdelretiro/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/els-jardins-del-retiro.webp" alt="Els Jardins del Retiro" loading="lazy"></span><span class="sp-name">Els Jardins del Retiro</span></a>
+      <a href="https://www.instagram.com/araselcciovins/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/ara-seleccio-vins.webp" alt="Ara Selecció Vins" loading="lazy"></span><span class="sp-name">Ara Selecció Vins</span></a>
+      <a href="https://www.facebook.com/PastisseriaSN" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/serrarols-nin.webp" alt="Serrarols Nin" loading="lazy"></span><span class="sp-name">Serrarols Nin</span></a>
+      <a href="https://fontdevila.art/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/daniel-fontdevila.webp" alt="Daniel Fontdevila" loading="lazy"></span><span class="sp-name">Daniel Fontdevila</span></a>
+      <a href="https://www.instagram.com/calpinxositges/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/cal-pinxo-sitges.webp" alt="Cal Pinxo Sitges" loading="lazy"></span><span class="sp-name">Cal Pinxo Sitges</span></a>
+      <a href="https://www.instagram.com/nouiclassic/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/nou-i-classic.webp" alt="Nou i Clàssic" loading="lazy"></span><span class="sp-name">Nou i Clàssic</span></a>
+      <a href="https://www.instagram.com/perbaccositges/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/perbacco.webp" alt="Perbacco" loading="lazy"></span><span class="sp-name">Perbacco</span></a>
+      <a href="https://www.nemsitges.com/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/nem.webp" alt="Nem" loading="lazy"></span><span class="sp-name">Nem</span></a>
+      <a href="https://www.hotelsitges.com/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/hotel-sitges.webp" alt="Hotel Sitges" loading="lazy"></span><span class="sp-name">Hotel Sitges</span></a>
+      <a href="https://www.instagram.com/acquasitges/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/acqua-restaurant.webp" alt="Restaurant Acqua" loading="lazy"></span><span class="sp-name">Restaurant Acqua</span></a>
+      <a href="https://www.bacardi.com/" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/bacardi.webp" alt="Casa Bacardí" loading="lazy"></span><span class="sp-name">Casa Bacardí</span></a>
+      <a href="https://www.instagram.com/ab_wines" class="sp-card" target="_blank" rel="sponsored noopener"><span class="sp-media"><img src="assets/img/sponsors/abwine.webp" alt="AB Wines" loading="lazy"></span><span class="sp-name">AB Wines</span></a>
     </div>
   </div>
 </section>
@@ -858,7 +950,6 @@ footer a{ color: var(--gold); text-decoration:none; }
   document.querySelectorAll("[data-act-link]").forEach(a => railLinks[a.dataset.actLink] = a);
 
   const lineupLines = [...document.querySelectorAll("#act-veterans .o-line")];
-  const torneigStage = document.querySelector("#act-torneig .stage");
   const scoreNum = document.getElementById("score-num");
   const sbVerdict = document.querySelector(".sb-verdict");
 
@@ -870,9 +961,6 @@ footer a{ color: var(--gold); text-decoration:none; }
     veterans(el, p) {
       const n = Math.floor(((p - 0.15) / 0.55) * (lineupLines.length + 1));
       lineupLines.forEach((l, i) => l.classList.toggle("in", i < n));
-    },
-    torneig(el, p) {
-      torneigStage.classList.toggle("live-stamps", p > 0.5);
     },
     causa(el, p) {
       const s = Math.max(0, Math.min(1, (p - 0.12) / 0.55));
