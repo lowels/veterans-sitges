@@ -529,9 +529,7 @@
 
   function bracketCard(id, title, hNode, aNode, r, isFinal) {
     r = r || {};
-    const w = winnerOf(r);
-    const tie = isTie(r);
-    const enabled = !!(hNode.team && aNode.team);
+    const w = winnerOf(r); // té en compte el desempat per tirs lliures (r.so)
     const hv = (r.home === undefined || r.home === null) ? '' : r.home;
     const av = (r.away === undefined || r.away === null) ? '' : r.away;
 
@@ -541,21 +539,18 @@
         ? logoImg(node.team, 'bteam__logo') + `<span class="bteam__name">${esc(TEAMS[node.team].name)}</span>`
         : `<span class="bteam__logo bteam__logo--ph" aria-hidden="true"></span><span class="bteam__name bteam__name--ph">${esc(node.label)}</span>`;
       const val = who === 'home' ? hv : av;
-      return `<div class="bteam${win}">${content}<span class="bscore bscore--ro">${enabled ? showVal(val) : '–'}</span></div>`;
+      // Mostra sempre el marcador del Sheet, encara que l'equip (nom/logo)
+      // no es pugui determinar fins que la fase de grups estigui completa.
+      return `<div class="bteam${win}">${content}<span class="bscore bscore--ro">${showVal(val)}</span></div>`;
     }
 
-    let shootout = '';
-    if (tie && enabled && r.so) {
-      const wn = r.so === 'home' ? hNode.team : aNode.team;
-      shootout = `<div class="shootout shootout--bracket shootout--ro"><span class="tl-result">${t('tlBadge')} · ${esc(TEAMS[wn].name)}</span></div>`;
-    }
-
+    // A la fase final no mostrem l'etiqueta de tirs lliures: en cas d'empat,
+    // el guanyador (decidit per r.so) ja queda ressaltat amb la selecció daurada.
     return `
       <div class="bracket-card ${isFinal ? 'bracket-card--final' : ''} animate-on-scroll" data-bmatch="${id}">
         <div class="bracket-card__title">${title}</div>
         ${side(hNode, 'home')}
         ${side(aNode, 'away')}
-        ${shootout}
       </div>`;
   }
 
