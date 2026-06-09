@@ -56,6 +56,21 @@
     <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
     </symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 11v2"/><path d="M13 17v2"/>
+    </symbol>
+    <symbol id="i-basketball" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2v20"/><path d="M5.6 5.6c3.6 3.6 3.6 9.2 0 12.8"/><path d="M18.4 5.6c-3.6 3.6-3.6 9.2 0 12.8"/>
+    </symbol>
+    <symbol id="i-cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 2v2"/><path d="M14 2v2"/><path d="M6 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/>
+    </symbol>
+    <symbol id="i-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+    </symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+    </symbol>
   </svg>
 
   <!-- ============================================================
@@ -108,7 +123,7 @@
         <span class="t-hero__badge" data-i18n="t2026.badge">4t Torneig Solidari · Vila de Sitges</span>
         <h1 class="t-hero__title" data-i18n="next2026.title">4t Torneig Veterans Sitges</h1>
         <p class="t-hero__subtitle" data-i18n="t2026.subtitle" style="color:rgba(255,255,255,0.85);max-width:640px;margin:0 auto;">
-          Grups, classificacions, resultats i fase final del torneig solidari de veterans.
+          Un dia de bàsquet, festa i solidaritat per a tota la família.
         </p>
 
         <div class="t-hero__meta">
@@ -125,6 +140,24 @@
             <span class="t-hero__cause-name" data-i18n="next2026.cause">Lluita contra el Parkinson</span>
             <span class="t-hero__cause-found" data-i18n="next2026.foundation">Hospital Clínic de Barcelona + Fundació Clínic-IDIBAPS</span>
           </div>
+        </div>
+
+        <!-- Informació clau del torneig -->
+        <div class="t-hero__info">
+          <div class="t-hero__free">
+            <span class="t-hero__free-icon" aria-hidden="true"><svg><use href="#i-ticket"/></svg></span>
+            <span class="t-hero__free-text">
+              <strong data-i18n="t2026.free_title">Entrada lliure i solidària</strong>
+              <small data-i18n="t2026.free_sub">Pots col·laborar amb la causa</small>
+            </span>
+          </div>
+          <ul class="t-hero__features">
+            <li><svg aria-hidden="true"><use href="#i-basketball"/></svg><span data-i18n="t2026.info_triples">Concurs de triples benèfic</span></li>
+            <li><svg aria-hidden="true"><use href="#i-cup"/></svg><span data-i18n="t2026.info_bar">Barra de bar solidària</span></li>
+            <li><svg aria-hidden="true"><use href="#i-users"/></svg><span data-i18n="t2026.info_kids">Jocs de bàsquet per als infants</span></li>
+            <li><svg aria-hidden="true"><use href="#i-music"/></svg><span data-i18n="t2026.info_music">Música i DJ solidari</span></li>
+            <li><svg aria-hidden="true"><use href="#i-bag"/></svg><span data-i18n="t2026.info_merch">Marxandatge de la Fundació</span></li>
+          </ul>
         </div>
 
         <div class="t-tabs">

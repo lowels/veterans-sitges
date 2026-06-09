@@ -77,6 +77,46 @@
   .t-hero__cause { border-radius: var(--radius-lg); }
 }
 
+/* Informació clau del torneig (banner) */
+.t-hero__info { position: relative; z-index: 1; margin-top: 1.75rem; }
+.t-hero__free {
+  display: inline-flex; align-items: center; gap: 0.7rem;
+  padding: 0.5rem 1.15rem 0.5rem 0.55rem;
+  background: var(--color-accent); color: var(--color-dark);
+  border-radius: 999px; text-align: left;
+}
+.t-hero__free-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; flex-shrink: 0;
+  background: rgba(0,0,0,0.12); border-radius: 50%;
+}
+.t-hero__free-icon svg { width: 18px; height: 18px; }
+.t-hero__free-text { display: flex; flex-direction: column; line-height: 1.2; }
+.t-hero__free-text strong {
+  font-family: var(--font-title); font-weight: var(--fw-bold); font-size: var(--text-sm);
+}
+.t-hero__free-text small { font-size: var(--text-xs); opacity: 0.8; }
+
+.t-hero__features {
+  list-style: none; margin: 1.25rem auto 0; padding: 0; max-width: 680px;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem;
+}
+@media (min-width: 720px) {
+  .t-hero__features { grid-template-columns: repeat(3, 1fr); }
+}
+.t-hero__features li {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.6rem 0.8rem; text-align: left;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: var(--radius);
+  font-size: var(--text-sm); color: rgba(255,255,255,0.92);
+  font-weight: var(--fw-medium); line-height: 1.25;
+}
+.t-hero__features svg {
+  width: 20px; height: 20px; flex-shrink: 0; color: var(--color-accent);
+}
+
 /* Tabs d'ancoratge ràpides */
 .t-tabs {
   position: relative; z-index: 1;
