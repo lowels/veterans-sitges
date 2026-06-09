@@ -395,18 +395,25 @@
   /* L'hora deixa de ser una columna lateral i passa a ser una línia
      pròpia a sobre dels partits, alliberant tota l'amplada per a les
      targetes (abans els noms de l'equip visitant quedaven tallats). */
-  .slot { display: block; margin-bottom: 1.75rem; text-align: center; }
+  .slot { display: block; margin-bottom: 1.75rem; }
+  /* L'hora queda fixa (sticky) sota el nav mentre es desplacen els partits
+     d'aquesta franja, fins que arriba la franja següent. Centrada com a
+     bloc i amb z-index perquè els partits passin per sota. */
   .slot__time {
     flex-direction: row;
-    position: static;
-    width: auto;
-    margin-bottom: 0.85rem;
+    position: sticky;
+    top: calc(var(--nav-height) + 8px);
+    z-index: 5;
+    display: flex;
+    width: fit-content;
+    margin: 0 auto 0.85rem;
     padding: 0.35rem 0.8rem;
     gap: 0.4rem;
     font-size: var(--text-xs);
     border-radius: 999px;
+    box-shadow: var(--shadow-sm);
   }
-  .slot__matches { gap: 1.1rem; text-align: left; }
+  .slot__matches { gap: 1.1rem; }
 
   .match-side__logo { width: 40px; height: 40px; }
   .match-side__name { font-size: var(--text-xs); }
