@@ -90,7 +90,7 @@ const translations = {
       foundation: "Hospital Clínic de Barcelona + Fundació Clínic-IDIBAPS",
       teams_title: "10 equips · 1 causa",
       cta: "Vine a animar-nos!",
-      live_cta: "Classificació i resultats en directe",
+      live_cta: "Informació i resultats",
       instagram_cta: "Segueix-nos a Instagram",
     },
     sponsors: {
@@ -232,7 +232,7 @@ const translations = {
       foundation: "Hospital Clínic de Barcelona + Fundació Clínic-IDIBAPS",
       teams_title: "10 equipos · 1 causa",
       cta: "¡Ven a animarnos!",
-      live_cta: "Clasificación y resultados en directo",
+      live_cta: "Información y resultados",
       instagram_cta: "Síguenos en Instagram",
     },
     sponsors: {
@@ -374,7 +374,7 @@ const translations = {
       foundation: "Hospital Clínic de Barcelona + Fundació Clínic-IDIBAPS",
       teams_title: "10 teams · 1 cause",
       cta: "Come and cheer us on!",
-      live_cta: "Live standings & results",
+      live_cta: "Information & results",
       instagram_cta: "Follow us on Instagram",
     },
     sponsors: {
@@ -516,7 +516,7 @@ const translations = {
       foundation: "Hospital Clínic de Barcelona + Fundació Clínic-IDIBAPS",
       teams_title: "10 équipes · 1 cause",
       cta: "Venez nous encourager !",
-      live_cta: "Classement et résultats en direct",
+      live_cta: "Informations et résultats",
       instagram_cta: "Suivez-nous sur Instagram",
     },
     sponsors: {
