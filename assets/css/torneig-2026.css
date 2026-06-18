@@ -141,6 +141,39 @@
   transform: translateY(-2px);
 }
 
+/* Botó "Estadístiques del torneig" — enllaça amb Scored.
+   Pastilla fosca perquè el logotip llima de Scored ressalti
+   i lligui amb els capçals foscos de les targetes de classificació. */
+.scored-stats {
+  display: inline-flex; align-items: center; gap: 0.85rem;
+  margin-top: 1.6rem;
+  padding: 0.65rem 1.3rem;
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--color-dark), var(--color-dark-2));
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--color-white);
+  font-family: var(--font-title); font-weight: var(--fw-semibold);
+  font-size: var(--text-sm); line-height: 1;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+.scored-stats:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(193,232,68,0.55);
+}
+.scored-stats svg {
+  width: 18px; height: 18px; flex-shrink: 0;
+  color: var(--color-accent-l);
+}
+.scored-stats__divider {
+  width: 1px; height: 16px; flex-shrink: 0;
+  background: rgba(255,255,255,0.2);
+}
+.scored-stats__logo {
+  height: 15px; width: auto; display: block; flex-shrink: 0;
+}
+
 /* ================================================================
    Capçaleres de secció compartides
    ================================================================ */
