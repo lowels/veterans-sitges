@@ -349,7 +349,7 @@
     <div class="cel-sub">Gràcies<br>Guanyem al Parkinson!</div>
   </div>
 
-  <div id="tip">Prem <kbd style="all:unset;font-weight:600;color:#D4A843">C</kbd> configurar · <kbd style="all:unset;font-weight:600;color:#D4A843">F</kbd> pantalla completa · <kbd style="all:unset;font-weight:600;color:#D4A843">M</kbd> so</div>
+  <div id="tip">Prem <kbd style="all:unset;font-weight:600;color:#D4A843">C</kbd> configurar · <kbd style="all:unset;font-weight:600;color:#D4A843">F</kbd> pantalla completa · <kbd style="all:unset;font-weight:600;color:#D4A843">M</kbd> so · <kbd style="all:unset;font-weight:600;color:#D4A843">V</kbd> vídeo</div>
 
   <aside id="panel">
     <h1>Pantalla gegant</h1>
@@ -731,6 +731,7 @@
       switch (e.key.toLowerCase()) {
         case 'c': togglePanel(); break;
         case 'f': toggleFullscreen(); break;
+        case 'v': location.href = 'pantalla-videos.html'; break;          // → pantalla de vídeo del Drive
         case 'm': videoEl.muted = !videoEl.muted; break;
         case 'd': celebrate(25, () => setTotal(shownTotal + 25)); break;   // test celebració
       }

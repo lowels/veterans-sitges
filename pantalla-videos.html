@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Pantalla gegant · Vídeo — Veterans Bàsquet Sitges</title>
+
+  <!--
+    ─────────────────────────────────────────────────────────────────────────
+    PANTALLA GEGANT · VÍDEO (1920×1080) — escena d'ambient
+    Idèntica a pantalla-gegant.html, però la columna del vídeo reprodueix en
+    bucle UN ÚNIC vídeo de la pròpia web: assets/social/video.mp4
+    Tres columnes sobre el fons verd degradat del torneig:
+        ESQUERRA   vídeo vertical (assets/social/video.mp4, en bucle, sense etiqueta)
+        CENTRE     comptador de diners recaptats (gran) + carrusel de patrocinadors
+        DRETA      cartell del torneig (cartell-2026.webp)
+    ─────────────────────────────────────────────────────────────────────────
+
+    COM S'USA
+      1. Posa el vídeo vertical a  assets/social/video.mp4
+      2. Obre aquesta pàgina i prem  F  per posar-la a pantalla completa.
+      Per canviar el vídeo durant el torneig: substitueix assets/social/video.mp4
+      i es recarrega sol en acabar el bucle (o prem  R ).
+
+    TECLAT
+      F  pantalla completa   C  panell   M  so del vídeo on/off
+      R  recarrega el vídeo   V  recarrega   Tab  torna a la pantalla gegant
+    ─────────────────────────────────────────────────────────────────────────
+  -->
+
+  <style>
+    :root {
+      --bg:      #141613;   /* negre profund amb matís verd (= --color-dark) */
+      --bg-2:    #1e211d;
+      --green:   #2D6A4F;
+      --green-l: #40916c;
+      --line:    #2a2e27;
+      --accent:  #D4A843;   /* daurat */
+      --accent-l:#E8C266;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 1920px; height: 1080px;
+      background: var(--bg); color: #fff;
+      font-family: 'Space Grotesk', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      overflow: hidden;
+    }
+
+    #stage {
+      position: absolute; top: 0; left: 0;
+      width: 1920px; height: 1080px;
+      transform-origin: top left;
+      /* Mateix esperit que la secció #torneig de l'index: fons fosc amb
+         resplendors verdes en degradat als angles. */
+      background:
+        radial-gradient(900px 700px at 12% 8%,  rgba(64,145,108,.22) 0%, transparent 60%),
+        radial-gradient(1100px 900px at 92% 96%, rgba(45,106,79,.28) 0%, transparent 62%),
+        linear-gradient(135deg, #16241d 0%, var(--bg) 45%, #11140f 100%);
+    }
+
+    .grid {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      gap: 56px; padding: 54px 64px;
+    }
+
+    /* ───── Targetes laterals (vídeo i cartell) ───── */
+    .card {
+      height: 972px; flex: 0 0 auto;
+      border-radius: 26px; overflow: hidden;
+      background: #000;
+      border: 2px solid rgba(212,168,67,.45);
+      box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 0 6px rgba(0,0,0,.25);
+    }
+    /* vídeo vertical 9:16 · cartell 1600×2572 */
+    .card--video  { width: calc(972px * 9 / 16); }
+    .card--poster { width: calc(972px * 1600 / 2572); }
+
+    .card--poster img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    /* vídeo a dins de la targeta */
+    .card--video .vmedia {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      opacity: 0; transition: opacity .6s ease;
+    }
+    .card--video .vmedia.show { opacity: 1; }
+    .card--video { position: relative; }
+
+    /* ───── Columna central ───── */
+    .center {
+      flex: 1 1 auto; min-width: 0; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 20px; text-align: center;
+    }
+
+    /* ── Institucions (Clínic + UB) ── */
+    .partners { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .partners__eyebrow {
+      font-size: 14px; letter-spacing: .28em; text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+    }
+    .partners__logos { display: flex; align-items: center; justify-content: center; gap: 18px; }
+    .pchip {
+      height: 74px; background: #fff; border-radius: 14px; padding: 12px 20px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 26px rgba(0,0,0,.45);
+    }
+    .pchip img { height: 46px; width: auto; display: block; }
+
+    /* ── Comptador de diners ── */
+    .raised { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .raised__amount {
+      display: flex; align-items: baseline; justify-content: center; gap: .06em; line-height: .9;
+    }
+    .raised__number, .raised__symbol {
+      font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+      background: linear-gradient(115deg, #F0D080 0%, #D4A843 55%, #C79A35 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .raised__number { font-size: 112px; }
+    .raised__symbol { font-size: 78px; opacity: .9; }
+    .raised__label {
+      font-size: 20px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.7); margin-top: 2px;
+    }
+
+    /* ── QR de donacions (gran, per llegir de lluny) ── */
+    .qr {
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      text-decoration: none;
+    }
+    .qr__chip {
+      background: #fff; border-radius: 18px; padding: 10px;
+      box-shadow: 0 16px 44px rgba(0,0,0,.55);
+    }
+    .qr__chip img {
+      width: 380px; height: 380px; display: block;
+      image-rendering: -webkit-optimize-contrast;   /* manté els quadrats ben definits */
+    }
+    .qr__cap {
+      font-size: 28px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      color: var(--accent-l);
+    }
+
+    .divider {
+      width: 64%; height: 2px; flex: 0 0 auto;
+      background: linear-gradient(90deg, transparent, rgba(212,168,67,.6), transparent);
+    }
+
+    /* ── Carrusel de patrocinadors ── */
+    .sponsors { width: 100%; }
+    .sponsors__eyebrow {
+      font-size: 14px; letter-spacing: .28em; text-transform: uppercase;
+      color: rgba(255,255,255,.5); margin-bottom: 12px;
+    }
+    #carousel { position: relative; height: 168px; }
+    .slide {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 14px;
+      opacity: 0; transform: translateY(14px) scale(.96); filter: blur(4px);
+      transition: opacity .8s cubic-bezier(.4,0,.2,1),
+                  transform .8s cubic-bezier(.4,0,.2,1), filter .8s ease;
+      will-change: opacity, transform, filter;
+    }
+    .slide.show { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    .slide .chip {
+      flex: 0 0 auto; height: 92px; min-width: 92px;
+      background: #fff; border-radius: 16px; padding: 8px 12px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 28px rgba(0,0,0,.5);
+    }
+    /* logos gairebé blancs: xip fosc translúcid perquè es vegin */
+    .slide .chip.dark {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
+      box-shadow: none;
+    }
+    .slide .chip img { height: 76px; width: auto; max-width: 260px; object-fit: contain; display: block; }
+    .slide .info { text-align: center; line-height: 1.1; max-width: 92%; }
+    .slide .info .name {
+      font-size: 28px; font-weight: 800; letter-spacing: .02em; text-transform: uppercase;
+      text-shadow: 0 2px 10px #000; white-space: normal; overflow-wrap: break-word;
+    }
+
+    /* ───── Panell ───── */
+    #panel {
+      position: fixed; top: 0; right: 0; z-index: 50;
+      width: 400px; height: 100%;
+      background: rgba(20,22,19,.97);
+      border-left: 1px solid var(--line);
+      padding: 22px; overflow-y: auto;
+      transform: translateX(100%); transition: transform .18s ease;
+      backdrop-filter: blur(6px);
+    }
+    body.panel-open #panel { transform: translateX(0); }
+    #panel h1 { font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+    #panel .sub { font-size: 12px; color: #8b8e83; margin-bottom: 18px; line-height: 1.5; }
+    fieldset { border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin-bottom: 14px; }
+    legend { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #cfd2c6; padding: 0 8px; }
+    label { display: block; font-size: 11px; color: #9a9d92; margin: 10px 0 4px; letter-spacing: .04em; }
+    input, textarea {
+      width: 100%; background-color: #1a1c16; border: 1px solid var(--line); border-radius: 7px;
+      color: #fff; font-size: 14px; padding: 9px 10px; outline: none; font-family: inherit;
+    }
+    textarea { resize: vertical; min-height: 70px; line-height: 1.5; }
+    input:focus, textarea:focus { border-color: var(--accent); }
+    .btns { display: flex; gap: 8px; margin-top: 10px; }
+    button {
+      flex: 1; cursor: pointer; font-size: 12px; letter-spacing: .04em;
+      background: #1a1c16; color: #e7e9df; border: 1px solid var(--line); border-radius: 7px; padding: 9px;
+    }
+    button:hover { border-color: var(--accent); color: #fff; }
+    button.primary { background: var(--accent); color: #1a1407; border-color: var(--accent); font-weight: 600; }
+    .hint { font-size: 11px; color: #76796e; line-height: 1.7; margin-top: 8px; }
+    kbd { background: #1a1c16; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 5px; padding: 1px 6px; font-size: 11px; color: #cfd2c6; }
+
+    #tip {
+      position: fixed; bottom: 14px; right: 16px; z-index: 40;
+      font-size: 12px; color: #5a5d53; letter-spacing: .05em;
+      background: rgba(20,22,19,.5); padding: 6px 12px; border-radius: 20px; transition: opacity .4s ease;
+    }
+    body.panel-open #tip { opacity: 0; }
+    body.fs #tip { display: none; }
+    body.tip-hidden #tip { display: none; }
+
+    /* ─── Celebració de nova donació (a tota la pantalla) ─── */
+    #celebrate {
+      position: fixed; inset: 0; z-index: 9999; display: none;
+      flex-direction: column; align-items: center; justify-content: center;
+      background: radial-gradient(circle at 50% 42%, rgba(12,13,11,.85), rgba(12,13,11,.97));
+      overflow: hidden; pointer-events: none; text-align: center;
+    }
+    #celebrate.show { display: flex; animation: celFade .35s ease; }
+    @keyframes celFade { from { opacity: 0; } to { opacity: 1; } }
+    #celebrate .cel-ball {
+      font-size: 150px; line-height: 1; filter: drop-shadow(0 10px 30px rgba(0,0,0,.6));
+      animation: celBall 1s cubic-bezier(.2,1.45,.4,1) both;
+    }
+    @keyframes celBall {
+      0%   { transform: translateY(-360px) scale(.2) rotate(-120deg); opacity: 0; }
+      55%  { opacity: 1; }
+      100% { transform: translateY(0) scale(1) rotate(15deg); opacity: 1; }
+    }
+    #celebrate .cel-label {
+      margin-top: 10px; font-size: 28px; font-weight: 800; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--accent); animation: celUp .5s .15s both;
+    }
+    #celebrate .cel-amount {
+      margin-top: 6px; font-size: 156px; font-weight: 900; letter-spacing: .01em; line-height: 1;
+      color: #fff; text-shadow: 0 6px 44px rgba(212,168,67,.5);
+      animation: celPop .7s .25s cubic-bezier(.2,1.5,.4,1) both;
+    }
+    @keyframes celPop { 0% { transform: scale(0); } 70% { transform: scale(1.15); } 100% { transform: scale(1); } }
+    #celebrate .cel-sub {
+      margin-top: 20px; font-size: 28px; font-weight: 700; letter-spacing: .08em;
+      line-height: 1.3; color: #fff; animation: celUp .55s .5s both;
+    }
+    @keyframes celUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    #celebrate .cel-confetti { position: absolute; inset: 0; pointer-events: none; }
+    #celebrate .cel-confetti i {
+      position: absolute; bottom: 0; width: 13px; height: 18px; border-radius: 2px;
+      animation: celBurst 2.4s cubic-bezier(.1,.5,.3,1) forwards;
+    }
+    @keyframes celBurst {
+      0%   { transform: translate(0, 0) rotate(0); opacity: 1; }
+      78%  { opacity: 1; }
+      100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <div class="grid">
+      <!-- ESQUERRA · vídeo vertical de la web (assets/social/video.mp4, en bucle) -->
+      <div class="card card--video">
+        <video id="video" class="vmedia show" muted playsinline></video>
+      </div>
+
+      <!-- CENTRE · institucions + comptador + QR + patrocinadors -->
+      <div class="center">
+        <div class="partners">
+          <div class="partners__eyebrow" id="partnersEyebrow">Recerca a càrrec de</div>
+          <div class="partners__logos">
+            <div class="pchip"><img src="assets/img/fundacions/clinic-barcelona.svg" alt="Hospital Clínic Barcelona" /></div>
+            <div class="pchip"><img src="assets/img/fundacions/universitat-barcelona.svg" alt="Universitat de Barcelona" /></div>
+          </div>
+        </div>
+
+        <div class="raised">
+          <div class="raised__amount">
+            <span class="raised__number" id="raisedNum">0</span><span class="raised__symbol">€</span>
+          </div>
+          <div class="raised__label" id="raisedLabel"></div>
+        </div>
+
+        <a class="qr" id="qrLink" href="#" target="_blank" rel="noopener">
+          <div class="qr__chip"><img src="assets/img/qr-donacions.png" alt="QR per fer una donació" /></div>
+          <div class="qr__cap" id="qrCaption"></div>
+        </a>
+
+        <div class="divider"></div>
+
+        <div class="sponsors">
+          <div class="sponsors__eyebrow" id="sponsorsEyebrow"></div>
+          <div id="carousel">
+            <div class="slide" data-layer="0"></div>
+            <div class="slide" data-layer="1"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DRETA · cartell -->
+      <div class="card card--poster">
+        <img src="assets/img/cartell-2026.webp" alt="Cartell IV Torneig Solidari" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Celebració de nova donació (a tota la pantalla) -->
+  <div id="celebrate" aria-hidden="true">
+    <div class="cel-confetti"></div>
+    <div class="cel-ball">🏀</div>
+    <div class="cel-label">Nova donació!</div>
+    <div class="cel-amount">+0 €</div>
+    <div class="cel-sub">Gràcies<br>Guanyem al Parkinson!</div>
+  </div>
+
+  <div id="tip">Prem <kbd style="all:unset;font-weight:600;color:#D4A843">C</kbd> configurar · <kbd style="all:unset;font-weight:600;color:#D4A843">F</kbd> pantalla completa · <kbd style="all:unset;font-weight:600;color:#D4A843">M</kbd> so · <kbd style="all:unset;font-weight:600;color:#D4A843">Tab</kbd> pantalla gegant</div>
+
+  <aside id="panel">
+    <h1>Pantalla gegant · Vídeo</h1>
+    <p class="sub">Escena d'ambient <b style="color:#cfd2c6">1920×1080</b>: un vídeo vertical de la web, comptador de recaptació i carrusel de patrocinadors sobre el fons del torneig.</p>
+
+    <fieldset>
+      <legend>Vídeo</legend>
+      <p class="hint" style="margin:0">El vídeo surt sempre de <b style="color:#cfd2c6">assets/social/video.mp4</b> i es reprodueix en bucle. Per canviar-lo, substitueix aquest fitxer a la web. Prem <kbd>R</kbd> per recarregar-lo.</p>
+    </fieldset>
+
+    <fieldset style="border-color:var(--accent)">
+      <legend style="color:var(--accent)">€ Recaptació</legend>
+      <label>Import recaptat (€)</label>
+      <input data-c="raised" inputmode="numeric" placeholder="5468">
+      <label>Text a sota</label>
+      <input data-c="raisedLabel" placeholder="recaptats contra el Parkinson">
+    </fieldset>
+
+    <fieldset>
+      <legend>QR de donacions</legend>
+      <p class="hint" style="margin:0 0 4px">El QR és una imatge fixa (<b style="color:#cfd2c6">assets/img/qr-donacions.png</b>). Si canvies l'URL, cal regenerar-lo.</p>
+      <label>URL de donacions (enllaç del QR)</label>
+      <input data-c="qrUrl" placeholder="https://dona.clinicbarcelona.org/…">
+      <label>Text sota el QR</label>
+      <input data-c="qrCaption" placeholder="Escaneja i fes la teva donació">
+    </fieldset>
+
+    <fieldset>
+      <legend>Patrocinadors</legend>
+      <label>Encapçalament del carrusel</label>
+      <input data-c="sponsorsEyebrow" placeholder="Amb el suport de">
+      <label>Segons per patrocinador</label>
+      <input data-c="secs" inputmode="numeric" placeholder="5">
+    </fieldset>
+
+    <div class="btns">
+      <button class="primary" id="apply">Aplica</button>
+      <button id="fs">Pantalla completa</button>
+    </div>
+
+    <p class="hint"><kbd>C</kbd> panell · <kbd>F</kbd> pantalla completa · <kbd>M</kbd> so del vídeo · <kbd>R</kbd> recarrega el vídeo</p>
+  </aside>
+
+  <script>
+  (() => {
+    'use strict';
+
+    const STORE_KEY = 'cbs-pantalla-videos-v1';
+
+    const DEFAULTS = {
+      raised: 5468,
+      raisedLabel: 'recaptats contra el Parkinson',
+      qrUrl: 'https://dona.clinicbarcelona.org/cpn/reptes?id=IV-Torneig-Solidari-Veterans-contra-el-Parkinson',
+      qrCaption: 'Escaneja i fes la teva donació',
+      sponsorsEyebrow: 'Amb el suport de',
+      secs: 5,
+    };
+
+    // Logos gairebé blancs (invisibles sobre el xip blanc) → xip fosc tipus vidre
+    const LIGHT_LOGOS = new Set([
+      'casino-prado', 'nem', 'nou-i-classic', 'xiringuito-blanca-subur', 'la-tratto-sitges',
+      'cine-fantastic', 'sabatic', 'bacardi', 'la-sitgetana', 'francesco',
+      'cal-pinxo-sitges', 'museus-de-sitges', 'ajuntament-sitges', 'hotel-sitges',
+    ]);
+
+    // Patrocinadors i col·laboradors (logo + nom), tal com surten a la web.
+    const SPONSORS = [
+      ['sea-you-sitges', 'Sea You Sitges'],
+      ['francesco', 'Francesco'],
+      ['sunway', 'Hotel Sunway'],
+      ['sabatic', 'Hotel Sabàtic'],
+      ['ajuntament-sitges', 'Ajuntament de Sitges'],
+      ['scored', 'Scored'],
+      ['la-sitgetana', 'La Sitgetana'],
+      ['fet-amb-fusta', 'Fet amb Fusta'],
+      ['cine-fantastic', 'Festival Cine Fantàstic'],
+      ['societat-recreativa-el-retiro', 'Societat Recreativa El Retiro'],
+      ['casino-prado', 'Casino Prado'],
+      ['museus-de-sitges', 'Museus de Sitges'],
+      ['la-tratto-sitges', 'La Tratto Sitges'],
+      ['el-raco-del-vi', 'El Racó del Vi'],
+      ['mammothskate', 'Mammothskate'],
+      ['kela-sitges', 'Kela Sitges'],
+      ['india-mon-amour', 'Índia Mon Amour'],
+      ['xiringuito-blanca-subur', 'Xiringuito Blanca Subur'],
+      ['abc-sitges-castelldefels', 'ABC Sitges Castelldefels'],
+      ['els-jardins-del-retiro', 'Els Jardins del Retiro'],
+      ['ara-seleccio-vins', 'Ara Selecció Vins'],
+      ['serrarols-nin', 'Serrarols Nin'],
+      ['daniel-fontdevila', 'Daniel Fontdevila'],
+      ['cal-pinxo-sitges', 'Cal Pinxo Sitges'],
+      ['nou-i-classic', 'Nou i Clàssic'],
+      ['perbacco', 'Perbacco'],
+      ['nem', 'Nem'],
+      ['hotel-sitges', 'Hotel Sitges'],
+      ['acqua-restaurant', 'Restaurant Acqua'],
+      ['bacardi', 'Casa Bacardí'],
+      ['abwine', 'AB Wines'],
+      ['flexic', 'Flexic'],
+    ].map(([f, n]) => ({ img: `assets/img/sponsors/${f}.webp`, name: n, light: LIGHT_LOGOS.has(f) }));
+
+    let cfg = { ...DEFAULTS };
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORE_KEY) || 'null');
+      if (saved) cfg = { ...cfg, ...saved };
+    } catch {}
+
+    const $ = (s) => document.querySelector(s);
+
+    // ── Vídeo de la web (assets/social/video.mp4, en bucle) ────────────────────
+    // Reprodueix sempre el fitxer assets/social/video.mp4. En acabar cada volta
+    // es torna a carregar (amb anti-cau) per agafar una versió nova si s'ha
+    // substituït el fitxer durant el torneig.
+    const videoEl = $('#video');
+    const VIDEO_SRC = 'assets/social/video.mp4';
+
+    function loadVideo() {
+      videoEl.src = VIDEO_SRC + '?cb=' + Date.now();
+      videoEl.load();
+      videoEl.play().catch(() => {});
+    }
+
+    // Bucle + actualització: en acabar, recarrega (anti-cau) per si hi ha versió nova.
+    videoEl.addEventListener('ended', loadVideo);
+
+    // ── Comptador animat ──────────────────────────────────────────────────────
+    const raisedNum = $('#raisedNum');
+    const fmt = (n) => Math.round(n).toLocaleString('ca-ES');
+    let countRAF = null, countStart = null;
+    function animateRaised(target) {
+      cancelAnimationFrame(countRAF);
+      target = Math.max(0, parseInt(target, 10) || 0);
+      const DUR = 2200; countStart = null;
+      const step = (ts) => {
+        if (countStart === null) countStart = ts;
+        const p = Math.min(1, (ts - countStart) / DUR);
+        const eased = 1 - Math.pow(1 - p, 3);     // ease-out cubic
+        raisedNum.textContent = fmt(target * eased);
+        if (p < 1) countRAF = requestAnimationFrame(step);
+        else raisedNum.textContent = fmt(target);
+      };
+      countRAF = requestAnimationFrame(step);
+    }
+
+    // ── Recaptació en directe (Clínic / Parkinson) ────────────────────────────
+    // El comptador SEMPRE mostra el total guardat a localStorage (clau compartida
+    // amb els marcadors). En arribar una donació, es fa la celebració i, en
+    // acabar, el comptador puja al nou total.
+    const DONATION_URL = 'https://www.stockcrowd.com/api/v1/campaignp2p/IV-Torneig-Solidari-Veterans-contra-el-Parkinson';
+    const DONATION_KEY = 'cbs-donation-total';
+    const eur = (n) => new Intl.NumberFormat('ca-ES', { maximumFractionDigits: 2 }).format(n) + ' €';
+    let donationFirst = true, shownTotal = 0, celTimer = null;
+
+    function storedTotal() {
+      const v = parseFloat(localStorage.getItem(DONATION_KEY));
+      return isFinite(v) ? v : (parseInt(cfg.raised, 10) || 0);
+    }
+    function setTotal(v) { shownTotal = v; animateRaised(v); }
+
+    function celebrate(diff, onDone) {
+      const el = $('#celebrate');
+      el.querySelector('.cel-label').textContent = 'Nova donació!';
+      el.querySelector('.cel-amount').textContent = '+' + eur(diff);
+      const c = el.querySelector('.cel-confetti'); c.innerHTML = '';
+      const colors = ['#ff3b6b', '#ff8a3d', '#ffd23d', '#3dff88', '#39e6c3',
+                      '#3dd0ff', '#3d6bff', '#b03dff', '#ff3df0', '#ff5252', '#ffffff'];
+      for (let i = 0; i < 130; i++) {
+        const left = i % 2 === 0;
+        const p = document.createElement('i');
+        if (left) p.style.left = '2vw'; else p.style.right = '2vw';
+        const tx = (28 + Math.random() * 74);
+        p.style.setProperty('--tx', (left ? tx : -tx).toFixed(1) + 'vw');
+        p.style.setProperty('--ty', '-' + (90 + Math.random() * 55).toFixed(1) + 'vh');
+        p.style.setProperty('--rot', (Math.random() * 1100 - 550).toFixed(0) + 'deg');
+        p.style.background = colors[(Math.random() * colors.length) | 0];
+        p.style.animationDelay = (Math.random() * 0.22).toFixed(2) + 's';
+        p.style.animationDuration = (2.1 + Math.random() * 0.8).toFixed(2) + 's';
+        p.style.width = (5 + Math.random() * 8).toFixed(0) + 'px';
+        p.style.height = (8 + Math.random() * 12).toFixed(0) + 'px';
+        if (Math.random() < 0.28) p.style.borderRadius = '50%';
+        c.appendChild(p);
+      }
+      el.classList.remove('show'); void el.offsetWidth;
+      el.classList.add('show');
+      clearTimeout(celTimer);
+      celTimer = setTimeout(() => { el.classList.remove('show'); if (onDone) onDone(); }, 6000);
+    }
+
+    async function pollDonation() {
+      try {
+        const res = await fetch(DONATION_URL, { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = await res.json();
+        const val = Number(data && data.recaudado);
+        if (!isFinite(val)) return;
+        let prev = parseFloat(localStorage.getItem(DONATION_KEY));
+        if (!isFinite(prev)) prev = val;
+        if (donationFirst) {                              // primera lectura: només sincronitza
+          donationFirst = false;
+          localStorage.setItem(DONATION_KEY, val);
+          if (val !== shownTotal) setTotal(val);
+          return;
+        }
+        localStorage.setItem(DONATION_KEY, val);
+        if (val > prev) celebrate(val - prev, () => setTotal(val));   // puja en acabar l'animació
+      } catch {}
+    }
+
+    // ── Carrusel de patrocinadors ─────────────────────────────────────────────
+    const layers = [...document.querySelectorAll('#carousel .slide')];
+    let slides = [], slideIdx = -1, front = 0, carouselTimer = null;
+
+    function buildSlides() {
+      return SPONSORS.map(s => ({ img: s.img, name: s.name, light: s.light }));
+    }
+    function fillLayer(el, s) {
+      el.innerHTML =
+        `<div class="chip${s.light ? ' dark' : ''}"><img src="${s.img}" alt="" onerror="this.parentNode.style.display='none'"></div>` +
+        `<div class="info"><div class="name">${s.name}</div></div>`;
+    }
+    function showSlide(i) {
+      const next = layers[front ^ 1];
+      fillLayer(next, slides[i]);
+      void next.offsetWidth;
+      next.classList.add('show');
+      layers[front].classList.remove('show');
+      front ^= 1; slideIdx = i;
+    }
+    function startCarousel() {
+      if (carouselTimer) { clearInterval(carouselTimer); carouselTimer = null; }
+      slides = buildSlides();
+      if (!slides.length) return;
+      slideIdx = -1; front = 0;
+      layers.forEach(l => l.classList.remove('show'));
+      showSlide(0);
+      const ms = Math.max(2, +cfg.secs || 5) * 1000;
+      carouselTimer = setInterval(() => showSlide((slideIdx + 1) % slides.length), ms);
+    }
+
+    // ── Render ────────────────────────────────────────────────────────────────
+    function render() {
+      $('#raisedLabel').textContent = cfg.raisedLabel;
+      $('#sponsorsEyebrow').textContent = cfg.sponsorsEyebrow || '';
+      $('#qrCaption').textContent = cfg.qrCaption || '';
+      $('#qrLink').href = cfg.qrUrl || '#';
+      setTotal(storedTotal());                 // el comptador sempre = total guardat (localStorage)
+      startCarousel();
+      loadVideo();                             // (re)carrega assets/social/video.mp4
+    }
+
+    function fitStage() {
+      const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+      const st = $('#stage');
+      st.style.transform = `scale(${k})`;
+      st.style.left = Math.max(0, (innerWidth - 1920 * k) / 2) + 'px';
+      st.style.top = Math.max(0, (innerHeight - 1080 * k) / 2) + 'px';
+    }
+
+    function save() { localStorage.setItem(STORE_KEY, JSON.stringify(cfg)); }
+
+    // ── Panell ────────────────────────────────────────────────────────────────
+    function reflectInputs() {
+      document.querySelectorAll('#panel [data-c]').forEach(el => { el.value = cfg[el.dataset.c] ?? ''; });
+    }
+    const NUM_KEYS = ['raised', 'secs'];
+    function readInputs() {
+      document.querySelectorAll('#panel [data-c]').forEach(el => {
+        const k = el.dataset.c;
+        cfg[k] = NUM_KEYS.includes(k) ? (parseInt(el.value, 10) || 0) : el.value;
+      });
+    }
+    $('#apply').addEventListener('click', () => { readInputs(); save(); render(); });
+    $('#fs').addEventListener('click', toggleFullscreen);
+
+    function togglePanel(force) {
+      const open = force !== undefined ? force : !document.body.classList.contains('panel-open');
+      document.body.classList.toggle('panel-open', open);
+    }
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+      else document.exitFullscreen?.();
+    }
+
+    addEventListener('keydown', (e) => {
+      if (e.target.matches('input, textarea')) {
+        if (e.key === 'Enter' && !e.shiftKey && e.target.tagName !== 'TEXTAREA') { readInputs(); save(); render(); e.target.blur(); }
+        return;
+      }
+      switch (e.key.toLowerCase()) {
+        case 'c': togglePanel(); break;
+        case 'f': toggleFullscreen(); break;
+        case 'v': location.reload(); break;                                // ja hi som: recarrega
+        case 'm': videoEl.muted = !videoEl.muted; break;
+        case 'r': loadVideo(); break;                                      // recarrega el vídeo
+        case 'd': celebrate(25, () => setTotal(shownTotal + 25)); break;   // test celebració
+      }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      document.body.classList.toggle('fs', !!document.fullscreenElement);
+    });
+
+    addEventListener('resize', fitStage);
+    reflectInputs();
+    fitStage();
+    render();                                          // render() ja crida loadVideo()
+    pollDonation();                                    // recaptació: sincronitza ara
+    setInterval(pollDonation, 30000);                  // …i comprova cada 30 s
+  })();
+  </script>
+
+  <script>
+  /* Tab → pantalla-gegant + ocultar ajuda amb H */
+  (() => {
+    'use strict';
+    const TIP_KEY = 'cbs-pantalla-tip-hidden';  // estat de l'ajuda en aquesta pàgina
+
+    // Restaura l'estat de l'ajuda en carregar
+    try {
+      if (localStorage.getItem(TIP_KEY) === '1') document.body.classList.add('tip-hidden');
+    } catch {}
+
+    addEventListener('keydown', (e) => {
+      // TAB (excepte escrivint en un camp) → torna a la pantalla gegant
+      if (e.key === 'Tab' && !e.target.closest('input, textarea, select')) {
+        e.preventDefault();
+        location.href = 'pantalla-gegant.html';
+        return;
+      }
+      // H → oculta / mostra l'ajuda de controls (funciona també amb F11)
+      if (e.key.toLowerCase() === 'h') {
+        const hidden = document.body.classList.toggle('tip-hidden');
+        try { localStorage.setItem(TIP_KEY, hidden ? '1' : '0'); } catch {}
+      }
+    });
+  })();
+  </script>
+</body>
+</html>

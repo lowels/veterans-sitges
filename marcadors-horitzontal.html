@@ -399,7 +399,7 @@
     <div class="cel-sub">Gràcies<br>Guanyem al Parkinson!</div>
   </div>
 
-  <div id="tip">Prem <kbd style="all:unset;font-weight:600;color:#c8a24a">C</kbd> configurar · <kbd style="all:unset;font-weight:600;color:#c8a24a">F</kbd> pantalla completa · <kbd style="all:unset;font-weight:600;color:#c8a24a">O</kbd> franja · <kbd style="all:unset;font-weight:600;color:#c8a24a">H</kbd> amaga aquesta ajuda</div>
+  <div id="tip">Prem <kbd style="all:unset;font-weight:600;color:#c8a24a">C</kbd> configurar · <kbd style="all:unset;font-weight:600;color:#c8a24a">F</kbd> pantalla completa · <kbd style="all:unset;font-weight:600;color:#c8a24a">O</kbd> franja · <kbd style="all:unset;font-weight:600;color:#c8a24a">V</kbd> vídeo · <kbd style="all:unset;font-weight:600;color:#c8a24a">H</kbd> amaga aquesta ajuda</div>
 
   <aside id="panel">
     <h1>Marcadors · Horitzontal</h1>
@@ -725,6 +725,7 @@
       switch (e.key.toLowerCase()) {
         case 'c': togglePanel(); break;
         case 'f': toggleFullscreen(); break;
+        case 'v': location.href = 'pantalla-videos.html'; break;   // → pantalla de vídeo del Drive
         case 'h': ui.tipHidden = !ui.tipHidden; applyTip(); save(); break;
         case 'o': brand.show = !brand.show; renderBrand(); save(); break;
         case 'd': celebrate(25, () => setSideTotal(sideShown + 25, true)); break;   // test celebració
