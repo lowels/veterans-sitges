@@ -603,7 +603,7 @@
     // Llista de diapositives: el rètol del torneig + tots els patrocinadors.
     function buildSlides() {
       const title = { type: 'title', img: 'assets/img/equips/cb-sitges.webp', name: brand.title, eyebrow: brand.sub };
-      return [title, ...SPONSORS.map(s => ({ type: 'sponsor', img: s.img, name: s.name, eyebrow: '' }))];
+      return [title, ...SPONSORS.map(s => ({ type: 'sponsor', img: s.img, name: s.name, eyebrow: '', light: s.light }))];
     }
     let slides = buildSlides();
 
