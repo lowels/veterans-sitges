@@ -1,4 +1,48 @@
 User-agent: *
 Allow: /
+# Pantalles d'ús intern del pavelló — fora de cercadors
+Disallow: /marcadors-horitzontal.html
+Disallow: /pantalla-gegant.html
+
+# Agents d'IA / scrapers — bloquejats també en aquestes pàgines
+User-agent: GPTBot
+Disallow: /marcadors-horitzontal.html
+Disallow: /pantalla-gegant.html
+
+User-agent: ChatGPT-User
+Disallow: /marcadors-horitzontal.html
+Disallow: /pantalla-gegant.html
+
+User-agent: OAI-SearchBot
+Disallow: /marcadors-horitzontal.html
+Disallow: /pantalla-gegant.html
+
+User-agent: ClaudeBot
+Disallow: /marcadors-horitzontal.html
+Disallow: /pantalla-gegant.html
+
+User-agent: anthropic-ai
+Disallow: /marcadors-horitzontal.html
+Disallow: /pantalla-gegant.html
+
+User-agent: Claude-Web
+Disallow: /marcadors-horitzontal.html
+Disallow: /pantalla-gegant.html
+
+User-agent: PerplexityBot
+Disallow: /marcadors-horitzontal.html
+Disallow: /pantalla-gegant.html
+
+User-agent: CCBot
+Disallow: /marcadors-horitzontal.html
+Disallow: /pantalla-gegant.html
+
+User-agent: Google-Extended
+Disallow: /marcadors-horitzontal.html
+Disallow: /pantalla-gegant.html
+
+User-agent: Bytespider
+Disallow: /marcadors-horitzontal.html
+Disallow: /pantalla-gegant.html
 
 Sitemap: https://veterans.clubbasquetsitges.com/sitemap.xml

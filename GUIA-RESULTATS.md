@@ -26,6 +26,7 @@ No hace falta una API key ni nada secreto en el código.
      Elige **"Reemplazar hoja actual"**, separador **coma**.
    - Renombra la pestaña a **`Resultats`** (abajo, doble clic en el nombre de la pestaña).
    - Verás 23 filas (20 partidos + `sf1`, `sf2`, `final`). Tú solo rellenas `punts_local`, `punts_visitant` y `tl`. **No toques la columna `id`.**
+   - La columna **`scored id`** la rellenas **una vez** (antes del torneo) con el ID de cada partido en scored.es; es lo que usa la pantalla de marcadores (ver más abajo).
 
 2. **Comparte**
    - Botón **Compartir** (arriba a la derecha).
@@ -78,6 +79,23 @@ No hace falta una API key ni nada secreto en el código.
 | `punts_local` | ✅ SÍ | Puntos del equipo local |
 | `punts_visitant` | ✅ SÍ | Puntos del equipo visitante |
 | `tl` | ✅ (solo empates) | `local` o `visitant` = quién gana los tiros libres |
+| `scored id` | ✅ (una vez) | ID del partido en scored.es. Lo usa la pantalla de marcadores para cargar cada iframe |
+
+---
+
+## Pantalla de marcadores en directo (pantalla gigante)
+
+La página **`marcadors-horitzontal.html`** muestra **dos partidos a la vez** en una pantalla 1920×1080: Pista 1 arriba y Pista 2 abajo, con una franja central que pasa los patrocinadores en carrusel.
+
+Lee el **mismo Google Sheet** y usa la columna **`scored id`** para cargar cada marcador. El día del torneo casi no tienes que tocar nada:
+
+1. Abre `marcadors-horitzontal.html` en el ordenador de la pantalla y pulsa **`F`** (pantalla completa).
+2. Pulsa **`C`** para abrir el panel → en **⚡ Càrrega per hora** elige la hora actual y pulsa **"Carrega aquesta hora"**. Cargan solos los dos partidos de esa franja.
+3. Al cambiar de franja horaria, repites el paso 2 (o pulsas **↻** si acabas de añadir algún `scored id` a la hoja).
+
+> **Requisito:** rellena la columna `scored id` en la hoja **antes** del torneo. Si una fila no la tiene, el desplegable lo avisa con ⚠️ y ese marcador se queda vacío.
+>
+> Teclas útiles: `F` pantalla completa · `C` panel · `O` mostrar/ocultar la franja de patrocinadores · `1`/`2` + flechas/rueda para reencuadrar un marcador.
 
 ---
 

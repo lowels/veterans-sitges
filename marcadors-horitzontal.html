@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Marcadors · Horitzontal (2 partits) — Veterans Bàsquet Sitges</title>
+
+  <!--
+    ─────────────────────────────────────────────────────────────────────────
+    MARCADORS — DISPOSICIÓ HORITZONTAL APILADA (pantalla 1920×1080)
+    Dos partits simultanis: un a la meitat de DALT i un a la de BAIX,
+    cadascun a tota l'amplada (1920px) per veure'ls el més grans possible.
+    Font de cada marcador (banda horitzontal, s'ajusta millor):
+        https://admin.scored.es/#/matches/ID/scoreboard
+    Entre els dos marcadors hi ha una FRANJA DE MARCA que omple el negre
+    central (logo del club + nom del torneig).
+    ─────────────────────────────────────────────────────────────────────────
+
+    COM S'USA
+      1. Obre aquesta pàgina al navegador de la pantalla gran.
+      2. Prem  F  per posar-la a pantalla completa.
+      3. Prem  C  per obrir el panell i posar els ID dels dos partits.
+      4. Encaixa cada marcador amb el ratolí (arrossega / roda) o el teclat.
+      Tot es guarda al navegador i a l'URL.
+
+    URL DIRECTA:
+      marcadors-horitzontal.html?m1=34165&m2=34166
+
+    TECLAT
+      F  pantalla completa     C  panell      O  mostra/amaga la franja de marca
+      1  partit de DALT         2  partit de BAIX
+      Fletxes  mou    + / -  zoom    R  reinicia l'enquadrament
+    ─────────────────────────────────────────────────────────────────────────
+  -->
+
+  <style>
+    :root { --bg: #0c0d0b; --line: #23251f; --accent: #c8a24a; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 1920px; height: 1080px;
+      background: var(--bg); color: #fff;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      overflow: hidden;
+    }
+
+    #stage {
+      position: absolute; top: 0; left: 0;
+      width: 1920px; height: 1080px;
+      transform-origin: top left;
+    }
+
+    /* Les dues meitats (a dalt / a baix) */
+    .slot {
+      position: absolute; left: 0;
+      width: 1920px; height: 540px;
+      overflow: hidden;
+      background: #000;
+    }
+    .slot[data-slot="1"] { top: 0; }
+    .slot[data-slot="2"] { top: 540px; }
+
+    .slot iframe {
+      position: absolute; top: 50%; left: 50%;
+      border: 0; background: #000;
+      transform-origin: center center;
+    }
+
+    .slot.active::after {
+      content: ""; position: absolute; inset: 0;
+      border: 3px solid var(--accent); pointer-events: none; z-index: 5;
+    }
+    body:not(.panel-open) .slot.active::after { display: none; }
+
+    .empty {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 10px;
+      color: #6c6f64; font-size: 28px; letter-spacing: .04em; text-align: center;
+    }
+    .empty b { color: var(--accent); font-size: 20px; letter-spacing: .2em; text-transform: uppercase; }
+
+    /* ───── Franja de marca central (omple el negre del mig) ───── */
+    #brand {
+      position: absolute; left: 0; top: 50%; z-index: 10;
+      width: 1920px; height: 78px;
+      transform: translateY(-50%);
+      display: flex; align-items: center; justify-content: center; gap: 22px;
+      pointer-events: none;
+      /* fosc concentrat al centre, s'esvaeix abans dels marcadors laterals */
+      background:
+        radial-gradient(58% 130% at 50% 50%, rgba(12,13,11,.97) 42%, rgba(12,13,11,0) 80%);
+    }
+    body.no-brand #brand { display: none; }
+    #brand::before, #brand::after {
+      content: ""; height: 2px; flex: 0 0 190px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    /* Carrusel: dues capes superposades que es fonen entre si */
+    #sponsor { position: relative; flex: 0 0 600px; height: 100%; }
+    .slide {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center; gap: 22px;
+      opacity: 0; transform: translateY(12px) scale(.97); filter: blur(3px);
+      transition: opacity .75s cubic-bezier(.4,0,.2,1),
+                  transform .75s cubic-bezier(.4,0,.2,1),
+                  filter .75s ease;
+      will-change: opacity, transform, filter;
+    }
+    .slide.show { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+
+    .slide .chip {
+      flex: 0 0 auto; height: 62px; min-width: 62px;
+      background: #fff; border-radius: 12px; padding: 4px 6px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 18px rgba(0,0,0,.55);
+    }
+    /* logos gairebé blancs: xip fosc translúcid perquè es vegin */
+    .slide .chip.dark {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
+      box-shadow: none;
+    }
+    .slide .chip img { height: 54px; width: auto; max-width: 230px; object-fit: contain; display: block; }
+    .slide .info { text-align: left; line-height: 1.1; }
+    .slide .info .eyebrow {
+      font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 4px;
+    }
+    .slide .info .name {
+      font-size: 24px; font-weight: 800; letter-spacing: .03em;
+      text-transform: uppercase; color: #fff; text-shadow: 0 2px 10px #000;
+      white-space: nowrap;
+    }
+
+    /* ───── Laterals: QR (esquerra) i total recaptat (dreta) ───── */
+    #donateQR, #raisedSide {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 8;
+      width: 156px; display: flex; flex-direction: column; align-items: center;
+      gap: 10px; text-align: center; pointer-events: none;
+    }
+    #donateQR { left: 10px; }
+    #raisedSide { right: 10px; }
+
+    #donateQR .qrbox { background: #fff; border-radius: 12px; padding: 8px; box-shadow: 0 6px 22px rgba(0,0,0,.55); }
+    #donateQR .qrbox img { width: 134px; height: 134px; display: block; }
+    #donateQR .cap {
+      font-size: 13px; font-weight: 700; line-height: 1.3; letter-spacing: .1em;
+      text-transform: uppercase; color: #cfd2c6; text-shadow: 0 2px 8px #000;
+    }
+    #raisedSide .eyebrow {
+      font-size: 14px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #fff;
+    }
+    /* número amb degradat daurat, com el comptador de la pantalla gran */
+    #raisedSide .amount {
+      font-size: 40px; font-weight: 800; line-height: 1; white-space: nowrap;
+      letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+      background: linear-gradient(115deg, #F0D080 0%, #D4A843 55%, #C79A35 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    #raisedSide .cause {
+      font-size: 12px; font-weight: 600; line-height: 1.3; letter-spacing: .1em;
+      text-transform: uppercase; color: #8b8e83;
+    }
+
+    /* ─── Mode FINAL: QR i recaptat grans, aprofitant la meitat inferior ─── */
+    body.single #donateQR  { left: 60px;  top: 790px; width: 300px; gap: 18px; }
+    body.single #raisedSide { right: 60px; top: 790px; width: 360px; }
+    body.single #donateQR .qrbox img { width: 230px; height: 230px; }
+    body.single #donateQR .cap { font-size: 18px; }
+    body.single #raisedSide .eyebrow { font-size: 22px; letter-spacing: .26em; }
+    body.single #raisedSide .amount { font-size: 88px; }
+    body.single #raisedSide .cause { font-size: 18px; margin-top: 4px; }
+
+    /* Etiqueta de pista a cada meitat (cantonada superior esquerra) */
+    .pista {
+      position: absolute; left: 26px; top: 18px; z-index: 8;
+      font-size: 15px; letter-spacing: .26em; text-transform: uppercase;
+      color: #cfd2c6; font-weight: 700;
+      background: rgba(12,13,11,.55); padding: 5px 14px; border-radius: 20px;
+      border: 1px solid var(--line); pointer-events: none;
+    }
+    /* Pista 1 (a dalt) a la dreta; Pista 2 (a baix) a l'esquerra */
+    .slot[data-slot="1"] .pista { left: auto; right: 26px; }
+    .slot[data-slot="2"] .pista { top: auto; bottom: 18px; }
+    body.no-brand .pista { display: none; }
+
+    /* ───── Panell ───── */
+    #panel {
+      position: fixed; top: 0; right: 0; z-index: 50;
+      width: 390px; height: 100%;
+      background: rgba(12,13,11,.97);
+      border-left: 1px solid var(--line);
+      padding: 22px; overflow-y: auto;
+      transform: translateX(100%); transition: transform .18s ease;
+      backdrop-filter: blur(6px);
+    }
+    body.panel-open #panel { transform: translateX(0); }
+
+    #panel h1 { font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+    #panel .sub { font-size: 12px; color: #8b8e83; margin-bottom: 18px; line-height: 1.5; }
+
+    fieldset { border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin-bottom: 14px; }
+    legend { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #cfd2c6; padding: 0 8px; }
+
+    label { display: block; font-size: 11px; color: #9a9d92; margin: 10px 0 4px; letter-spacing: .04em; }
+    .row { display: flex; gap: 8px; }
+    .row > div { flex: 1; }
+    input, select {
+      width: 100%; background-color: #1a1c16;
+      border: 1px solid var(--line); border-radius: 7px;
+      color: #fff; font-size: 14px; padding: 9px 10px; outline: none;
+    }
+    input:focus, select:focus { border-color: var(--accent); }
+    select { cursor: pointer; }
+    select option { background: #1a1c16; }
+    #csvStatus { font-size: 11px; line-height: 1.5; margin-top: 8px; color: #8b8e83; }
+    #csvStatus.err { color: #e0795f; }
+    #csvStatus.ok { color: #9fce7a; }
+    .match-preview { font-size: 12px; color: #cfd2c6; margin-top: 8px; line-height: 1.6; }
+    .match-preview b { color: var(--accent); }
+    .adv { margin-top: 10px; }
+    .adv summary { font-size: 11px; color: #76796e; cursor: pointer; letter-spacing: .06em; }
+
+    .btns { display: flex; gap: 8px; margin-top: 8px; }
+    button {
+      flex: 1; cursor: pointer; font-size: 12px; letter-spacing: .04em;
+      background: #1a1c16; color: #e7e9df;
+      border: 1px solid var(--line); border-radius: 7px; padding: 9px;
+    }
+    button:hover { border-color: var(--accent); color: #fff; }
+    button.primary { background: var(--accent); color: #1a1407; border-color: var(--accent); font-weight: 600; }
+    button.on { border-color: var(--accent); color: var(--accent); }
+
+    .hint { font-size: 11px; color: #76796e; line-height: 1.7; margin-top: 8px; }
+    kbd { background: #1a1c16; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 5px; padding: 1px 6px; font-size: 11px; color: #cfd2c6; }
+
+    #tip {
+      position: fixed; bottom: 56px; right: 16px; z-index: 40;
+      font-size: 12px; color: #5a5d53; letter-spacing: .05em;
+      background: rgba(12,13,11,.5); padding: 6px 12px; border-radius: 20px;
+      transition: opacity .4s ease;
+    }
+    body.panel-open #tip { opacity: 0; }
+    body.fs #tip { display: none; }          /* a pantalla completa (API) no calen els controls */
+    body.tip-hidden #tip { display: none; }  /* amagat manualment amb la tecla H (cobreix F11) */
+
+    /* ─── Mode FINAL (un sol marcador a dalt; meitat inferior alliberada) ─── */
+    body.single .slot[data-slot="2"] { display: none; }
+    #finalPanel {
+      display: none; position: absolute; left: 0; top: 566px; width: 1920px; z-index: 6;
+      flex-direction: column; align-items: center; justify-content: flex-start; gap: 14px;
+      pointer-events: none; text-align: center;
+    }
+    body.single #finalPanel { display: flex; }
+    #finalPanel .ft {
+      font-size: 96px; font-weight: 900; letter-spacing: .03em; line-height: 1;
+      color: #fff; text-shadow: 0 4px 26px rgba(0,0,0,.85);
+    }
+    #finalPanel .ft b { color: var(--accent); }
+    #finalPanel .fcause {
+      font-size: 26px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #fff;
+    }
+    #finalPanel .flogos { display: flex; align-items: center; gap: 20px; margin-top: 4px; }
+    #finalPanel .fchip {
+      background: #fff; border-radius: 12px; padding: 8px 16px; height: 66px;
+      display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(0,0,0,.5);
+    }
+    #finalPanel .fchip.dark { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); box-shadow: none; }
+    #finalPanel .fchip img { height: 48px; width: auto; max-width: 210px; object-fit: contain; display: block; }
+    #finalPanel .ffound {
+      font-size: 15px; letter-spacing: .16em; text-transform: uppercase; color: #9a9d92; margin-top: 2px;
+    }
+    /* en mode final el carrusel passa a la part baixa */
+    body.single #brand { top: auto; bottom: 40px; transform: none; }
+
+    /* Segell "powered by SCORED" a baix a la dreta (totes dues vistes) */
+    #poweredBy {
+      position: absolute; right: 30px; bottom: 22px; z-index: 12;
+      display: flex; align-items: center; gap: 9px; pointer-events: none;
+    }
+    #poweredBy span {
+      font-size: 13px; letter-spacing: .1em; font-style: italic; color: #8b8e83;
+    }
+    #poweredBy img { height: 22px; width: auto; filter: drop-shadow(0 1px 5px #000); }
+
+    /* ─── Celebració de nova donació (a tota la pantalla) ─── */
+    #celebrate {
+      position: fixed; inset: 0; z-index: 9999; display: none;
+      flex-direction: column; align-items: center; justify-content: center;
+      background: radial-gradient(circle at 50% 42%, rgba(12,13,11,.85), rgba(12,13,11,.97));
+      overflow: hidden; pointer-events: none; text-align: center;
+    }
+    #celebrate.show { display: flex; animation: celFade .35s ease; }
+    @keyframes celFade { from { opacity: 0; } to { opacity: 1; } }
+
+    #celebrate .cel-ball {
+      font-size: 150px; line-height: 1;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,.6));
+      animation: celBall 1s cubic-bezier(.2,1.45,.4,1) both;
+    }
+    @keyframes celBall {
+      0%   { transform: translateY(-360px) scale(.2) rotate(-120deg); opacity: 0; }
+      55%  { opacity: 1; }
+      100% { transform: translateY(0) scale(1) rotate(15deg); opacity: 1; }
+    }
+    /* Etiqueta "Nova donació!" */
+    #celebrate .cel-label {
+      margin-top: 10px; font-size: 28px; font-weight: 800; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--accent); animation: celUp .5s .15s both;
+    }
+    #celebrate .cel-label.repop { animation: celUp .5s both; }
+    /* Importe gran: mostra la donació i després és substituït pel total */
+    #celebrate .cel-amount {
+      margin-top: 6px; font-size: 156px; font-weight: 900; letter-spacing: .01em; line-height: 1;
+      color: #fff; text-shadow: 0 6px 44px rgba(200,162,74,.5);
+      animation: celPop .7s .25s cubic-bezier(.2,1.5,.4,1) both;
+    }
+    #celebrate .cel-amount.repop { animation: celPop .6s cubic-bezier(.2,1.5,.4,1) both; }
+    @keyframes celPop { 0% { transform: scale(0); } 70% { transform: scale(1.15); } 100% { transform: scale(1); } }
+    #celebrate .cel-sub {
+      margin-top: 20px; font-size: 28px; font-weight: 700; letter-spacing: .08em;
+      line-height: 1.3; color: #fff; animation: celUp .55s .5s both;
+    }
+    /* fade ràpid per a la transició donació → total (que no sigui brusc) */
+    #celebrate .cel-label, #celebrate .cel-amount { transition: opacity .2s ease; }
+    #celebrate .fade-out { opacity: 0; }
+    @keyframes celUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Confeti des de les dues cantonades inferiors, amb paràbola natural i caiguda accelerada */
+    #celebrate .cel-confetti { position: absolute; inset: 0; pointer-events: none; }
+    #celebrate .cel-confetti i {
+      position: absolute; bottom: 0; width: 13px; height: 18px; border-radius: 2px;
+      animation: celBurst 2.4s cubic-bezier(.1,.5,.3,1) forwards;
+    }
+    /* disparo recte cap a fora: surten de la pantalla, sense rebotar a dalt */
+    @keyframes celBurst {
+      0%   { transform: translate(0, 0) rotate(0); opacity: 1; }
+      78%  { opacity: 1; }
+      100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <div class="slot" data-slot="1"></div>
+    <div class="slot" data-slot="2"></div>
+
+    <!-- Mode FINAL: contingut de la meitat inferior alliberada -->
+    <div id="finalPanel">
+      <div class="ft"><b>GRAN</b> FINAL</div>
+      <div class="fcause">Lluita contra el Parkinson</div>
+      <div class="flogos">
+        <span class="fchip"><img src="assets/img/fundacions/clinic-barcelona.svg" alt="Hospital Clínic de Barcelona" onerror="this.parentNode.style.display='none'"></span>
+        <span class="fchip"><img src="assets/img/fundacions/universitat-barcelona.svg" alt="Universitat de Barcelona" onerror="this.parentNode.style.display='none'"></span>
+      </div>
+      <div class="ffound">Hospital Clínic de Barcelona · Fundació Clínic-IDIBAPS</div>
+      <div class="flogos">
+        <span class="fchip"><img src="assets/img/equips/cb-sitges.webp" alt="Club Bàsquet Sitges" onerror="this.parentNode.style.display='none'"></span>
+        <span class="fchip dark"><img src="assets/img/sponsors/ajuntament-sitges.webp" alt="Ajuntament de Sitges" onerror="this.parentNode.style.display='none'"></span>
+      </div>
+    </div>
+
+    <!-- Franja de marca central: carrusel de patrocinadors -->
+    <div id="brand">
+      <div id="sponsor">
+        <div class="slide" data-layer="0"></div>
+        <div class="slide" data-layer="1"></div>
+      </div>
+    </div>
+
+    <!-- Segell powered by SCORED (mateix asset blanc que fa servir scored.es) -->
+    <div id="poweredBy">
+      <span>powered by</span>
+      <img src="assets/img/scored-logo-white.png" alt="Scored">
+    </div>
+
+    <!-- Lateral esquerre: QR per donar -->
+    <div id="donateQR">
+      <div class="qrbox"><img src="assets/img/qr-donacions.png" alt="QR per fer una donació"></div>
+      <div class="cap">Escaneja i fes un donatiu</div>
+    </div>
+
+    <!-- Lateral dret: total recaptat en directe -->
+    <div id="raisedSide">
+      <div class="eyebrow">Recaptat</div>
+      <div class="amount" id="raisedSideNum">—</div>
+    </div>
+  </div>
+
+  <!-- Celebració de nova donació (a tota la pantalla) -->
+  <div id="celebrate" aria-hidden="true">
+    <div class="cel-confetti"></div>
+    <div class="cel-ball">🏀</div>
+    <div class="cel-label">Nova donació!</div>
+    <div class="cel-amount">+0 €</div>
+    <div class="cel-sub">Gràcies<br>Guanyem al Parkinson!</div>
+  </div>
+
+  <div id="tip">Prem <kbd style="all:unset;font-weight:600;color:#c8a24a">C</kbd> configurar · <kbd style="all:unset;font-weight:600;color:#c8a24a">F</kbd> pantalla completa · <kbd style="all:unset;font-weight:600;color:#c8a24a">O</kbd> franja · <kbd style="all:unset;font-weight:600;color:#c8a24a">H</kbd> amaga aquesta ajuda</div>
+
+  <aside id="panel">
+    <h1>Marcadors · Horitzontal</h1>
+    <p class="sub">Dos partits apilats a tota l'amplada (<b style="color:#cfd2c6">1920×540</b> cadascun) amb el marcador de <b style="color:#cfd2c6">admin.scored.es</b>.</p>
+
+    <fieldset style="border-color:var(--accent)">
+      <legend style="color:var(--accent)">⚡ Càrrega per hora</legend>
+      <p class="hint" style="margin:0 0 6px">Tria una hora i es carreguen sols els dos partits (Pista 1 a dalt, Pista 2 a baix) amb el seu <b style="color:#cfd2c6">scored id</b> del full.</p>
+      <label>Hora</label>
+      <select id="horaSel"><option value="">— carregant full… —</option></select>
+      <div id="matchPreview" class="match-preview"></div>
+      <div class="btns">
+        <button class="primary" id="loadHora">Carrega aquesta hora</button>
+        <button id="reloadCsv" title="Torna a llegir el full">↻</button>
+      </div>
+      <details class="adv"><summary>Full de càlcul (URL CSV)</summary>
+        <input id="csvUrl" style="margin-top:8px" placeholder="https://docs.google.com/…/gviz/tq?tqx=out:csv">
+      </details>
+      <p id="csvStatus"></p>
+    </fieldset>
+
+    <fieldset>
+      <legend>① Partit de dalt</legend>
+      <label>ID del partit</label>
+      <input data-f="id" data-s="1" placeholder="34165" inputmode="numeric">
+      <label>Etiqueta (pista)</label>
+      <input data-f="label" data-s="1" placeholder="Pista 1">
+      <div class="btns"><button data-fit="1">Selecciona per enquadrar</button></div>
+      <details class="adv"><summary>Avançat · mida de renderitzat</summary>
+        <div class="row" style="margin-top:8px">
+          <div><label>Ample (px)</label><input data-f="w" data-s="1" inputmode="numeric"></div>
+          <div><label>Alçada (px)</label><input data-f="h" data-s="1" inputmode="numeric"></div>
+        </div>
+      </details>
+    </fieldset>
+
+    <fieldset>
+      <legend>② Partit de baix</legend>
+      <label>ID del partit</label>
+      <input data-f="id" data-s="2" placeholder="34166" inputmode="numeric">
+      <label>Etiqueta (pista)</label>
+      <input data-f="label" data-s="2" placeholder="Pista 2">
+      <div class="btns"><button data-fit="2">Selecciona per enquadrar</button></div>
+      <details class="adv"><summary>Avançat · mida de renderitzat</summary>
+        <div class="row" style="margin-top:8px">
+          <div><label>Ample (px)</label><input data-f="w" data-s="2" inputmode="numeric"></div>
+          <div><label>Alçada (px)</label><input data-f="h" data-s="2" inputmode="numeric"></div>
+        </div>
+      </details>
+    </fieldset>
+
+    <fieldset>
+      <legend>Franja central · patrocinadors</legend>
+      <p class="hint" style="margin:0 0 4px">Carrusel amb tots els col·laboradors. El primer rètol de cada volta és el del torneig:</p>
+      <label>Títol del torneig</label>
+      <input data-b="title" placeholder="IV Torneig Solidari Vila de Sitges">
+      <label>Subtítol</label>
+      <input data-b="sub" placeholder="Veterans Bàsquet Sitges">
+      <label>Segons per patrocinador</label>
+      <input data-b="secs" inputmode="numeric" placeholder="5">
+      <div class="btns"><button id="toggleBrand">Mostra / amaga franja</button></div>
+    </fieldset>
+
+    <div class="btns">
+      <button class="primary" id="apply">Aplica</button>
+      <button id="fs">Pantalla completa</button>
+    </div>
+
+    <p class="hint">
+      <b style="color:#9a9d92">Enquadrament</b> (partit seleccionat):<br>
+      <kbd>1</kbd>/<kbd>2</kbd> tria · <kbd>↑↓←→</kbd> mou · <kbd>+</kbd>/<kbd>−</kbd> zoom · <kbd>R</kbd> reinicia<br>
+      També pots <b style="color:#9a9d92">arrossegar</b> i usar la <b style="color:#9a9d92">roda</b> del ratolí.
+    </p>
+  </aside>
+
+  <script>
+  (() => {
+    'use strict';
+
+    // Mida de renderitzat per defecte: viewport ample 1920×1080; en retallar
+    // la franja central de 540px es veu la zona del marcador a tota l'amplada.
+    // Escala < 1 perquè el contingut (TIEMPO→FALTAS és alt) no arribi a la
+    // costura central i deixi lloc net per a la franja de marca.
+    // y separa una mica cada partit de la costura (dalt amunt, baix avall).
+    const DEFAULTS = {
+      1: { id: '', label: 'Pista 1', w: 1920, h: 1080, scale: 0.82, x: 0, y: -24 },
+      2: { id: '', label: 'Pista 2', w: 1920, h: 1080, scale: 0.82, x: 0, y: 24 },
+    };
+    // Encuadre propi del mode FINAL (un sol marcador): ample complet, sense franges
+    const FINAL_FRAME_DEF = { w: 1920, h: 1080, scale: 1, x: 0, y: 0 };
+    const BRAND_DEF = { title: 'IV Torneig Solidari Vila de Sitges', sub: 'Veterans Bàsquet Sitges', show: true, secs: 5 };
+
+    // Logos gairebé blancs (invisibles sobre el xip blanc) → xip fosc tipus vidre
+    const LIGHT_LOGOS = new Set([
+      'casino-prado', 'nem', 'nou-i-classic', 'xiringuito-blanca-subur', 'la-tratto-sitges',
+      'cine-fantastic', 'sabatic', 'bacardi', 'la-sitgetana', 'francesco',
+      'cal-pinxo-sitges', 'museus-de-sitges', 'ajuntament-sitges', 'hotel-sitges',
+    ]);
+
+    // Patrocinadors i col·laboradors (logo + nom), tal com surten a la web.
+    const SPONSORS = [
+      ['sea-you-sitges', 'Sea You Sitges'],
+      ['francesco', 'Francesco'],
+      ['sunway', 'Hotel Sunway'],
+      ['sabatic', 'Hotel Sabàtic'],
+      ['ajuntament-sitges', 'Ajuntament de Sitges'],
+      ['scored', 'Scored'],
+      ['la-sitgetana', 'La Sitgetana'],
+      ['fet-amb-fusta', 'Fet amb Fusta'],
+      ['cine-fantastic', 'Festival Cine Fantàstic'],
+      ['societat-recreativa-el-retiro', 'Societat Recreativa El Retiro'],
+      ['casino-prado', 'Casino Prado'],
+      ['museus-de-sitges', 'Museus de Sitges'],
+      ['la-tratto-sitges', 'La Tratto Sitges'],
+      ['el-raco-del-vi', 'El Racó del Vi'],
+      ['mammothskate', 'Mammothskate'],
+      ['kela-sitges', 'Kela Sitges'],
+      ['india-mon-amour', 'Índia Mon Amour'],
+      ['xiringuito-blanca-subur', 'Xiringuito Blanca Subur'],
+      ['abc-sitges-castelldefels', 'ABC Sitges Castelldefels'],
+      ['els-jardins-del-retiro', 'Els Jardins del Retiro'],
+      ['ara-seleccio-vins', 'Ara Selecció Vins'],
+      ['serrarols-nin', 'Serrarols Nin'],
+      ['daniel-fontdevila', 'Daniel Fontdevila'],
+      ['cal-pinxo-sitges', 'Cal Pinxo Sitges'],
+      ['nou-i-classic', 'Nou i Clàssic'],
+      ['perbacco', 'Perbacco'],
+      ['nem', 'Nem'],
+      ['hotel-sitges', 'Hotel Sitges'],
+      ['acqua-restaurant', 'Restaurant Acqua'],
+      ['bacardi', 'Casa Bacardí'],
+      ['abwine', 'AB Wines'],
+      ['flexic', 'Flexic'],
+    ].map(([f, n]) => ({ img: `assets/img/sponsors/${f}.webp`, name: n, light: LIGHT_LOGOS.has(f) }));
+    const STORE_KEY = 'cbs-marcadors-horitzontal-v3';
+    const SRC = (c) => `https://admin.scored.es/#/matches/${encodeURIComponent(c.id)}/scoreboard`;
+
+    // Mateix Google Sheet que torneig-2026.js (afegeix-hi una columna "scored id").
+    const DEFAULT_CSV = 'https://docs.google.com/spreadsheets/d/1ARQQU8Uy_SUhNMZcGNujIB5W0D7prarzcsoI13POr3A/gviz/tq?tqx=out:csv&gid=0';
+
+    let cfg = structuredClone(DEFAULTS);
+    let finalFrame = { ...FINAL_FRAME_DEF };
+    let brand = { ...BRAND_DEF };
+    let sched = { csvUrl: DEFAULT_CSV, hora: '', single: false };
+    let ui = { tipHidden: false };
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORE_KEY) || 'null');
+      if (saved) {
+        for (const s of [1, 2]) cfg[s] = { ...cfg[s], ...saved[s] };
+        if (saved.finalFrame) finalFrame = { ...finalFrame, ...saved.finalFrame };
+        if (saved.brand) brand = { ...brand, ...saved.brand };
+        if (saved.sched) sched = { ...sched, ...saved.sched };
+        if (saved.ui) ui = { ...ui, ...saved.ui };
+        // actualitza el títol antic guardat al nou per defecte
+        if (brand.title === 'Torneig Solidari Vila de Sitges') brand.title = BRAND_DEF.title;
+      }
+    } catch {}
+
+    const qs = new URLSearchParams(location.search);
+    const fromUrl = (s, key, p) => { const v = qs.get(key); if (v !== null) cfg[s][p] = v; };
+    fromUrl(1, 'm1', 'id'); fromUrl(2, 'm2', 'id');
+
+    let active = 1;
+
+    const slots = { 1: document.querySelector('[data-slot="1"]'), 2: document.querySelector('[data-slot="2"]') };
+    const frames = {};
+
+    function buildFrame(s) {
+      const c = cfg[s], slot = slots[s];
+      slot.innerHTML = '';
+      slot.insertAdjacentHTML('beforeend', `<div class="pista">${c.label || ''}</div>`);
+      if (!c.id) {
+        slot.insertAdjacentHTML('beforeend',
+          `<div class="empty"><b>Partit ${s === 1 ? '①' : '②'}</b>Prem C i posa l'ID del partit</div>`);
+        frames[s] = null; return;
+      }
+      const f = document.createElement('iframe');
+      f.src = SRC(c);
+      f.allow = 'fullscreen';
+      frames[s] = f;
+      slot.appendChild(f);
+      position(s);
+    }
+
+    // En mode final el marcador de dalt fa servir el seu propi encuadre (ample complet)
+    function frameOf(s) { return (sched.single && +s === 1) ? finalFrame : cfg[s]; }
+
+    function position(s) {
+      const f = frames[s]; if (!f) return;
+      const c = frameOf(s);
+      f.style.width = (+c.w || 1920) + 'px';
+      f.style.height = (+c.h || 1080) + 'px';
+      f.style.transform =
+        `translate(calc(-50% + ${c.x}px), calc(-50% + ${c.y}px)) scale(${c.scale})`;
+    }
+
+    // ── Carrusel de patrocinadors ─────────────────────────────────────────────
+    const layers = [...document.querySelectorAll('#sponsor .slide')];
+    let slideIdx = -1, front = 0, carouselTimer = null;
+
+    // Llista de diapositives: el rètol del torneig + tots els patrocinadors.
+    function buildSlides() {
+      const title = { type: 'title', img: 'assets/img/equips/cb-sitges.webp', name: brand.title, eyebrow: brand.sub };
+      return [title, ...SPONSORS.map(s => ({ type: 'sponsor', img: s.img, name: s.name, eyebrow: '' }))];
+    }
+    let slides = buildSlides();
+
+    function fillLayer(el, s) {
+      const eyebrow = s.eyebrow ? `<div class="eyebrow">${s.eyebrow}</div>` : '';
+      el.innerHTML =
+        `<div class="chip${s.light ? ' dark' : ''}"><img src="${s.img}" alt="" onerror="this.parentNode.style.display='none'"></div>` +
+        `<div class="info">${eyebrow}<div class="name">${s.name}</div></div>`;
+    }
+
+    function showSlide(i) {
+      const next = layers[front ^ 1];          // capa oculta
+      fillLayer(next, slides[i]);
+      void next.offsetWidth;                    // força reflow per encadenar la transició
+      next.classList.add('show');
+      layers[front].classList.remove('show');
+      front ^= 1;
+      slideIdx = i;
+    }
+
+    function startCarousel() {
+      stopCarousel();
+      slides = buildSlides();
+      if (!brand.show || slides.length === 0) return;
+      slideIdx = -1; front = 0;
+      layers.forEach(l => l.classList.remove('show'));
+      showSlide(0);
+      const ms = Math.max(2, +brand.secs || 5) * 1000;
+      carouselTimer = setInterval(() => showSlide((slideIdx + 1) % slides.length), ms);
+    }
+    function stopCarousel() {
+      if (carouselTimer) { clearInterval(carouselTimer); carouselTimer = null; }
+    }
+
+    function renderBrand() {
+      document.body.classList.toggle('no-brand', !brand.show);
+      startCarousel();
+    }
+
+    function renderAll() {
+      for (const s of [1, 2]) buildFrame(s);
+      renderBrand();
+      reflectInputs(); markActive();
+    }
+    function markActive() {
+      for (const s of [1, 2]) slots[s].classList.toggle('active', +s === active);
+    }
+
+    function fitStage() {
+      const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+      const st = document.getElementById('stage');
+      st.style.transform = `scale(${k})`;
+      st.style.left = Math.max(0, (innerWidth - 1920 * k) / 2) + 'px';
+      st.style.top = Math.max(0, (innerHeight - 1080 * k) / 2) + 'px';
+    }
+
+    function save() {
+      localStorage.setItem(STORE_KEY, JSON.stringify({ 1: cfg[1], 2: cfg[2], finalFrame, brand, sched, ui }));
+      const u = new URLSearchParams();
+      if (cfg[1].id) u.set('m1', cfg[1].id);
+      if (cfg[2].id) u.set('m2', cfg[2].id);
+      history.replaceState(null, '', u.toString() ? '?' + u.toString() : location.pathname);
+    }
+
+    function reflectInputs() {
+      document.querySelectorAll('#panel input[data-f]').forEach(inp => {
+        inp.value = cfg[inp.dataset.s][inp.dataset.f] ?? '';
+      });
+      document.querySelector('[data-b="title"]').value = brand.title;
+      document.querySelector('[data-b="sub"]').value = brand.sub;
+      document.querySelector('[data-b="secs"]').value = brand.secs;
+    }
+    function readInputs() {
+      document.querySelectorAll('#panel input[data-f]').forEach(inp => {
+        cfg[inp.dataset.s][inp.dataset.f] = inp.value.trim();
+      });
+      brand.title = document.querySelector('[data-b="title"]').value.trim();
+      brand.sub = document.querySelector('[data-b="sub"]').value.trim();
+      brand.secs = +document.querySelector('[data-b="secs"]').value || 5;
+    }
+
+    document.getElementById('apply').addEventListener('click', () => { readInputs(); save(); renderAll(); });
+    document.querySelectorAll('[data-fit]').forEach(b =>
+      b.addEventListener('click', () => { active = +b.dataset.fit; markActive(); }));
+    document.getElementById('fs').addEventListener('click', toggleFullscreen);
+    document.getElementById('toggleBrand').addEventListener('click', () => { brand.show = !brand.show; renderBrand(); save(); });
+
+    function togglePanel(force) {
+      const open = force !== undefined ? force : !document.body.classList.contains('panel-open');
+      document.body.classList.toggle('panel-open', open);
+    }
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+      else document.exitFullscreen?.();
+    }
+    function applyTip() { document.body.classList.toggle('tip-hidden', !!ui.tipHidden); }
+    // Detecta pantalla completa tant amb la tecla F (API) com amb F11/quiosc del navegador
+    function isFullscreenish() {
+      return !!document.fullscreenElement ||
+        (Math.abs(innerHeight - screen.height) <= 2 && Math.abs(innerWidth - screen.width) <= 2);
+    }
+    const RETURN_KEY = 'cbs-pantalla-tornar';   // URL per tornar des de pantalla-gegant.html
+
+    addEventListener('keydown', (e) => {
+      // TAB a pantalla completa → desa l'URL actual i salta a pantalla-gegant.html
+      if (e.key === 'Tab' && isFullscreenish()) {
+        e.preventDefault();
+        try { localStorage.setItem(RETURN_KEY, location.href); } catch {}
+        location.href = 'pantalla-gegant.html';
+        return;
+      }
+      if (e.target.tagName === 'INPUT') {
+        if (e.key === 'Enter') { readInputs(); save(); renderAll(); e.target.blur(); }
+        return;
+      }
+      const STEP = e.shiftKey ? 1 : 10;
+      const fr = frameOf(active);
+      switch (e.key.toLowerCase()) {
+        case 'c': togglePanel(); break;
+        case 'f': toggleFullscreen(); break;
+        case 'h': ui.tipHidden = !ui.tipHidden; applyTip(); save(); break;
+        case 'o': brand.show = !brand.show; renderBrand(); save(); break;
+        case 'd': celebrate(25, () => setSideTotal(sideShown + 25, true)); break;   // test celebració
+        case '1': active = 1; markActive(); break;
+        case '2': active = 2; markActive(); break;
+        case 'arrowup':    fr.y -= STEP; position(active); save(); e.preventDefault(); break;
+        case 'arrowdown':  fr.y += STEP; position(active); save(); e.preventDefault(); break;
+        case 'arrowleft':  fr.x -= STEP; position(active); save(); e.preventDefault(); break;
+        case 'arrowright': fr.x += STEP; position(active); save(); e.preventDefault(); break;
+        case '+': case '=': fr.scale = +(fr.scale + 0.02).toFixed(3); position(active); save(); break;
+        case '-': case '_': fr.scale = Math.max(0.05, +(fr.scale - 0.02).toFixed(3)); position(active); save(); break;
+        case 'r':
+          if (sched.single && active === 1) Object.assign(finalFrame, structuredClone(FINAL_FRAME_DEF));
+          else Object.assign(cfg[active], structuredClone(DEFAULTS[active]), { id: cfg[active].id, label: cfg[active].label });
+          position(active); save(); break;
+      }
+    });
+
+    let drag = null;
+    document.getElementById('stage').addEventListener('mousedown', (e) => {
+      const slot = e.target.closest('.slot'); if (!slot) return;
+      active = +slot.dataset.slot; markActive();
+      const fr = frameOf(active);
+      drag = { sx: e.clientX, sy: e.clientY, ox: fr.x, oy: fr.y };
+    });
+    addEventListener('mousemove', (e) => {
+      if (!drag) return;
+      const k = Math.min(innerWidth / 1920, innerHeight / 1080) || 1;
+      const fr = frameOf(active);
+      fr.x = drag.ox + (e.clientX - drag.sx) / k;
+      fr.y = drag.oy + (e.clientY - drag.sy) / k;
+      position(active);
+    });
+    addEventListener('mouseup', () => { if (drag) { drag = null; save(); } });
+    document.getElementById('stage').addEventListener('wheel', (e) => {
+      const slot = e.target.closest('.slot'); if (!slot) return;
+      e.preventDefault();
+      active = +slot.dataset.slot; markActive();
+      const fr = frameOf(active);
+      fr.scale = Math.max(0.05, +(fr.scale - Math.sign(e.deltaY) * 0.03).toFixed(3));
+      position(active); save();
+    }, { passive: false });
+
+    // ── Càrrega per hora des del Google Sheet ─────────────────────────────────
+    const horaSel = document.getElementById('horaSel');
+    const matchPreview = document.getElementById('matchPreview');
+    const csvStatusEl = document.getElementById('csvStatus');
+    const csvUrlInput = document.getElementById('csvUrl');
+    csvUrlInput.value = sched.csvUrl;
+    let byHora = {};
+
+    function setStatus(msg, cls) { csvStatusEl.textContent = msg; csvStatusEl.className = cls || ''; }
+
+    // normalitza capçaleres: minúscules, sense accents/espais → "scored id" = "scoredid"
+    const normKey = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[^a-z0-9]/g, '');
+
+    // Parser CSV robust (gestiona cometes i comes dins de camps)
+    function parseCSV(text) {
+      const rows = []; let row = [], cur = '', q = false;
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (q) {
+          if (c === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else q = false; }
+          else cur += c;
+        } else if (c === '"') q = true;
+        else if (c === ',') { row.push(cur); cur = ''; }
+        else if (c === '\n') { row.push(cur); rows.push(row); row = []; cur = ''; }
+        else if (c !== '\r') cur += c;
+      }
+      if (cur !== '' || row.length) { row.push(cur); rows.push(row); }
+      return rows;
+    }
+
+    // Valor d'una cel·la gviz JSON: prioritza el text formatat (f) sobre el cru (v)
+    function cellStr(cell) {
+      if (!cell) return '';
+      if (cell.f != null) return String(cell.f).trim();
+      return cell.v == null ? '' : String(cell.v).trim();
+    }
+
+    // Normalitza l'hora a "HH:MM" (gviz pot tornar "13:00:00" o un valor de temps)
+    function cleanHora(s) {
+      const m = String(s || '').match(/(\d{1,2}):(\d{2})/);
+      return m ? m[1].padStart(2, '0') + ':' + m[2] : String(s || '').trim();
+    }
+
+    // ── Càrrega via JSONP (sense CORS → funciona també obrint l'HTML com a file://) ──
+    let gvizN = 0;
+    function loadGviz(url) {
+      return new Promise((resolve, reject) => {
+        const name = '__gviz_cb_' + (gvizN++);
+        let done = false;
+        const s = document.createElement('script');
+        const cleanup = () => { try { delete window[name]; } catch {} s.remove(); };
+        window[name] = (resp) => {
+          done = true;
+          try {
+            if (!resp || !resp.table) throw new Error('resposta inesperada');
+            const cols = resp.table.cols.map(c => normKey(c.label || c.id));
+            const recs = (resp.table.rows || []).map(row =>
+              cols.reduce((o, h, i) => { o[h] = cellStr((row.c || [])[i]); return o; }, {}));
+            cleanup(); resolve(recs);
+          } catch (e) { cleanup(); reject(e); }
+        };
+        s.src = url.replace(/tqx=out:csv/i, 'tqx=out:json;responseHandler:' + name);
+        s.onerror = () => { if (!done) { cleanup(); reject(new Error('no s\'ha pogut carregar el full')); } };
+        document.head.appendChild(s);
+        setTimeout(() => { if (!done) { cleanup(); reject(new Error('temps esgotat')); } }, 15000);
+      });
+    }
+
+    // Càrrega via fetch CSV (per a URLs "publica a la web"; només funciona per http)
+    async function loadCsv(url) {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const rows = parseCSV(await res.text()).filter(r => r.length > 1);
+      if (!rows.length) throw new Error('full buit');
+      const head = rows[0].map(normKey);
+      return rows.slice(1).map(r =>
+        head.reduce((o, h, i) => { o[h] = (r[i] || '').trim(); return o; }, {}));
+    }
+
+    async function fetchSchedule() {
+      if (!sched.csvUrl) { setStatus('Posa la URL del full a "Full de càlcul".', 'err'); return; }
+      setStatus('Llegint full…');
+      try {
+        // Endpoint gviz → JSONP (sense CORS). Altres URLs (publica a la web) → fetch CSV.
+        const recs = /\/gviz\/tq/i.test(sched.csvUrl)
+          ? await loadGviz(sched.csvUrl)
+          : await loadCsv(sched.csvUrl);
+        if (recs.length && !('hora' in recs[0] && 'pista' in recs[0] && 'scoredid' in recs[0]))
+          throw new Error('falten columnes (cal hora, pista i "scored id")');
+        byHora = {};
+        for (const o of recs) {
+          const hora = cleanHora(o.hora);
+          if (!hora) continue;
+          const pista = String(o.pista || '').trim();
+          // pista 1/2 → vista partida; sense pista (final) → vista d'un sol marcador
+          const slot = (pista === '1' || pista === '2') ? pista : 'single';
+          (byHora[hora] = byHora[hora] || {})[slot] = {
+            scored: String(o.scoredid || '').trim(),
+            local: o.equiplocal || '', visitant: o.equipvisitant || '',
+          };
+        }
+        populateHoras();
+        setStatus(`✓ ${Object.keys(byHora).length} hores llegides del full.`, 'ok');
+      } catch (e) {
+        setStatus('No s\'ha pogut llegir el full: ' + (e.message || e) +
+          '. Comprova la URL del full o la connexió. Pots posar els ID a mà als camps ① i ②.', 'err');
+      }
+    }
+
+    function populateHoras() {
+      const horas = Object.keys(byHora).sort();
+      horaSel.innerHTML = horas.length
+        ? '<option value="">— tria hora —</option>'
+        : '<option value="">— cap partit al full —</option>';
+      for (const h of horas) horaSel.insertAdjacentHTML('beforeend', `<option value="${h}">${h}</option>`);
+      if (sched.hora && byHora[sched.hora]) horaSel.value = sched.hora;
+      renderPreview();
+    }
+
+    function applyMode() { document.body.classList.toggle('single', !!sched.single); }
+
+    function renderPreview() {
+      const m = byHora[horaSel.value];
+      if (!m) { matchPreview.innerHTML = ''; return; }
+      if (m.single) {
+        const warn = m.single.scored ? '' : ' <b>⚠️ sense scored id</b>';
+        matchPreview.innerHTML = `<div><b>FINAL</b> · una pista · vista completa${warn}</div>`;
+        return;
+      }
+      const line = (p) => {
+        const x = m[p];
+        if (!x) return `<div>Pista ${p}: —</div>`;
+        const warn = x.scored ? '' : ' <b>⚠️ sense scored id</b>';
+        return `<div><b>P${p}</b> · ${x.local || '?'} vs ${x.visitant || '?'}${warn}</div>`;
+      };
+      matchPreview.innerHTML = line('1') + line('2');
+    }
+
+    function loadHora() {
+      const h = horaSel.value, m = byHora[h];
+      if (!m) { setStatus('Tria una hora primer.', 'err'); return; }
+      sched.hora = h;
+      if (m.single) {
+        // Final: un sol marcador, vista completa
+        sched.single = true;
+        cfg[1].id = m.single.scored || ''; cfg[1].label = '';
+        cfg[2].id = '';
+      } else {
+        sched.single = false;
+        for (const p of ['1', '2']) {
+          const x = m[p];
+          cfg[p].id = (x && x.scored) ? x.scored : '';
+          cfg[p].label = 'Pista ' + p;
+        }
+      }
+      applyMode(); save(); renderAll();
+      if (m.single) {
+        setStatus(m.single.scored ? '✓ Final carregada (vista completa).' : 'Final: falta el scored id al full.',
+          m.single.scored ? 'ok' : 'err');
+      } else {
+        const miss = ['1', '2'].filter(p => !(m[p] && m[p].scored));
+        if (miss.length) setStatus('Carregat, però falta el scored id a la Pista ' + miss.join(' i ') + '.', 'err');
+        else setStatus('✓ Carregat: ' + h, 'ok');
+      }
+    }
+
+    horaSel.addEventListener('change', renderPreview);
+    document.getElementById('loadHora').addEventListener('click', loadHora);
+    document.getElementById('reloadCsv').addEventListener('click', () => {
+      sched.csvUrl = csvUrlInput.value.trim() || DEFAULT_CSV;
+      csvUrlInput.value = sched.csvUrl; save(); fetchSchedule();
+    });
+
+    // Amaga la pista de controls quan s'està a pantalla completa
+    document.addEventListener('fullscreenchange', () => {
+      document.body.classList.toggle('fs', !!document.fullscreenElement);
+    });
+
+    // ── Recaptació en directe (Clínic / Parkinson) + celebració ───────────────
+    const DONATION_URL = 'https://www.stockcrowd.com/api/v1/campaignp2p/IV-Torneig-Solidari-Veterans-contra-el-Parkinson';
+    const DONATION_KEY = 'cbs-donation-total';
+    const eur = (n) => new Intl.NumberFormat('ca-ES', { maximumFractionDigits: 2 }).format(n) + ' €';
+    let celTimer = null, donationFirst = true;
+    const raisedSideNum = document.getElementById('raisedSideNum');
+    let sideRAF = null, sideShown = 0;
+    function setSideTotal(v, animate) {
+      if (!isFinite(v)) return;
+      cancelAnimationFrame(sideRAF);
+      if (!animate) { sideShown = v; raisedSideNum.textContent = eur(v); return; }
+      const from = sideShown, to = v, t0 = performance.now(), ms = 1500;
+      const ease = (t) => 1 - Math.pow(1 - t, 4);
+      (function tick(now) {
+        const p = Math.min((now - t0) / ms, 1);
+        raisedSideNum.textContent = eur(Math.round(from + (to - from) * ease(p)));
+        if (p < 1) sideRAF = requestAnimationFrame(tick);
+        else { sideShown = to; raisedSideNum.textContent = eur(to); }
+      })(performance.now());
+    }
+    setSideTotal(parseFloat(localStorage.getItem(DONATION_KEY)));   // total guardat d'entrada
+
+    function celebrate(diff, onDone) {
+      const el = document.getElementById('celebrate');
+      const label = el.querySelector('.cel-label');
+      const amount = el.querySelector('.cel-amount');
+      clearTimeout(celTimer);
+
+      label.textContent = 'Nova donació!';
+      amount.textContent = '+' + eur(diff);
+
+      const c = el.querySelector('.cel-confetti'); c.innerHTML = '';
+      // Paleta viva tipus Raycast (arc de Sant Martí)
+      const colors = ['#ff3b6b', '#ff8a3d', '#ffd23d', '#3dff88', '#39e6c3',
+                      '#3dd0ff', '#3d6bff', '#b03dff', '#ff3df0', '#ff5252', '#ffffff'];
+      for (let i = 0; i < 130; i++) {
+        const left = i % 2 === 0;                          // meitat des de cada cantonada
+        const p = document.createElement('i');
+        if (left) p.style.left = '2vw'; else p.style.right = '2vw';
+        const tx = (28 + Math.random() * 74);              // creuen tota la pantalla
+        p.style.setProperty('--tx', (left ? tx : -tx).toFixed(1) + 'vw');
+        p.style.setProperty('--ty', '-' + (90 + Math.random() * 55).toFixed(1) + 'vh'); // surten per dalt
+        p.style.setProperty('--rot', (Math.random() * 1100 - 550).toFixed(0) + 'deg');
+        p.style.background = colors[(Math.random() * colors.length) | 0];
+        p.style.animationDelay = (Math.random() * 0.22).toFixed(2) + 's';
+        p.style.animationDuration = (2.1 + Math.random() * 0.8).toFixed(2) + 's';
+        p.style.width = (5 + Math.random() * 8).toFixed(0) + 'px';
+        p.style.height = (8 + Math.random() * 12).toFixed(0) + 'px';
+        if (Math.random() < 0.28) p.style.borderRadius = '50%';   // barreja de formes
+        c.appendChild(p);
+      }
+      el.classList.remove('show'); void el.offsetWidth;   // reinicia les animacions
+      el.classList.add('show');
+      celTimer = setTimeout(() => { el.classList.remove('show'); if (onDone) onDone(); }, 6000);
+    }
+
+    async function pollDonation() {
+      try {
+        const res = await fetch(DONATION_URL, { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = await res.json();
+        const val = Number(data && data.recaudado);
+        if (!isFinite(val)) return;
+        let prev = parseFloat(localStorage.getItem(DONATION_KEY));
+        if (!isFinite(prev)) prev = val;
+        // El primer sondeig de cada càrrega només sincronitza (no celebra salts vells)
+        if (donationFirst) { donationFirst = false; localStorage.setItem(DONATION_KEY, val); setSideTotal(val); return; }
+        localStorage.setItem(DONATION_KEY, val);
+        // en pujar, el total lateral compta amunt fins al nou total quan acaba la celebració
+        if (val > prev) celebrate(val - prev, () => setSideTotal(val, true));
+        else setSideTotal(val);
+      } catch {}
+    }
+
+    addEventListener('resize', fitStage);
+    fitStage();
+    applyMode();                                       // restaura el mode (partida o final)
+    applyTip();                                        // restaura la visibilitat de l'ajuda
+    renderAll();
+    fetchSchedule();                                   // descarrega el calendari del full
+    pollDonation();                                    // recaptació: sincronitza ara
+    setInterval(pollDonation, 30000);                  // …i comprova cada 30 s
+    if (!cfg[1].id && !cfg[2].id) togglePanel(true);
+  })();
+  </script>
+</body>
+</html>
