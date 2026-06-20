@@ -769,8 +769,8 @@
     } catch {}
 
     addEventListener('keydown', (e) => {
-      // TAB en pantalla completa → torna a l'últim partit dels marcadors
-      if (e.key === 'Tab' && isFullscreenish()) {
+      // TAB (excepte escrivint en un camp) → torna a l'últim partit dels marcadors
+      if (e.key === 'Tab' && !e.target.closest('input, textarea, select')) {
         e.preventDefault();
         let url = '';
         try { url = localStorage.getItem(RETURN_KEY) || ''; } catch {}

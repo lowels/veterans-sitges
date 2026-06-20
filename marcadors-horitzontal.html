@@ -709,8 +709,8 @@
     const RETURN_KEY = 'cbs-pantalla-tornar';   // URL per tornar des de pantalla-gegant.html
 
     addEventListener('keydown', (e) => {
-      // TAB a pantalla completa → desa l'URL actual i salta a pantalla-gegant.html
-      if (e.key === 'Tab' && isFullscreenish()) {
+      // TAB (excepte escrivint en un camp) → desa l'URL actual i salta a pantalla-gegant.html
+      if (e.key === 'Tab' && !e.target.closest('input, textarea, select')) {
         e.preventDefault();
         try { localStorage.setItem(RETURN_KEY, location.href); } catch {}
         location.href = 'pantalla-gegant.html';
