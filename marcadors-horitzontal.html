@@ -703,7 +703,8 @@
     // Detecta pantalla completa tant amb la tecla F (API) com amb F11/quiosc del navegador
     function isFullscreenish() {
       return !!document.fullscreenElement ||
-        (Math.abs(innerHeight - screen.height) <= 2 && Math.abs(innerWidth - screen.width) <= 2);
+        (window.matchMedia && window.matchMedia('(display-mode: fullscreen)').matches) ||
+        Math.abs(innerHeight - screen.height) <= 3;     // F11 / quiosc
     }
     const RETURN_KEY = 'cbs-pantalla-tornar';   // URL per tornar des de pantalla-gegant.html
 

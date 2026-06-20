@@ -759,7 +759,8 @@
 
     function isFullscreenish() {
       return !!document.fullscreenElement ||
-        (Math.abs(innerHeight - screen.height) <= 2 && Math.abs(innerWidth - screen.width) <= 2);
+        (window.matchMedia && window.matchMedia('(display-mode: fullscreen)').matches) ||
+        Math.abs(innerHeight - screen.height) <= 3;     // F11 / quiosc
     }
 
     // Restaura l'estat de l'ajuda en carregar
