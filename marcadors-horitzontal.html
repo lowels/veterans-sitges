@@ -976,7 +976,16 @@
         else { sideShown = to; raisedSideNum.textContent = eur(to); }
       })(performance.now());
     }
-    setSideTotal(parseFloat(localStorage.getItem(DONATION_KEY)));   // total guardat d'entrada
+    // Total forçat per URL (ex: ?total=6000) → mostra aquesta xifra i CONGELA el
+    // sondeig a l'API del Clínic (stockcrowd). Útil per a la gran final.
+    const forcedTotal = parseFloat(qs.get('total'));
+    const DONATION_FROZEN = isFinite(forcedTotal);
+    if (DONATION_FROZEN) {
+      localStorage.setItem(DONATION_KEY, forcedTotal);
+      setSideTotal(forcedTotal);
+    } else {
+      setSideTotal(parseFloat(localStorage.getItem(DONATION_KEY)));   // total guardat d'entrada
+    }
 
     function celebrate(diff, onDone) {
       const el = document.getElementById('celebrate');
@@ -1013,6 +1022,7 @@
     }
 
     async function pollDonation() {
+      if (DONATION_FROZEN) return;   // total forçat per URL → no sondegem l'API del Clínic
       try {
         const res = await fetch(DONATION_URL, { cache: 'no-store' });
         if (!res.ok) return;
@@ -1036,8 +1046,10 @@
     applyTip();                                        // restaura la visibilitat de l'ajuda
     renderAll();
     fetchSchedule();                                   // descarrega el calendari del full
-    pollDonation();                                    // recaptació: sincronitza ara
-    setInterval(pollDonation, 30000);                  // …i comprova cada 30 s
+    if (!DONATION_FROZEN) {
+      pollDonation();                                  // recaptació: sincronitza ara
+      setInterval(pollDonation, 30000);                // …i comprova cada 30 s
+    }
     if (!cfg[1].id && !cfg[2].id) togglePanel(true);
   })();
   </script>
