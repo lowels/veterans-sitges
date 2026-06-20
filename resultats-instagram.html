@@ -105,16 +105,29 @@
     .scores .dash { color: var(--muted); margin: 0 10px; font-weight: 700; }
     .scores .tl { display: block; font-size: 18px; letter-spacing: .2em; color: var(--green-l); margin-top: 4px; }
 
+    /* Mode compacte: 4 partits en una targeta */
+    .c-matches.dense .match { padding: 18px 28px; margin-bottom: 16px; border-radius: 20px; }
+    .c-matches.dense .match .pista { font-size: 16px; margin-bottom: 11px; }
+    .c-matches.dense .team { width: 332px; }
+    .c-matches.dense .team .chip { width: 66px; height: 66px; flex-basis: 66px; }
+    .c-matches.dense .team .nm { font-size: 26px; }
+    .c-matches.dense .scores { font-size: 52px; min-width: 180px; }
+
     /* Final: campió */
     .champion { margin-top: 30px; text-align: center; }
     .champion .lbl { font-size: 24px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
     .champion .nm { font-size: 56px; font-weight: 900; margin-top: 8px; }
 
     /* Peu */
-    .c-foot { margin-top: 38px; padding-top: 26px; border-top: 1px solid var(--line);
-      display: flex; align-items: center; justify-content: space-between; }
+    .c-foot { margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--line);
+      display: flex; align-items: flex-end; justify-content: space-between; }
+    .c-foot .foot-l { display: flex; flex-direction: column; gap: 16px; }
     .c-foot .cause { font-size: 24px; font-weight: 700; }
     .c-foot .cause b { color: var(--gold); }
+    .c-foot .insts { display: flex; align-items: center; gap: 12px; }
+    .c-foot .ichip { background: #fff; border-radius: 10px; padding: 7px 12px; height: 56px;
+      display: flex; align-items: center; justify-content: center; }
+    .c-foot .ichip img { height: 40px; width: auto; display: block; }
     .c-foot .meta { font-size: 20px; color: var(--muted); text-align: right; line-height: 1.4; }
 
     .note { font-size: 12px; color: var(--muted); text-align: center; padding: 0 16px 30px; line-height: 1.5; }
@@ -245,27 +258,30 @@
     // ── Rondes disponibles ────────────────────────────────────────────────────
     function buildRounds() {
       const rounds = [];
-      [...new Set(MATCHES.map(m=>m.time))].sort().forEach(time => {
-        const ms = MATCHES.filter(m=>m.time===time).sort((a,b)=>a.court-b.court);
-        rounds.push({ key:'h'+time, type:'group', eyebrow:'Resultats', title:time,
-          matches: ms.map(m => mv(m.id, m.home, m.away, m.court, results[m.id])) });
-      });
+      // Fase de grups: agrupats de dos en dos (4 partits per imatge)
+      const horas = [...new Set(MATCHES.map(m=>m.time))].sort();
+      for (let i=0; i<horas.length; i+=2) {
+        const pair = horas.slice(i, i+2);
+        const ms = MATCHES.filter(m=>pair.includes(m.time)).sort((a,b)=> a.time.localeCompare(b.time) || a.court-b.court);
+        rounds.push({ key:'h'+pair[0], type:'group', eyebrow:'Resultats', title:pair.join('–'),
+          matches: ms.map(m => mv(m.id, m.home, m.away, `${m.time} · Pista ${m.court}`, results[m.id])) });
+      }
       const s = seeds();
       const sf1H = s.A?s.a1:null, sf1A = s.B?s.b2:null, sf2H = s.B?s.b1:null, sf2A = s.A?s.a2:null;
       rounds.push({ key:'semis', type:'group', eyebrow:'19:15', title:'Semifinals',
-        matches:[ mv('sf1', sf1H, sf1A, 1, bracket.sf1, '1r A', '2n B'),
-                  mv('sf2', sf2H, sf2A, 2, bracket.sf2, '1r B', '2n A') ] });
+        matches:[ mv('sf1', sf1H, sf1A, 'Pista 1', bracket.sf1, '1r A', '2n B'),
+                  mv('sf2', sf2H, sf2A, 'Pista 2', bracket.sf2, '1r B', '2n A') ] });
       const w1=winnerOf(bracket.sf1||{}), w2=winnerOf(bracket.sf2||{});
       const finH = w1?(w1==='home'?sf1H:sf1A):null, finA = w2?(w2==='home'?sf2H:sf2A):null;
       const wf = winnerOf(bracket.final||{}); const champ = wf?(wf==='home'?finH:finA):null;
       rounds.push({ key:'final', type:'final', eyebrow:'19:45', title:'Gran Final',
-        matches:[ mv('final', finH, finA, 0, bracket.final, 'Guanyador SF1', 'Guanyador SF2') ], champ });
+        matches:[ mv('final', finH, finA, '', bracket.final, 'Guanyador SF1', 'Guanyador SF2') ], champ });
       return rounds;
     }
-    // match-view: {homeKey,awayKey,hs,as,w,court,hLbl,aLbl}
-    function mv(id, homeKey, awayKey, court, rec, hLbl, aLbl) {
+    // match-view: {homeKey,awayKey,hs,as,w,tag,hLbl,aLbl}
+    function mv(id, homeKey, awayKey, tag, rec, hLbl, aLbl) {
       const r = rec || {};
-      return { homeKey, awayKey, hs:r.home, as:r.away, w:winnerOf(r), court, hLbl, aLbl };
+      return { homeKey, awayKey, hs:r.home, as:r.away, w:winnerOf(r), tag, hLbl, aLbl };
     }
 
     // ── Render de la targeta ──────────────────────────────────────────────────
@@ -287,7 +303,7 @@
     }
     function matchHtml(m) {
       return `<div class="match">`+
-        (m.court ? `<div class="pista">Pista ${m.court}</div>` : '')+
+        (m.tag ? `<div class="pista">${esc(m.tag)}</div>` : '')+
         `<div class="row">`+
           teamSide('home', m.homeKey, m.hLbl, m.w==='home')+
           scoreBlock(m)+
@@ -306,9 +322,15 @@
            <div class="eyebrow">${esc(round.eyebrow)}</div>
            <div class="main${round.title.length>10?' small':''}">${esc(round.title)}</div>
          </div>
-         <div class="c-matches">${round.matches.map(matchHtml).join('')}${champHtml}</div>
+         <div class="c-matches${round.matches.length>=3?' dense':''}">${round.matches.map(matchHtml).join('')}${champHtml}</div>
          <div class="c-foot">
-           <div class="cause">Lluita contra el <b>Parkinson</b></div>
+           <div class="foot-l">
+             <div class="cause">Lluita contra el <b>Parkinson</b></div>
+             <div class="insts">
+               <span class="ichip"><img src="assets/img/fundacions/clinic-barcelona.webp" alt="Hospital Clínic de Barcelona"></span>
+               <span class="ichip"><img src="assets/img/fundacions/universitat-barcelona.png" alt="Universitat de Barcelona"></span>
+             </div>
+           </div>
            <div class="meta">20 de juny de 2026<br>Pavelló Pins Vens · Sitges</div>
          </div>`;
       fitPreview();
