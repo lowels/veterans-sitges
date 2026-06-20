@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Resultats per a Instagram — Veterans Bàsquet Sitges</title>
+
+  <!--
+    ─────────────────────────────────────────────────────────────────────────
+    RESULTATS → IMATGE PER A INSTAGRAM
+    Llegeix els resultats del mateix Google Sheet del torneig, els agrupa per
+    hora (+ semifinals i final amb els equips reals) i genera una targeta
+    1080×1350 (format Instagram) descarregable / compartible des del mòbil.
+    ─────────────────────────────────────────────────────────────────────────
+  -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #141613; --bg-2: #1e211d;
+      --green: #2D6A4F; --green-l: #40916c;
+      --gold: #D4A843; --gold-l: #E8C266;
+      --line: #2a2e27; --muted: rgba(255,255,255,.55);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html, body {
+      background: #0c0d0b; color: #fff; min-height: 100%;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    /* ───── Barra de control (no surt a la imatge) ───── */
+    #bar {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; gap: 10px; align-items: center;
+      padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0));
+      background: rgba(12,13,11,.96); border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+    #bar select {
+      flex: 1 1 auto; min-width: 0; font-size: 16px; padding: 13px 12px;
+      background: #1a1c16; color: #fff; border: 1px solid var(--line); border-radius: 12px; outline: none;
+    }
+    #bar button {
+      flex: 0 0 auto; font-size: 16px; font-weight: 700; padding: 13px 16px;
+      border-radius: 12px; border: 1px solid var(--gold); background: var(--gold); color: #1a1407;
+      cursor: pointer; display: flex; align-items: center; gap: 7px;
+    }
+    #bar button:active { transform: scale(.97); }
+    #bar button.ghost { background: #1a1c16; color: #e7e9df; border-color: var(--line); }
+    #status { font-size: 12px; color: var(--muted); text-align: center; padding: 6px 14px; }
+    #status.err { color: #e0795f; }
+
+    /* ───── Zona de previsualització ───── */
+    #preview { padding: 16px; display: flex; justify-content: center; }
+    #cardWrap { position: relative; }
+    #card {
+      position: absolute; top: 0; left: 0; transform-origin: top left;
+      width: 1080px; height: 1350px; overflow: hidden;
+      background:
+        radial-gradient(900px 700px at 12% 6%,  rgba(64,145,108,.22) 0%, transparent 60%),
+        radial-gradient(1100px 900px at 90% 98%, rgba(45,106,79,.30) 0%, transparent 62%),
+        linear-gradient(150deg, #16241d 0%, var(--bg) 46%, #11140f 100%);
+      padding: 76px 70px 64px;
+      display: flex; flex-direction: column;
+    }
+
+    /* Capçalera */
+    .c-head { display: flex; align-items: center; gap: 22px; }
+    .c-head .crest { width: 96px; height: 96px; border-radius: 18px; background: #fff; padding: 10px;
+      display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
+    .c-head .crest img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .c-head .ht { line-height: 1.12; }
+    .c-head .ht .t1 { font-size: 33px; font-weight: 800; letter-spacing: .02em; }
+    .c-head .ht .t2 { font-size: 19px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+
+    /* Títol de la ronda */
+    .c-title { margin-top: 44px; }
+    .c-title .eyebrow { font-size: 22px; letter-spacing: .36em; text-transform: uppercase; color: var(--green-l); }
+    .c-title .main { font-size: 92px; font-weight: 900; line-height: .98; margin-top: 6px; letter-spacing: -.01em; }
+    .c-title .main.small { font-size: 70px; }
+
+    /* Llista de partits */
+    .c-matches { margin-top: 40px; display: flex; flex-direction: column; flex: 1 1 auto; justify-content: center; }
+    .match {
+      background: rgba(255,255,255,.045); border: 1px solid var(--line); border-radius: 26px;
+      padding: 26px 30px; margin-bottom: 26px;
+    }
+    .match:last-child { margin-bottom: 0; }
+    .match .pista { font-size: 18px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .match .row { display: flex; align-items: center; }
+    .team { display: flex; align-items: center; width: 360px; }
+    .team .chip { width: 84px; height: 84px; flex: 0 0 84px; border-radius: 16px; background: #fff; padding: 8px;
+      display: flex; align-items: center; justify-content: center; }
+    .team .chip img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .team .nm { font-size: 30px; font-weight: 700; line-height: 1.08; }
+    .team.home .chip { margin-right: 20px; }
+    .team.away { flex-direction: row-reverse; text-align: right; margin-left: auto; }
+    .team.away .chip { margin-left: 20px; }
+    .team.win .nm { color: var(--gold-l); }
+    .scores { flex: 1 1 auto; text-align: center; font-weight: 900; font-variant-numeric: tabular-nums;
+      font-size: 64px; letter-spacing: .02em; min-width: 210px; }
+    .scores .sc.win { color: var(--gold); }
+    .scores .dash { color: var(--muted); margin: 0 10px; font-weight: 700; }
+    .scores .tl { display: block; font-size: 18px; letter-spacing: .2em; color: var(--green-l); margin-top: 4px; }
+
+    /* Final: campió */
+    .champion { margin-top: 30px; text-align: center; }
+    .champion .lbl { font-size: 24px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+    .champion .nm { font-size: 56px; font-weight: 900; margin-top: 8px; }
+
+    /* Peu */
+    .c-foot { margin-top: 38px; padding-top: 26px; border-top: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between; }
+    .c-foot .cause { font-size: 24px; font-weight: 700; }
+    .c-foot .cause b { color: var(--gold); }
+    .c-foot .meta { font-size: 20px; color: var(--muted); text-align: right; line-height: 1.4; }
+
+    .note { font-size: 12px; color: var(--muted); text-align: center; padding: 0 16px 30px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <div id="bar">
+    <select id="round"><option>Carregant…</option></select>
+    <button id="share">⬇︎ Imatge</button>
+    <button id="reload" class="ghost" title="Tornar a llegir">↻</button>
+  </div>
+  <div id="status"></div>
+
+  <div id="preview">
+    <div id="cardWrap"><div id="card"></div></div>
+  </div>
+  <p class="note">Tria la ronda i prem <b>Imatge</b>. Al mòbil s'obre el menú de compartir (Instagram, etc.); a l'ordinador es descarrega el PNG.</p>
+
+  <script>
+  (() => {
+    'use strict';
+
+    // ── Dades del torneig (mateixes que torneig-2026.js) ──────────────────────
+    const SHEET = 'https://docs.google.com/spreadsheets/d/1ARQQU8Uy_SUhNMZcGNujIB5W0D7prarzcsoI13POr3A/gviz/tq?tqx=out:csv&gid=0';
+    const LOGO = 'assets/img/equips/';
+    const TEAMS = {
+      sitges:{name:'Bàsquet Sitges',logo:'cb-sitges'}, valencia:{name:'Valencia Basket',logo:'valencia-basket'},
+      tehran:{name:'Tehran',logo:'tehran'}, girona:{name:'Veterans Girona',logo:'veterans-girona'},
+      sedis:{name:'Veterans del Sedis',logo:'veterans-sedis'}, espanyol:{name:'S.D. Espanyol',logo:'espanyol'},
+      towers:{name:'No Surrender Towers',logo:'no-surrender-towers'}, mvps:{name:'MVPs',logo:'mvps'},
+      barca:{name:'Veterans FC Barcelona',logo:'fcbarcelona-veterans'}, french:{name:'French Connection',logo:'french-connection'},
+    };
+    const GROUPS = { A:['sitges','valencia','towers','girona','sedis'], B:['espanyol','mvps','tehran','barca','french'] };
+    const MATCHES = [
+      {id:'g1',time:'13:00',court:1,group:'A',home:'sitges',away:'girona'},
+      {id:'g2',time:'13:00',court:2,group:'B',home:'espanyol',away:'tehran'},
+      {id:'g3',time:'13:30',court:1,group:'A',home:'valencia',away:'sedis'},
+      {id:'g4',time:'13:30',court:2,group:'B',home:'mvps',away:'barca'},
+      {id:'g5',time:'14:00',court:1,group:'A',home:'sitges',away:'towers'},
+      {id:'g6',time:'14:00',court:2,group:'B',home:'espanyol',away:'french'},
+      {id:'g7',time:'14:30',court:1,group:'A',home:'sedis',away:'girona'},
+      {id:'g8',time:'14:30',court:2,group:'B',home:'tehran',away:'mvps'},
+      {id:'g9',time:'15:00',court:1,group:'A',home:'towers',away:'valencia'},
+      {id:'g10',time:'15:00',court:2,group:'B',home:'barca',away:'french'},
+      {id:'g11',time:'15:30',court:1,group:'A',home:'sitges',away:'sedis'},
+      {id:'g12',time:'15:30',court:2,group:'B',home:'espanyol',away:'mvps'},
+      {id:'g13',time:'16:00',court:1,group:'A',home:'girona',away:'towers'},
+      {id:'g14',time:'16:00',court:2,group:'B',home:'tehran',away:'french'},
+      {id:'g15',time:'16:30',court:1,group:'A',home:'valencia',away:'sitges'},
+      {id:'g16',time:'16:30',court:2,group:'B',home:'barca',away:'espanyol'},
+      {id:'g17',time:'17:00',court:1,group:'A',home:'sedis',away:'towers'},
+      {id:'g18',time:'17:00',court:2,group:'B',home:'mvps',away:'french'},
+      {id:'g19',time:'17:30',court:1,group:'A',home:'girona',away:'valencia'},
+      {id:'g20',time:'17:30',court:2,group:'B',home:'barca',away:'tehran'},
+    ];
+    const BRACKET_IDS = ['sf1','sf2','final'];
+
+    let results = {}, bracket = {};
+
+    // ── Càrrega del Sheet via JSONP (sense CORS) ──────────────────────────────
+    const normKey = s => (s||'').toLowerCase().normalize('NFD').replace(/[^a-z0-9]/g,'');
+    const cellStr = c => !c ? '' : (c.f != null ? String(c.f) : (c.v == null ? '' : String(c.v))).trim();
+    const numOrEmpty = v => { const s = String(v==null?'':v).trim(); if(s==='') return ''; const n = parseInt(s,10); return isNaN(n)?'':Math.max(0,n); };
+    function normSo(v){ v = String(v||'').trim().toLowerCase();
+      if(['local','l','home','casa'].includes(v)) return 'home';
+      if(['visitant','visitante','v','away','fora'].includes(v)) return 'away'; return null; }
+
+    let gN = 0;
+    function loadSheet() {
+      return new Promise((resolve, reject) => {
+        const cb = '__ig_cb_' + (gN++); let done = false;
+        const s = document.createElement('script');
+        const clean = () => { try{delete window[cb];}catch{} s.remove(); };
+        window[cb] = resp => { done = true; try {
+          const cols = resp.table.cols.map(c => normKey(c.label||c.id));
+          const recs = (resp.table.rows||[]).map(row => cols.reduce((o,h,i)=>{o[h]=cellStr((row.c||[])[i]);return o;},{}));
+          clean(); resolve(recs);
+        } catch(e){ clean(); reject(e); } };
+        s.src = SHEET.replace(/tqx=out:csv/i, 'tqx=out:json;responseHandler:'+cb);
+        s.onerror = () => { if(!done){ clean(); reject(new Error('no s\'ha pogut carregar el full')); } };
+        document.head.appendChild(s);
+        setTimeout(() => { if(!done){ clean(); reject(new Error('temps esgotat')); } }, 15000);
+      });
+    }
+    function applyRecs(recs) {
+      const R = {}, B = {};
+      for (const o of recs) {
+        const id = (o.id||'').trim(); if(!id) continue;
+        const rec = { home: numOrEmpty(o.puntslocal), away: numOrEmpty(o.puntsvisitant), so: normSo(o.tl) };
+        if (BRACKET_IDS.includes(id)) B[id] = rec; else R[id] = rec;
+      }
+      results = R; bracket = B;
+    }
+
+    // ── Lògica de classificació i cruces (idèntica a torneig-2026.js) ─────────
+    function winnerOf(r){ if(!r) return null; const h=r.home,a=r.away;
+      if(h===''||h==null||a===''||a==null) return null;
+      const nh=+h,na=+a; if(nh>na) return 'home'; if(na>nh) return 'away'; return r.so||null; }
+    const blank = t => ({team:t,pj:0,pg:0,pp:0,pf:0,pc:0,pts:0});
+    function computeStandings(g){
+      const st={}; GROUPS[g].forEach(t=>st[t]=blank(t));
+      MATCHES.filter(m=>m.group===g).forEach(m=>{ const r=results[m.id],w=winnerOf(r); if(!w) return;
+        const nh=+r.home,na=+r.away,sh=st[m.home],sa=st[m.away];
+        sh.pj++;sa.pj++; sh.pf+=nh;sh.pc+=na; sa.pf+=na;sa.pc+=nh;
+        if(w==='home'){sh.pg++;sa.pp++;sh.pts+=3;sa.pts+=1;} else {sa.pg++;sh.pp++;sa.pts+=3;sh.pts+=1;} });
+      const arr=Object.values(st);
+      arr.sort((a,b)=> b.pts-a.pts || (b.pf-b.pc)-(a.pf-a.pc) || b.pf-a.pf || TEAMS[a.team].name.localeCompare(TEAMS[b.team].name));
+      resolveH2H(arr,g); return arr;
+    }
+    function resolveH2H(arr,g){ let i=0; while(i<arr.length){ let j=i;
+      while(j+1<arr.length && arr[j+1].pts===arr[i].pts) j++;
+      if(j>i){ const tied=arr.slice(i,j+1).map(s=>s.team); const mini=miniLeague(tied,g);
+        arr.splice(i,j-i+1,...arr.slice(i,j+1).sort((a,b)=>
+          mini[b.team].pts-mini[a.team].pts || (mini[b.team].pf-mini[b.team].pc)-(mini[a.team].pf-mini[a.team].pc) ||
+          (b.pf-b.pc)-(a.pf-a.pc) || b.pf-a.pf)); }
+      i=j+1; } }
+    function miniLeague(teams,g){ const s={}; teams.forEach(t=>s[t]={pts:0,pf:0,pc:0});
+      MATCHES.filter(m=>m.group===g && teams.includes(m.home)&&teams.includes(m.away)).forEach(m=>{
+        const r=results[m.id],w=winnerOf(r); if(!w) return; const nh=+r.home,na=+r.away;
+        s[m.home].pf+=nh;s[m.home].pc+=na; s[m.away].pf+=na;s[m.away].pc+=nh;
+        if(w==='home'){s[m.home].pts+=3;s[m.away].pts+=1;} else {s[m.away].pts+=3;s[m.home].pts+=1;} });
+      return s; }
+    const groupComplete = g => MATCHES.filter(m=>m.group===g).every(m=>winnerOf(results[m.id])!==null);
+    function seeds(){ const a=computeStandings('A'),b=computeStandings('B');
+      return { A:groupComplete('A'),B:groupComplete('B'),
+        a1:a[0]&&a[0].team,a2:a[1]&&a[1].team,b1:b[0]&&b[0].team,b2:b[1]&&b[1].team }; }
+
+    // ── Rondes disponibles ────────────────────────────────────────────────────
+    function buildRounds() {
+      const rounds = [];
+      [...new Set(MATCHES.map(m=>m.time))].sort().forEach(time => {
+        const ms = MATCHES.filter(m=>m.time===time).sort((a,b)=>a.court-b.court);
+        rounds.push({ key:'h'+time, type:'group', eyebrow:'Resultats', title:time,
+          matches: ms.map(m => mv(m.id, m.home, m.away, m.court, results[m.id])) });
+      });
+      const s = seeds();
+      const sf1H = s.A?s.a1:null, sf1A = s.B?s.b2:null, sf2H = s.B?s.b1:null, sf2A = s.A?s.a2:null;
+      rounds.push({ key:'semis', type:'group', eyebrow:'19:15', title:'Semifinals',
+        matches:[ mv('sf1', sf1H, sf1A, 1, bracket.sf1, '1r A', '2n B'),
+                  mv('sf2', sf2H, sf2A, 2, bracket.sf2, '1r B', '2n A') ] });
+      const w1=winnerOf(bracket.sf1||{}), w2=winnerOf(bracket.sf2||{});
+      const finH = w1?(w1==='home'?sf1H:sf1A):null, finA = w2?(w2==='home'?sf2H:sf2A):null;
+      const wf = winnerOf(bracket.final||{}); const champ = wf?(wf==='home'?finH:finA):null;
+      rounds.push({ key:'final', type:'final', eyebrow:'19:45', title:'Gran Final',
+        matches:[ mv('final', finH, finA, 0, bracket.final, 'Guanyador SF1', 'Guanyador SF2') ], champ });
+      return rounds;
+    }
+    // match-view: {homeKey,awayKey,hs,as,w,court,hLbl,aLbl}
+    function mv(id, homeKey, awayKey, court, rec, hLbl, aLbl) {
+      const r = rec || {};
+      return { homeKey, awayKey, hs:r.home, as:r.away, w:winnerOf(r), court, hLbl, aLbl };
+    }
+
+    // ── Render de la targeta ──────────────────────────────────────────────────
+    const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const card = document.getElementById('card');
+
+    function teamSide(cls, key, lbl, win) {
+      const name = key ? TEAMS[key].name : (lbl || 'Per definir');
+      const logo = key ? `<span class="chip"><img src="${LOGO}${TEAMS[key].logo}.webp" alt=""></span>` : `<span class="chip"></span>`;
+      return `<div class="team ${cls}${win?' win':''}">${logo}<span class="nm">${esc(name)}</span></div>`;
+    }
+    function scoreBlock(m) {
+      const has = m.hs!=='' && m.hs!=null && m.as!=='' && m.as!=null;
+      const hv = has ? m.hs : '–', av = has ? m.as : '–';
+      const tie = has && (+m.hs===+m.as);
+      return `<div class="scores"><span class="sc${m.w==='home'?' win':''}">${hv}</span>`+
+        `<span class="dash">–</span><span class="sc${m.w==='away'?' win':''}">${av}</span>`+
+        (tie && m.w ? `<span class="tl">TL · ${m.w==='home'?'Local':'Visitant'}</span>` : '')+`</div>`;
+    }
+    function matchHtml(m) {
+      return `<div class="match">`+
+        (m.court ? `<div class="pista">Pista ${m.court}</div>` : '')+
+        `<div class="row">`+
+          teamSide('home', m.homeKey, m.hLbl, m.w==='home')+
+          scoreBlock(m)+
+          teamSide('away', m.awayKey, m.aLbl, m.w==='away')+
+        `</div></div>`;
+    }
+    function render(round) {
+      const champHtml = round.type==='final' && round.champ
+        ? `<div class="champion"><div class="lbl">Campió</div><div class="nm">${esc(TEAMS[round.champ].name)}</div></div>` : '';
+      card.innerHTML =
+        `<div class="c-head">
+           <div class="crest"><img src="${LOGO}cb-sitges.webp" alt=""></div>
+           <div class="ht"><div class="t1">Veterans Bàsquet Sitges</div><div class="t2">IV Torneig Solidari</div></div>
+         </div>
+         <div class="c-title">
+           <div class="eyebrow">${esc(round.eyebrow)}</div>
+           <div class="main${round.title.length>10?' small':''}">${esc(round.title)}</div>
+         </div>
+         <div class="c-matches">${round.matches.map(matchHtml).join('')}${champHtml}</div>
+         <div class="c-foot">
+           <div class="cause">Lluita contra el <b>Parkinson</b></div>
+           <div class="meta">20 de juny de 2026<br>Pavelló Pins Vens · Sitges</div>
+         </div>`;
+      fitPreview();
+    }
+
+    // ── Ajust de la previsualització a l'amplada del mòbil ────────────────────
+    const cardWrap = document.getElementById('cardWrap');
+    function fitPreview() {
+      const avail = document.getElementById('preview').clientWidth - 32;
+      const k = Math.min(avail / 1080, 0.6);
+      card.style.transform = `scale(${k})`;
+      cardWrap.style.width = (1080*k)+'px';
+      cardWrap.style.height = (1350*k)+'px';
+    }
+    addEventListener('resize', fitPreview);
+
+    // ── Exportar / compartir ──────────────────────────────────────────────────
+    function setStatus(msg, cls){ const e=document.getElementById('status'); e.textContent=msg||''; e.className=cls||''; }
+
+    async function exportImage() {
+      setStatus('Generant imatge…');
+      try {
+        // clonem la targeta a mida real (sense escala) per capturar-la nítida
+        const clone = card.cloneNode(true);
+        Object.assign(clone.style, { transform:'none', position:'fixed', left:'-10000px', top:'0' });
+        document.body.appendChild(clone);
+        const canvas = await html2canvas(clone, { width:1080, height:1350, scale:2, useCORS:true, backgroundColor:null });
+        clone.remove();
+        const blob = await new Promise(r => canvas.toBlob(r, 'image/png'));
+        const round = ROUNDS.find(r=>r.key===sel.value);
+        const fname = 'veterans-sitges-' + (round?round.title:'resultats').toLowerCase().replace(/[^a-z0-9]+/g,'-') + '.png';
+        const file = new File([blob], fname, { type:'image/png' });
+        if (navigator.canShare && navigator.canShare({ files:[file] })) {
+          await navigator.share({ files:[file], title:'Resultats — Veterans Bàsquet Sitges' });
+          setStatus('');
+        } else {
+          const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = fname;
+          document.body.appendChild(a); a.click(); a.remove();
+          setStatus('Imatge descarregada ✓', 'ok'); setTimeout(()=>setStatus(''), 2500);
+        }
+      } catch(e) {
+        if (e && e.name === 'AbortError') { setStatus(''); return; }   // l'usuari ha cancel·lat
+        setStatus('No s\'ha pogut generar la imatge: ' + (e.message||e), 'err');
+      }
+    }
+
+    // ── Arrencada ─────────────────────────────────────────────────────────────
+    let ROUNDS = [];
+    const sel = document.getElementById('round');
+    function populate() {
+      ROUNDS = buildRounds();
+      const prev = sel.value;
+      sel.innerHTML = ROUNDS.map(r =>
+        `<option value="${r.key}">${r.type==='group' && /^\d/.test(r.title) ? 'Resultats '+r.title : r.title}</option>`).join('');
+      // tria per defecte: última ronda amb algun resultat
+      let def = ROUNDS.find(r=>r.key===prev) ? prev : null;
+      if (!def) {
+        for (let i=ROUNDS.length-1;i>=0;i--) if (ROUNDS[i].matches.some(m=>m.hs!=='' && m.hs!=null)) { def = ROUNDS[i].key; break; }
+      }
+      sel.value = def || ROUNDS[0].key;
+      render(ROUNDS.find(r=>r.key===sel.value));
+    }
+    sel.addEventListener('change', () => render(ROUNDS.find(r=>r.key===sel.value)));
+    document.getElementById('share').addEventListener('click', exportImage);
+    document.getElementById('reload').addEventListener('click', refresh);
+
+    async function refresh() {
+      setStatus('Llegint resultats…');
+      try { applyRecs(await loadSheet()); populate(); setStatus(''); }
+      catch(e){ setStatus('No s\'ha pogut llegir el full: ' + (e.message||e) + '. Pots generar igualment (sense marcadors).', 'err');
+        if (!ROUNDS.length) populate(); }
+    }
+    fitPreview();
+    refresh();
+  })();
+  </script>
+</body>
+</html>
