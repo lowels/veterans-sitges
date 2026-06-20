@@ -562,6 +562,15 @@
     const fromUrl = (s, key, p) => { const v = qs.get(key); if (v !== null) cfg[s][p] = v; };
     fromUrl(1, 'm1', 'id'); fromUrl(2, 'm2', 'id');
 
+    // Força el mode FINAL (un sol marcador, vista completa) amb un scored id concret.
+    // Ús d'urgència sobre l'escenari:  marcadors-horitzontal.html?final=34187
+    const finalId = qs.get('final');
+    if (finalId !== null) {
+      sched.single = true;
+      cfg[1].id = finalId; cfg[1].label = '';
+      cfg[2].id = '';
+    }
+
     let active = 1;
 
     const slots = { 1: document.querySelector('[data-slot="1"]'), 2: document.querySelector('[data-slot="2"]') };
