@@ -1,6 +1,6 @@
 /* ============================================================
    torneig-2026.js — Veterans Bàsquet Sitges
-   Classificació, resultats i fase final (Final Four)
+   Classificació, resultats i la gran final (1r Grup A vs 1r Grup B)
    del 4t Torneig Solidari Vila de Sitges (20 juny 2026).
 
    FONT DE DADES — Google Sheet (només lectura):
@@ -85,7 +85,7 @@
     { id: 'g20', time: '17:30', court: 2, group: 'B', home: 'barca',    away: 'tehran' },
   ];
 
-  const BRACKET_IDS = ['sf1', 'sf2', 'final'];
+  const BRACKET_IDS = ['final'];
   const LOGO_PATH = 'assets/img/equips/';
 
   /* ──────────────────────────────────────────
@@ -99,9 +99,9 @@
       pjFull: 'Partits jugats', pgFull: 'Guanyats', ppFull: 'Perduts',
       pfFull: 'Punts a favor', pcFull: 'Punts en contra', ptsFull: 'Punts de classificació',
       legend: 'PJ: jugats · G: guanyats · P: perduts · PF: punts a favor · PC: punts en contra · +/–: diferència · 3 punts per victòria, 1 per derrota',
-      qualify: 'Es classifiquen per a semifinals',
+      qualify: 'Es classifica per a la gran final',
       vs: 'vs', tlBadge: 'TL',
-      semi1: 'Semifinal 1', semi2: 'Semifinal 2', finalT: 'Final', champion: 'Guanyador',
+      semi1: 'Semifinal 1', semi2: 'Semifinal 2', finalT: 'Final', grandFinalT: 'La gran final', champion: 'Guanyador',
       seed1A: '1r Grup A', seed2A: '2n Grup A', seed1B: '1r Grup B', seed2B: '2n Grup B',
       tbd: 'Per definir', winnerSemis: 'Guanyador',
       live: 'Resultats en directe', updated: 'Actualitzat', refresh: 'Actualitzar',
@@ -114,9 +114,9 @@
       pjFull: 'Partidos jugados', pgFull: 'Ganados', ppFull: 'Perdidos',
       pfFull: 'Puntos a favor', pcFull: 'Puntos en contra', ptsFull: 'Puntos de clasificación',
       legend: 'PJ: jugados · G: ganados · P: perdidos · PF: puntos a favor · PC: puntos en contra · +/–: diferencia · 3 puntos por victoria, 1 por derrota',
-      qualify: 'Se clasifican para semifinales',
+      qualify: 'Se clasifica para la gran final',
       vs: 'vs', tlBadge: 'TL',
-      semi1: 'Semifinal 1', semi2: 'Semifinal 2', finalT: 'Final', champion: 'Ganador',
+      semi1: 'Semifinal 1', semi2: 'Semifinal 2', finalT: 'Final', grandFinalT: 'La gran final', champion: 'Ganador',
       seed1A: '1º Grupo A', seed2A: '2º Grupo A', seed1B: '1º Grupo B', seed2B: '2º Grupo B',
       tbd: 'Por definir', winnerSemis: 'Ganador',
       live: 'Resultados en directo', updated: 'Actualizado', refresh: 'Actualizar',
@@ -129,9 +129,9 @@
       pjFull: 'Played', pgFull: 'Won', ppFull: 'Lost',
       pfFull: 'Points for', pcFull: 'Points against', ptsFull: 'Standings points',
       legend: 'P: played · W: won · L: lost · PF: points for · PA: points against · +/–: difference · 3 points per win, 1 per loss',
-      qualify: 'Qualify for the semifinals',
+      qualify: 'Qualifies for the grand final',
       vs: 'vs', tlBadge: 'FT',
-      semi1: 'Semifinal 1', semi2: 'Semifinal 2', finalT: 'Final', champion: 'Winner',
+      semi1: 'Semifinal 1', semi2: 'Semifinal 2', finalT: 'Final', grandFinalT: 'The grand final', champion: 'Winner',
       seed1A: '1st Group A', seed2A: '2nd Group A', seed1B: '1st Group B', seed2B: '2nd Group B',
       tbd: 'To be decided', winnerSemis: 'Winner',
       live: 'Live results', updated: 'Updated', refresh: 'Refresh',
@@ -144,9 +144,9 @@
       pjFull: 'Joués', pgFull: 'Gagnés', ppFull: 'Perdus',
       pfFull: 'Points pour', pcFull: 'Points contre', ptsFull: 'Points de classement',
       legend: 'J: joués · G: gagnés · P: perdus · PP: points pour · PC: points contre · +/–: différence · 3 points par victoire, 1 par défaite',
-      qualify: 'Se qualifient pour les demi-finales',
+      qualify: 'Se qualifie pour la grande finale',
       vs: 'vs', tlBadge: 'LF',
-      semi1: 'Demi-finale 1', semi2: 'Demi-finale 2', finalT: 'Finale', champion: 'Vainqueur',
+      semi1: 'Demi-finale 1', semi2: 'Demi-finale 2', finalT: 'Finale', grandFinalT: 'La grande finale', champion: 'Vainqueur',
       seed1A: '1er Groupe A', seed2A: '2e Groupe A', seed1B: '1er Groupe B', seed2B: '2e Groupe B',
       tbd: 'À définir', winnerSemis: 'Vainqueur',
       live: 'Résultats en direct', updated: 'Mis à jour', refresh: 'Actualiser',
@@ -360,7 +360,7 @@
   function standingsCard(groupKey) {
     const rows = computeStandings(groupKey);
     const tr = rows.map((s, idx) => {
-      const qual = idx < 2 ? ' standing-row--qualify' : '';
+      const qual = idx < 1 ? ' standing-row--qualify' : '';
       const diff = s.pf - s.pc;
       const diffStr = (diff > 0 ? '+' : '') + diff;
       return `
@@ -469,7 +469,7 @@
   }
 
   /* ──────────────────────────────────────────
-     10. RENDER — FASE FINAL (Final Four)
+     10. RENDER — LA GRAN FINAL (1r Grup A vs 1r Grup B)
   ────────────────────────────────────────── */
   function seeds() {
     const a = computeStandings('A'), b = computeStandings('B');
@@ -485,44 +485,24 @@
     if (!wrap) return;
     const s = seeds();
 
-    const sf1Home = s.A ? s.a1 : null, sf1HomeLbl = t('seed1A');
-    const sf1Away = s.B ? s.b2 : null, sf1AwayLbl = t('seed2B');
-    const sf2Home = s.B ? s.b1 : null, sf2HomeLbl = t('seed1B');
-    const sf2Away = s.A ? s.a2 : null, sf2AwayLbl = t('seed2A');
-
-    const r1 = bracket.sf1 || {}, r2 = bracket.sf2 || {};
-    const w1 = winnerOf(r1), w2 = winnerOf(r2);
-    const finHome = w1 ? (w1 === 'home' ? sf1Home : sf1Away) : null;
-    const finAway = w2 ? (w2 === 'home' ? sf2Home : sf2Away) : null;
+    // Sense semifinals: la gran final enfronta el primer de cada grup.
+    const finHome = s.A ? s.a1 : null, finHomeLbl = t('seed1A');
+    const finAway = s.B ? s.b1 : null, finAwayLbl = t('seed1B');
     const rf = bracket.final || {};
     const wf = winnerOf(rf);
     const champ = wf ? (wf === 'home' ? finHome : finAway) : null;
 
     wrap.innerHTML = `
-      <div class="bracket-grid">
-        <div class="bracket-col bracket-col--semi">
-          ${bracketCard('sf1', t('semi1'),
-            { team: sf1Home, label: sf1HomeLbl }, { team: sf1Away, label: sf1AwayLbl }, r1)}
-        </div>
-
-        <div class="bracket-col bracket-col--final">
-          <div class="final-wrap">
-            <div class="final-trophy" aria-hidden="true"><svg><use href="#i-trophy"/></svg></div>
-            ${bracketCard('final', t('finalT'),
-              { team: finHome, label: t('winnerSemis') + ' ' + t('semi1') },
-              { team: finAway, label: t('winnerSemis') + ' ' + t('semi2') }, rf, true)}
-            <div class="champion ${champ ? 'is-set' : ''}">
-              <span class="champion__label">${t('champion')}</span>
-              <span class="champion__name">
-                ${champ ? logoImg(champ, 'champion__logo') + '<span>' + esc(TEAMS[champ].name) + '</span>' : '<span class="tbd">' + t('tbd') + '</span>'}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="bracket-col bracket-col--semi">
-          ${bracketCard('sf2', t('semi2'),
-            { team: sf2Home, label: sf2HomeLbl }, { team: sf2Away, label: sf2AwayLbl }, r2)}
+      <div class="final-wrap final-wrap--solo">
+        <div class="final-trophy" aria-hidden="true"><svg><use href="#i-trophy"/></svg></div>
+        ${bracketCard('final', t('grandFinalT'),
+          { team: finHome, label: finHomeLbl },
+          { team: finAway, label: finAwayLbl }, rf, true)}
+        <div class="champion ${champ ? 'is-set' : ''}">
+          <span class="champion__label">${t('champion')}</span>
+          <span class="champion__name">
+            ${champ ? logoImg(champ, 'champion__logo') + '<span>' + esc(TEAMS[champ].name) + '</span>' : '<span class="tbd">' + t('tbd') + '</span>'}
+          </span>
         </div>
       </div>`;
   }

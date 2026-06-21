@@ -596,6 +596,8 @@
 
 /* Final destacada */
 .final-wrap { position: relative; }
+/* Gran final única (sense semifinals): targeta centrada */
+.final-wrap--solo { max-width: 460px; margin: 0 auto; }
 .bracket-card--final {
   background: rgba(212,168,67,0.1);
   border-color: rgba(212,168,67,0.4);

@@ -10,7 +10,7 @@
     ─────────────────────────────────────────────────────────────────────────
     RESULTATS → IMATGE PER A INSTAGRAM
     Llegeix els resultats del mateix Google Sheet del torneig, els agrupa per
-    hora (+ semifinals i final amb els equips reals) i genera una targeta
+    hora (+ la gran final amb els equips reals) i genera una targeta
     1080×1350 (format Instagram) descarregable / compartible des del mòbil.
     ─────────────────────────────────────────────────────────────────────────
   -->
@@ -183,7 +183,7 @@
       {id:'g19',time:'17:30',court:1,group:'A',home:'girona',away:'valencia'},
       {id:'g20',time:'17:30',court:2,group:'B',home:'barca',away:'tehran'},
     ];
-    const BRACKET_IDS = ['sf1','sf2','final'];
+    const BRACKET_IDS = ['final'];
 
     let results = {}, bracket = {};
 
@@ -267,15 +267,11 @@
           matches: ms.map(m => mv(m.id, m.home, m.away, `${m.time} · Pista ${m.court}`, results[m.id])) });
       }
       const s = seeds();
-      const sf1H = s.A?s.a1:null, sf1A = s.B?s.b2:null, sf2H = s.B?s.b1:null, sf2A = s.A?s.a2:null;
-      rounds.push({ key:'semis', type:'group', eyebrow:'19:15', title:'Semifinals',
-        matches:[ mv('sf1', sf1H, sf1A, 'Pista 1', bracket.sf1, '1r A', '2n B'),
-                  mv('sf2', sf2H, sf2A, 'Pista 2', bracket.sf2, '1r B', '2n A') ] });
-      const w1=winnerOf(bracket.sf1||{}), w2=winnerOf(bracket.sf2||{});
-      const finH = w1?(w1==='home'?sf1H:sf1A):null, finA = w2?(w2==='home'?sf2H:sf2A):null;
+      // Sense semifinals: la gran final enfronta el primer de cada grup.
+      const finH = s.A?s.a1:null, finA = s.B?s.b1:null;
       const wf = winnerOf(bracket.final||{}); const champ = wf?(wf==='home'?finH:finA):null;
-      rounds.push({ key:'final', type:'final', eyebrow:'19:45', title:'Gran Final',
-        matches:[ mv('final', finH, finA, '', bracket.final, 'Guanyador SF1', 'Guanyador SF2') ], champ });
+      rounds.push({ key:'final', type:'final', eyebrow:'La gran final', title:'Gran Final',
+        matches:[ mv('final', finH, finA, '', bracket.final, '1r A', '1r B') ], champ });
       return rounds;
     }
     // match-view: {homeKey,awayKey,hs,as,w,tag,hLbl,aLbl}
