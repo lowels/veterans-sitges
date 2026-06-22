@@ -34,7 +34,13 @@
     //
     //   Deixa-ho en '' (buit) fins que el tinguis: la web mostrarà la
     //   graella buida (sense resultats) i no fallarà.
-    sheetCsvUrl: 'https://docs.google.com/spreadsheets/d/1ARQQU8Uy_SUhNMZcGNujIB5W0D7prarzcsoI13POr3A/gviz/tq?tqx=out:csv&gid=0',
+    //
+    //   ▸ TORNEIG 2026 FINALITZAT: els resultats definitius estan incrustats a
+    //     RESULTS_2026 (més avall), així la web NO depèn del Google Sheet. Per
+    //     reactivar els resultats en directe en una edició futura, torna a posar
+    //     aquí la URL del full (gviz/csv):
+    //     'https://docs.google.com/spreadsheets/d/1ARQQU8Uy_SUhNMZcGNujIB5W0D7prarzcsoI13POr3A/gviz/tq?tqx=out:csv&gid=0'
+    sheetCsvUrl: '',
 
     // Cada quants segons es tornen a llegir els resultats del Sheet.
     refreshSeconds: 30,
@@ -86,6 +92,33 @@
   ];
 
   const BRACKET_IDS = ['final'];
+
+  // Resultats DEFINITIUS del torneig 2026 (incrustats → la web no depèn del Drive).
+  // home = punts de l'equip local del partit (vegeu MATCHES); away = visitant.
+  // so (shoot-out) = 'home' | 'away' en cas d'empat resolt per tirs lliures; aquí cap.
+  const RESULTS_2026 = {
+    g1:  { home: 23, away: 41 },  // Bàsquet Sitges – Veterans Girona
+    g2:  { home: 41, away: 28 },  // S.D. Espanyol – Tehran
+    g3:  { home: 33, away: 22 },  // Valencia Basket – Veterans del Sedis
+    g4:  { home: 48, away: 34 },  // MVPs – Veterans FC Barcelona
+    g5:  { home: 21, away: 34 },  // Bàsquet Sitges – No Surrender Towers
+    g6:  { home: 25, away: 24 },  // S.D. Espanyol – French Connection
+    g7:  { home: 33, away: 34 },  // Veterans del Sedis – Veterans Girona
+    g8:  { home: 19, away: 58 },  // Tehran – MVPs
+    g9:  { home: 24, away: 35 },  // No Surrender Towers – Valencia Basket
+    g10: { home: 23, away: 25 },  // Veterans FC Barcelona – French Connection
+    g11: { home: 33, away: 43 },  // Bàsquet Sitges – Veterans del Sedis
+    g12: { home: 19, away: 32 },  // S.D. Espanyol – MVPs
+    g13: { home: 37, away: 23 },  // Veterans Girona – No Surrender Towers
+    g14: { home: 16, away: 33 },  // Tehran – French Connection
+    g15: { home: 39, away: 29 },  // Valencia Basket – Bàsquet Sitges
+    g16: { home: 45, away: 39 },  // Veterans FC Barcelona – S.D. Espanyol
+    g17: { home: 25, away: 23 },  // Veterans del Sedis – No Surrender Towers
+    g18: { home: 45, away: 22 },  // MVPs – French Connection
+    g19: { home: 43, away: 44 },  // Veterans Girona – Valencia Basket
+    g20: { home: 47, away: 33 },  // Veterans FC Barcelona – Tehran
+    final: { home: 40, away: 45 },// GRAN FINAL: Valencia Basket (1r Grup A) – MVPs (1r Grup B) → campió MVPs
+  };
   const LOGO_PATH = 'assets/img/equips/';
 
   /* ──────────────────────────────────────────
@@ -166,7 +199,15 @@
   ────────────────────────────────────────── */
   const HAS_SHEET = !!CONFIG.sheetCsvUrl;
   let results = {};   // { matchId: {home, away, so} }
-  let bracket = {};   // { sf1:{home,away,so}, sf2:{...}, final:{...} }
+  let bracket = {};   // { final:{home,away,so} }
+
+  // Carrega inicial des dels resultats incrustats (RESULTS_2026). Si algun dia es
+  // torna a activar el Sheet (HAS_SHEET), loadFromSheet() els sobreescriurà.
+  for (const id in RESULTS_2026) {
+    const r = RESULTS_2026[id];
+    const rec = { home: r.home, away: r.away, so: r.so || null };
+    if (BRACKET_IDS.includes(id)) bracket[id] = rec; else results[id] = rec;
+  }
 
   /* ──────────────────────────────────────────
      4. CARREGA DES DEL GOOGLE SHEET (CSV)
