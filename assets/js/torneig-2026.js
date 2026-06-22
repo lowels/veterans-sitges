@@ -102,7 +102,7 @@
     g3:  { home: 33, away: 22 },  // Valencia Basket – Veterans del Sedis
     g4:  { home: 48, away: 34 },  // MVPs – Veterans FC Barcelona
     g5:  { home: 21, away: 34 },  // Bàsquet Sitges – No Surrender Towers
-    g6:  { home: 25, away: 24 },  // S.D. Espanyol – French Connection
+    g6:  { home: 24, away: 24, so: 'home' },  // S.D. Espanyol – French Connection (empat 24-24, Espanyol guanya per tirs lliures)
     g7:  { home: 33, away: 34 },  // Veterans del Sedis – Veterans Girona
     g8:  { home: 19, away: 58 },  // Tehran – MVPs
     g9:  { home: 24, away: 35 },  // No Surrender Towers – Valencia Basket
