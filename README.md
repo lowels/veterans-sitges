@@ -11,6 +11,7 @@ Zero dependències de build: obre `index.html` directament al navegador.
 web/
 ├── index.html                  # Portada
 ├── torneig-2026.html           # Classificacions, resultats i la gran final del torneig 2026
+├── 404.html                    # Pàgina d'error (rutes absolutes: se serveix des de qualsevol adreça)
 ├── assets/
 │   ├── css/
 │   │   ├── home.css            # Base de la marca Varsity (colors, lletres, nav, peu) + portada

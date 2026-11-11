@@ -123,6 +123,10 @@ const translations = {
       instagram: "Segueix-nos a Instagram",
       club: "Secció de Veterans del Club Bàsquet Sitges",
     },
+    e404: {
+      title: "Fora de banda",
+      text: "Aquesta pàgina no existeix o ja no és on era.",
+    },
     t2026: {
       nav: "Torneig 2026",
       badge: "4t Torneig Solidari · Vila de Sitges",
@@ -273,6 +277,10 @@ const translations = {
       rights: "Veterans Basquet Sitges © 2026",
       instagram: "Síguenos en Instagram",
       club: "Sección de Veteranos del Club Bàsquet Sitges",
+    },
+    e404: {
+      title: "Fuera de banda",
+      text: "Esta página no existe o ya no está donde estaba.",
     },
     t2026: {
       nav: "Torneo 2026",
@@ -425,6 +433,10 @@ const translations = {
       instagram: "Follow us on Instagram",
       club: "Veterans section of Club Bàsquet Sitges",
     },
+    e404: {
+      title: "Out of bounds",
+      text: "This page doesn't exist or is no longer where it used to be.",
+    },
     t2026: {
       nav: "2026 Tournament",
       badge: "4th Charity Tournament · Vila de Sitges",
@@ -575,6 +587,10 @@ const translations = {
       rights: "Veterans Basquet Sitges © 2026",
       instagram: "Suivez-nous sur Instagram",
       club: "Section Vétérans du Club Bàsquet Sitges",
+    },
+    e404: {
+      title: "Hors limites",
+      text: "Cette page n'existe pas ou n'est plus là où elle était.",
     },
     t2026: {
       nav: "Tournoi 2026",
