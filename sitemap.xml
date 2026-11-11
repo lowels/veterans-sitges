@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://veterans.clubbasquetsitges.com/</loc>
-    <lastmod>2026-05-13</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ca" href="https://veterans.clubbasquetsitges.com/" />
@@ -11,5 +11,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://veterans.clubbasquetsitges.com/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://veterans.clubbasquetsitges.com/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://veterans.clubbasquetsitges.com/" />
+  </url>
+  <url>
+    <loc>https://veterans.clubbasquetsitges.com/torneig-2026.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://veterans.clubbasquetsitges.com/torneig-2026.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://veterans.clubbasquetsitges.com/torneig-2026.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://veterans.clubbasquetsitges.com/torneig-2026.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://veterans.clubbasquetsitges.com/torneig-2026.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://veterans.clubbasquetsitges.com/torneig-2026.html" />
   </url>
 </urlset>
