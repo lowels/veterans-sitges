@@ -12,11 +12,14 @@ web/
 ├── index.html                  # Pàgina única (tot el contingut)
 ├── assets/
 │   ├── css/
-│   │   └── styles.css          # Tot el CSS (design tokens + components)
+│   │   ├── home.css            # Base de la marca Varsity (colors, lletres, nav, peu) + portada
+│   │   ├── torneig-2026.css    # Pàgina del torneig; es carrega a sobre de home.css
+│   │   └── styles.css          # Disseny anterior (cap pàgina el carrega ja)
 │   ├── js/
 │   │   ├── i18n.js             # Traduccions CA/ES/EN/FR + lògica de canvi d'idioma
 │   │   └── main.js             # Nav sticky, hamburger, scroll, lightbox, animacions
 │   └── img/
+│       ├── brand/              # Logo i símbol de la marca (còpies optimitzades de ../brandkit/logo) i icones
 │       ├── hero-sitges.webp    # Foto de família de tots els equips del CB Sitges (fons del hero, desktop)
 │       ├── hero-sitges-mobile.webp # Variant per a mòbils del hero (≤900 px)
 │       ├── cartell-2026.jpg    # [COPIAR] 2026.jpeg del client

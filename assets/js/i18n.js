@@ -1,5 +1,5 @@
 /* ============================================================
-   i18n.js — Veterans Bàsquet Sitges
+   i18n.js — Veterans Basquet Sitges
    Traduccions: CA (default) · ES · EN · FR
    ============================================================ */
 
@@ -17,7 +17,7 @@ const translations = {
       segueix: "Segueix-nos",
     },
     hero: {
-      title: "Veterans Bàsquet Sitges",
+      title: "Veterans Basquet Sitges",
       title_seo: "— Torneig Solidari de Bàsquet a Sitges contra el Parkinson",
       subtitle: "Esport i solidaritat des de 1957",
       cta: "Torneig 2026 · 20 de juny",
@@ -40,7 +40,7 @@ const translations = {
     torneig: {
       title: "El Torneig Solidari",
       subtitle: "Quatre edicions, quatre causes",
-      intro: "Des de 2023, els Veterans Bàsquet Sitges organitzen anualment un torneig de bàsquet solidari al Pavelló Pins Vens de Sitges. Cada edició reuneix equips veterans de tot Catalunya i la resta d'Espanya per recaptar fons destinats a una causa diferent. Esport i solidaritat, junts a la pista.",
+      intro: "Des de 2023, els Veterans Basquet Sitges organitzen anualment un torneig de bàsquet solidari al Pavelló Pins Vens de Sitges. Cada edició reuneix equips veterans de tot Catalunya i la resta d'Espanya per recaptar fons destinats a una causa diferent. Esport i solidaritat, junts a la pista.",
       timeline_label: "Edicions",
       next_badge: "Pròxima",
       total_raised: "recaptats en 4 edicions",
@@ -119,7 +119,7 @@ const translations = {
     },
     footer: {
       tagline: "Esport i solidaritat des de 1957",
-      rights: "Veterans Bàsquet Sitges © 2026",
+      rights: "Veterans Basquet Sitges © 2026",
       instagram: "Segueix-nos a Instagram",
       club: "Secció de Veterans del Club Bàsquet Sitges",
     },
@@ -168,7 +168,7 @@ const translations = {
       segueix: "Síguenos",
     },
     hero: {
-      title: "Veterans Bàsquet Sitges",
+      title: "Veterans Basquet Sitges",
       title_seo: "— Torneo Solidario de Baloncesto en Sitges contra el Parkinson",
       subtitle: "Deporte y solidaridad desde 1957",
       cta: "Torneo 2026 · 20 de junio",
@@ -191,7 +191,7 @@ const translations = {
     torneig: {
       title: "El Torneo Solidario",
       subtitle: "Cuatro ediciones, cuatro causas",
-      intro: "Desde 2023, los Veterans Bàsquet Sitges organizan anualmente un torneo de baloncesto solidario en el Pabellón Pins Vens de Sitges. Cada edición reúne equipos veteranos de toda Cataluña y el resto de España para recaudar fondos destinados a una causa diferente. Deporte y solidaridad, juntos en la pista.",
+      intro: "Desde 2023, los Veterans Basquet Sitges organizan anualmente un torneo de baloncesto solidario en el Pabellón Pins Vens de Sitges. Cada edición reúne equipos veteranos de toda Cataluña y el resto de España para recaudar fondos destinados a una causa diferente. Deporte y solidaridad, juntos en la pista.",
       timeline_label: "Ediciones",
       next_badge: "Próxima",
       total_raised: "recaudados en 4 ediciones",
@@ -270,7 +270,7 @@ const translations = {
     },
     footer: {
       tagline: "Deporte y solidaridad desde 1957",
-      rights: "Veterans Bàsquet Sitges © 2026",
+      rights: "Veterans Basquet Sitges © 2026",
       instagram: "Síguenos en Instagram",
       club: "Sección de Veteranos del Club Bàsquet Sitges",
     },
@@ -319,7 +319,7 @@ const translations = {
       segueix: "Follow us",
     },
     hero: {
-      title: "Veterans Bàsquet Sitges",
+      title: "Veterans Basquet Sitges",
       title_seo: "— Charity Veterans Basketball Tournament in Sitges against Parkinson's",
       subtitle: "Sport and solidarity since 1957",
       cta: "2026 Tournament · June 20",
@@ -342,7 +342,7 @@ const translations = {
     torneig: {
       title: "The Charity Tournament",
       subtitle: "Four editions, four causes",
-      intro: "Since 2023, Veterans Bàsquet Sitges organizes an annual charity basketball tournament at the Pins Vens Sports Hall in Sitges. Each edition brings together veteran teams from across Catalonia and Spain to raise funds for a different cause. Sport and solidarity, together on the court.",
+      intro: "Since 2023, Veterans Basquet Sitges organizes an annual charity basketball tournament at the Pins Vens Sports Hall in Sitges. Each edition brings together veteran teams from across Catalonia and Spain to raise funds for a different cause. Sport and solidarity, together on the court.",
       timeline_label: "Editions",
       next_badge: "Next",
       total_raised: "raised across 4 editions",
@@ -421,7 +421,7 @@ const translations = {
     },
     footer: {
       tagline: "Sport and solidarity since 1957",
-      rights: "Veterans Bàsquet Sitges © 2026",
+      rights: "Veterans Basquet Sitges © 2026",
       instagram: "Follow us on Instagram",
       club: "Veterans section of Club Bàsquet Sitges",
     },
@@ -470,7 +470,7 @@ const translations = {
       segueix: "Suivez-nous",
     },
     hero: {
-      title: "Veterans Bàsquet Sitges",
+      title: "Veterans Basquet Sitges",
       title_seo: "— Tournoi Caritatif de Basket à Sitges contre la maladie de Parkinson",
       subtitle: "Sport et solidarité depuis 1957",
       cta: "Tournoi 2026 · 20 juin",
@@ -493,7 +493,7 @@ const translations = {
     torneig: {
       title: "Le Tournoi Solidaire",
       subtitle: "Quatre éditions, quatre causes",
-      intro: "Depuis 2023, les Veterans Bàsquet Sitges organisent chaque année un tournoi de basket-ball caritatif au Palais des Sports Pins Vens de Sitges. Chaque édition réunit des équipes de vétérans de toute la Catalogne et du reste de l'Espagne pour collecter des fonds au profit d'une cause différente. Sport et solidarité, ensemble sur le terrain.",
+      intro: "Depuis 2023, les Veterans Basquet Sitges organisent chaque année un tournoi de basket-ball caritatif au Palais des Sports Pins Vens de Sitges. Chaque édition réunit des équipes de vétérans de toute la Catalogne et du reste de l'Espagne pour collecter des fonds au profit d'une cause différente. Sport et solidarité, ensemble sur le terrain.",
       timeline_label: "Éditions",
       next_badge: "Prochaine",
       total_raised: "collectés en 4 éditions",
@@ -572,7 +572,7 @@ const translations = {
     },
     footer: {
       tagline: "Sport et solidarité depuis 1957",
-      rights: "Veterans Bàsquet Sitges © 2026",
+      rights: "Veterans Basquet Sitges © 2026",
       instagram: "Suivez-nous sur Instagram",
       club: "Section Vétérans du Club Bàsquet Sitges",
     },

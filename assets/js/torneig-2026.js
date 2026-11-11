@@ -384,7 +384,11 @@
   ────────────────────────────────────────── */
   function logoImg(teamKey, cls) {
     const team = TEAMS[teamKey];
-    return `<img src="${LOGO_PATH}${team.logo}.webp" alt="${team.name}" class="${cls}" loading="lazy" />`;
+    // Els logos petits (taules i partits) fan servir la miniatura de 112 px;
+    // la final i el guanyador, el logo sencer. L'alt va buit perquè el nom
+    // de l'equip sempre hi surt escrit al costat.
+    const dir = /bteam|champion/.test(cls) ? '' : 'mini/';
+    return `<img src="${LOGO_PATH}${dir}${team.logo}.webp" alt="" class="${cls}" loading="lazy" />`;
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
   function showVal(v) { return (v === '' || v === null || v === undefined) ? '–' : v; }

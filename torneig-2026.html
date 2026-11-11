@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="4t Torneig Solidari Vila de Sitges — 20 de juny de 2026 al Poliesportiu Pins Vens. Grups, classificacions, resultats en directe i la gran final. 10 equips de veterans contra el Parkinson." />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#141613" />
+  <meta name="theme-color" content="#0C2116" />
   <link rel="canonical" href="https://veterans.clubbasquetsitges.com/torneig-2026.html" />
 
   <link rel="alternate" hreflang="ca" href="https://veterans.clubbasquetsitges.com/torneig-2026.html" />
@@ -13,25 +13,27 @@
   <link rel="alternate" hreflang="en" href="https://veterans.clubbasquetsitges.com/torneig-2026.html" />
   <link rel="alternate" hreflang="fr" href="https://veterans.clubbasquetsitges.com/torneig-2026.html" />
 
-  <meta property="og:site_name" content="Veterans Bàsquet Sitges" />
+  <meta property="og:site_name" content="Veterans Basquet Sitges" />
   <meta property="og:title" content="4t Torneig Solidari Vila de Sitges 2026 — Grups, resultats i la gran final" />
   <meta property="og:description" content="20 de juny de 2026 · Pavelló Pins Vens. Classificacions, resultats i la gran final del torneig solidari de veterans." />
   <meta property="og:url" content="https://veterans.clubbasquetsitges.com/torneig-2026.html" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://veterans.clubbasquetsitges.com/assets/img/og-image.webp" />
 
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="apple-touch-icon" href="favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=202611110001" />
+  <link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png" />
 
   <title>4t Torneig Veterans Sitges · Classificacions i la gran final</title>
 
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/AlfaSlabOne-Regular.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/BarlowCondensed-SemiBold.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Inter-400-latin.woff2" crossorigin />
-  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Space-Grotesk-700-latin.woff2" crossorigin />
-  <link rel="preload" as="style" href="assets/fonts/fonts.css" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="assets/fonts/fonts.css" /></noscript>
+  <link rel="preload" as="style" href="assets/fonts/fonts.css?v=202611110001" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="assets/fonts/fonts.css?v=202611110001" /></noscript>
 
-  <link rel="stylesheet" href="assets/css/styles.css?v=202606101030" />
-  <link rel="stylesheet" href="assets/css/torneig-2026.css?v=202606190000" />
+  <!-- home.css porta la base de la marca (colors, lletres, nav, botons, peu) -->
+  <link rel="stylesheet" href="assets/css/home.css?v=202611110009" />
+  <link rel="stylesheet" href="assets/css/torneig-2026.css?v=202611110009" />
 </head>
 
 <body>
@@ -82,17 +84,18 @@
   <nav id="main-nav" class="nav--scrolled" aria-label="Navegació principal">
     <div class="container">
 
-      <a href="index.html" class="nav-logo" aria-label="Veterans CBS — inici">
-        <img src="assets/img/equips/cb-sitges.webp" alt="" class="nav-logo__placeholder" aria-hidden="true" />
+      <a href="index.html" class="nav-logo" aria-label="Veterans Basquet Sitges — inici">
+        <img src="assets/img/brand/simbolo-blanco.svg" alt="" width="62" height="41" class="nav-logo__simbol nav-logo__simbol--blanc" />
+        <img src="assets/img/brand/simbolo-color.svg" alt="" width="62" height="41" class="nav-logo__simbol nav-logo__simbol--color" />
         <span class="nav-logo__text">
           Veterans
-          <span class="nav-logo__sub">Bàsquet Sitges</span>
+          <span class="nav-logo__sub">Basquet Sitges</span>
         </span>
       </a>
 
       <div id="nav-overlay" aria-hidden="true"></div>
 
-      <div id="nav-menu" role="navigation">
+      <div id="nav-menu">
         <a href="index.html#veterans" class="nav-link" data-i18n="nav.veterans">Els Veterans</a>
         <a href="index.html#torneig" class="nav-link" data-i18n="nav.torneig">El Torneig</a>
         <a href="index.html#collaborators" class="nav-link" data-i18n="nav.colabs">Col·laboradors</a>
@@ -121,39 +124,42 @@
     <!-- ============================================================
          BANNER
          ============================================================ -->
-    <header class="t-hero">
-      <div class="container t-hero__inner">
-        <span class="t-hero__badge" data-i18n="t2026.badge">4t Torneig Solidari · Vila de Sitges</span>
-        <h1 class="t-hero__title" data-i18n="next2026.title">4t Torneig Veterans Sitges</h1>
-        <p class="t-hero__subtitle" data-i18n="t2026.subtitle" style="color:rgba(255,255,255,0.85);max-width:640px;margin:0 auto;">
-          Un dia de bàsquet, festa i solidaritat per a tota la família.
-        </p>
+    <header class="t-hero fosc">
+      <div class="container t-hero__graella">
 
-        <div class="t-hero__meta">
-          <span><svg aria-hidden="true"><use href="#i-calendar"/></svg><span data-i18n="t2026.date">Dissabte 20 de juny de 2026</span></span>
-          <span><svg aria-hidden="true"><use href="#i-clock"/></svg><span data-i18n="t2026.time">13:00 – 20:15 h</span></span>
-          <span><svg aria-hidden="true"><use href="#i-map-pin"/></svg><span data-i18n="t2026.place">Poliesportiu Pins Vens, Sitges</span></span>
-        </div>
+        <div>
+          <p class="etq t-hero__badge" data-i18n="t2026.badge">4t Torneig Solidari · Vila de Sitges</p>
+          <div class="t-hero__cap">
+            <span class="dorsal" data-n="26" aria-hidden="true">26</span>
+            <h1 class="titol" data-i18n="next2026.title">4t Torneig Veterans Sitges</h1>
+          </div>
+          <p class="t-hero__subtitle" data-i18n="t2026.subtitle">
+            Un dia de bàsquet, festa i solidaritat per a tota la família.
+          </p>
 
-        <!-- Causa solidària (reutilitza la info de l'index) -->
-        <div class="t-hero__cause">
-          <span class="t-hero__cause-icon" aria-hidden="true"><svg><use href="#i-heart"/></svg></span>
-          <div class="t-hero__cause-text">
-            <span class="t-hero__cause-label" data-i18n="next2026.cause_title">La causa</span>
-            <span class="t-hero__cause-name" data-i18n="next2026.cause">Lluita contra el Parkinson</span>
-            <span class="t-hero__cause-found" data-i18n="next2026.foundation">Hospital Clínic de Barcelona + Fundació Clínic-IDIBAPS</span>
+          <ul class="t-hero__meta">
+            <li class="etq"><svg aria-hidden="true"><use href="#i-calendar"/></svg><span data-i18n="t2026.date">Dissabte 20 de juny de 2026</span></li>
+            <li class="etq"><svg aria-hidden="true"><use href="#i-clock"/></svg><span data-i18n="t2026.time">13:00 – 20:15 h</span></li>
+            <li class="etq"><svg aria-hidden="true"><use href="#i-map-pin"/></svg><span data-i18n="t2026.place">Poliesportiu Pins Vens, Sitges</span></li>
+          </ul>
+
+          <!-- Causa solidària -->
+          <div class="t-hero__cause">
+            <p class="etq" data-i18n="next2026.cause_title">La causa</p>
+            <p class="t-hero__cause-name" data-i18n="next2026.cause">Lluita contra el Parkinson</p>
+            <p class="t-hero__cause-found" data-i18n="next2026.foundation">Hospital Clínic de Barcelona + Fundació Clínic-IDIBAPS</p>
           </div>
         </div>
 
         <!-- Informació clau del torneig -->
         <div class="t-hero__info">
-          <div class="t-hero__free">
-            <span class="t-hero__free-icon" aria-hidden="true"><svg><use href="#i-ticket"/></svg></span>
-            <span class="t-hero__free-text">
+          <p class="t-hero__free">
+            <svg aria-hidden="true"><use href="#i-ticket"/></svg>
+            <span>
               <strong data-i18n="t2026.free_title">Entrada lliure i solidària</strong>
               <small data-i18n="t2026.free_sub">Pots col·laborar amb la causa</small>
             </span>
-          </div>
+          </p>
           <ul class="t-hero__features">
             <li><svg aria-hidden="true"><use href="#i-basketball"/></svg><span data-i18n="t2026.info_triples">Concurs de triples benèfic</span></li>
             <li><svg aria-hidden="true"><use href="#i-cup"/></svg><span data-i18n="t2026.info_bar">Barra de bar solidària</span></li>
@@ -163,12 +169,15 @@
           </ul>
         </div>
 
-        <div class="t-tabs">
-          <a href="#classificacio" class="t-tab" data-i18n="t2026.tab_standings">Grups i classificació</a>
-          <a href="#resultats" class="t-tab" data-i18n="t2026.tab_results">Resultats</a>
-          <a href="#fase-final" class="t-tab" data-i18n="t2026.tab_final">La gran final</a>
-        </div>
       </div>
+
+      <nav class="container t-tabs" aria-label="Seccions del torneig">
+        <a href="#classificacio" class="t-tab" data-i18n="t2026.tab_standings">Grups i classificació</a>
+        <a href="#resultats" class="t-tab" data-i18n="t2026.tab_results">Resultats</a>
+        <a href="#fase-final" class="t-tab" data-i18n="t2026.tab_final">La gran final</a>
+      </nav>
+
+      <div class="costura" aria-hidden="true"></div>
     </header>
 
     <!-- ============================================================
@@ -177,9 +186,9 @@
     <section id="classificacio" class="t-section">
       <div class="container">
         <div class="t-section__head">
-          <span class="section__eyebrow" data-i18n="t2026.standings_eyebrow">Fase de grups</span>
-          <h2 class="section__title" data-i18n="t2026.standings_title">Grups i classificació</h2>
-          <p class="section__subtitle" data-i18n="t2026.standings_intro">
+          <p class="etq" data-i18n="t2026.standings_eyebrow">Fase de grups</p>
+          <h2 class="titol" data-i18n="t2026.standings_title">Grups i classificació</h2>
+          <p class="t-section__intro" data-i18n="t2026.standings_intro">
             10 equips repartits en dos grups. Tots juguen entre ells (lliga) i el primer de cada grup es classifica per a la gran final.
           </p>
 
@@ -189,7 +198,7 @@
             <svg aria-hidden="true"><use href="#i-bar-chart"/></svg>
             <span class="scored-stats__label" data-i18n="t2026.stats_cta">Estadístiques del torneig</span>
             <span class="scored-stats__divider" aria-hidden="true"></span>
-            <img src="assets/img/scored-logo.webp" alt="Scored" class="scored-stats__logo" />
+            <img src="assets/img/scored-logo.webp" alt="Scored" width="60" height="15" class="scored-stats__logo" />
           </a>
         </div>
 
@@ -204,8 +213,8 @@
     <section id="resultats" class="t-section t-section--alt">
       <div class="container">
         <div class="t-section__head">
-          <span class="section__eyebrow" data-i18n="t2026.results_eyebrow">Calendari</span>
-          <h2 class="section__title" data-i18n="t2026.results_title">Resultats dels partits</h2>
+          <p class="etq" data-i18n="t2026.results_eyebrow">Calendari</p>
+          <h2 class="titol" data-i18n="t2026.results_title">Resultats dels partits</h2>
         </div>
 
         <div id="results-list"><!-- render JS --></div>
@@ -218,8 +227,8 @@
     <section id="fase-final" class="t-section bracket-section">
       <div class="container">
         <div class="t-section__head">
-          <span class="section__eyebrow section__eyebrow--accent" data-i18n="t2026.final_eyebrow">El partit pel títol</span>
-          <h2 class="section__title" data-i18n="t2026.final_title">La gran final</h2>
+          <p class="etq" data-i18n="t2026.final_eyebrow">El partit pel títol</p>
+          <h2 class="titol" data-i18n="t2026.final_title">La gran final</h2>
         </div>
 
         <div id="bracket" class="bracket"><!-- render JS --></div>
@@ -235,46 +244,39 @@
   <!-- ============================================================
        FOOTER
        ============================================================ -->
-  <footer id="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <img src="assets/img/equips/cb-sitges.webp" alt="" class="footer-logo__placeholder" aria-hidden="true" style="width:40px;height:40px;object-fit:contain;border-radius:6px;" />
-            <span class="footer-logo__name">
-              Veterans Bàsquet Sitges
-              <span class="footer-logo__sub" data-i18n="footer.club">Secció de Veterans del Club Bàsquet Sitges</span>
-            </span>
-          </div>
-          <p class="footer-tagline" data-i18n="footer.tagline">Esport i solidaritat des de 1957</p>
-          <p class="footer-rights" data-i18n="footer.rights">Veterans Bàsquet Sitges © 2026</p>
-        </div>
+  <footer id="footer">
+    <div class="costura" aria-hidden="true"></div>
+    <div class="container peu">
 
-        <div class="footer-links">
-          <a href="index.html" class="t-back">← <span data-i18n="t2026.back">Tornar a l'inici</span></a>
-          <a
-            href="https://www.instagram.com/veterans_sitges_/"
-            target="_blank" rel="noopener noreferrer"
-            class="footer-instagram"
-            aria-label="Segueix Veterans CBS a Instagram (@veterans_sitges_)"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-            </svg>
-            <span data-i18n="footer.instagram">Segueix-nos a Instagram</span>
-          </a>
-          <span class="footer-handle">@veterans_sitges_</span>
-        </div>
+      <img class="peu__logo" src="assets/img/brand/logo-blanco.svg" width="2381" height="1961" alt="Veterans Basquet Sitges" loading="lazy" />
+
+      <div>
+        <p class="peu__lema etq" data-i18n="footer.tagline">Esport i solidaritat des de 1957</p>
+        <p class="peu__club" data-i18n="footer.club">Secció de Veterans del Club Bàsquet Sitges</p>
+        <p class="peu__drets" data-i18n="footer.rights">Veterans Basquet Sitges © 2026</p>
+        <a href="index.html" class="t-back etq" data-i18n="t2026.back">Tornar a l'inici</a>
       </div>
+
+      <div class="peu__xarxes">
+        <a href="https://www.instagram.com/veterans_sitges_/" target="_blank" rel="noopener noreferrer"
+           class="footer-instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+          <span data-i18n="footer.instagram">Segueix-nos a Instagram</span>
+        </a>
+        <span class="footer-handle">@veterans_sitges_</span>
+      </div>
+
     </div>
   </footer>
 
   <!-- SCRIPTS: i18n primer, després l'app del torneig, després la UI comuna -->
-  <script src="assets/js/i18n.js?v=202606190000"></script>
-  <script src="assets/js/torneig-2026.js?v=202606090101"></script>
-  <script src="assets/js/main.js?v=202606090101"></script>
+  <script src="assets/js/i18n.js?v=202611110001"></script>
+  <script src="assets/js/torneig-2026.js?v=202611110009"></script>
+  <script src="assets/js/main.js?v=202611110004"></script>
 
 </body>
 </html>
