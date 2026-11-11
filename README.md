@@ -11,7 +11,6 @@ Zero dependències de build: obre `index.html` directament al navegador.
 web/
 ├── index.html                  # Portada
 ├── torneig-2026.html           # Classificacions, resultats i la gran final del torneig 2026
-├── dona/index.html             # Adreça curta /dona: redirigeix a la pàgina de donació del Clínic
 ├── assets/
 │   ├── css/
 │   │   ├── home.css            # Base de la marca Varsity (colors, lletres, nav, peu) + portada
