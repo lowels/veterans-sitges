@@ -9,14 +9,19 @@ Zero dependències de build: obre `index.html` directament al navegador.
 
 ```
 web/
-├── index.html                  # Pàgina única (tot el contingut)
+├── index.html                  # Portada
+├── torneig-2026.html           # Classificacions, resultats i la gran final del torneig 2026
+├── 404.html                    # Pàgina d'error (rutes absolutes: se serveix des de qualsevol adreça)
 ├── assets/
 │   ├── css/
-│   │   └── styles.css          # Tot el CSS (design tokens + components)
+│   │   ├── home.css            # Base de la marca Varsity (colors, lletres, nav, peu) + portada
+│   │   └── torneig-2026.css    # Pàgina del torneig; es carrega a sobre de home.css
 │   ├── js/
 │   │   ├── i18n.js             # Traduccions CA/ES/EN/FR + lògica de canvi d'idioma
-│   │   └── main.js             # Nav sticky, hamburger, scroll, lightbox, animacions
+│   │   ├── main.js             # Nav sticky, hamburger, scroll, lightbox, imports que roden
+│   │   └── torneig-2026.js     # Dades i pintat de classificacions, resultats i final
 │   └── img/
+│       ├── brand/              # Logo i símbol de la marca (còpies optimitzades de ../brandkit/logo) i icones
 │       ├── hero-sitges.webp    # Foto de família de tots els equips del CB Sitges (fons del hero, desktop)
 │       ├── hero-sitges-mobile.webp # Variant per a mòbils del hero (≤900 px)
 │       ├── cartell-2026.jpg    # [COPIAR] 2026.jpeg del client
@@ -169,16 +174,20 @@ Idiomes suportats: `ca` (català, per defecte), `es` (castellà), `en` (anglès)
 
 ## Estils i colors
 
-Tots els colors principals estan com a variables CSS a l'inici de `assets/css/styles.css`:
+Els colors i les lletres de la marca (brandkit Varsity) són variables CSS a l'inici de `assets/css/home.css`:
 
 ```css
 :root {
-  --color-primary:   #2D6A4F;   /* Verd esmeralda */
-  --color-accent:    #D4A843;   /* Daurat */
-  --color-dark:      #141613;   /* Negre profund amb matís verd */
-  --color-club-red:  #C0392B;   /* Vermell CBS */
+  --verd:      #3AAA35;   /* Verd club */
+  --verd-fosc: #205E1D;
+  --blau:      #1A6BB4;   /* Blau club: botons i dorsals */
+  --tinta:     #0C2116;   /* Negre pista: text */
+  --sorra:     #F5F0E6;   /* Fons clars */
 }
 ```
+
+Els marcadors en directe, la pantalla gegant, els vídeos i el generador de resultats per a Instagram
+no són en aquesta branca: es conserven a la release `temporada-25-26`.
 
 Per canviar un color, modifica únicament el valor de la variable i s'aplicarà a tot el lloc.
 

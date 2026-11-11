@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#0C2116" />
+  <title>Pàgina no trobada · Veterans Basquet Sitges</title>
+
+  <!-- Rutes absolutes: aquesta pàgina se serveix des de qualsevol adreça que no existeixi -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=202611110001" />
+  <link rel="apple-touch-icon" href="/assets/img/brand/apple-touch-icon.png" />
+
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/AlfaSlabOne-Regular.woff2" crossorigin />
+  <link rel="preload" as="style" href="/assets/fonts/fonts.css?v=202611110010" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="/assets/fonts/fonts.css?v=202611110010" /></noscript>
+  <link rel="stylesheet" href="/assets/css/home.css?v=202611110009" />
+
+  <style>
+    body { background: var(--tinta); }
+    .e404 {
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
+      color: var(--blanc);
+    }
+    .e404__cap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      height: var(--nav-h);
+    }
+    .e404__cap .nav-lang { margin-top: 0; }
+    .e404__cos {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-block: clamp(2.5rem, 8vw, 5rem);
+    }
+    .e404 .dorsal {
+      align-self: flex-start;
+      margin: 0.12em 0.14em 0.25em 0.12em;
+      font-size: clamp(6.5rem, 30vw, 17rem);
+    }
+    .e404 .titol { margin-top: clamp(1.25rem, 3vw, 2rem); }
+    .e404__text {
+      max-width: 30em;
+      margin-top: 1.25rem;
+      font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+      color: rgba(255, 255, 255, 0.86);
+    }
+    .e404__cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: clamp(1.75rem, 4vw, 2.5rem);
+    }
+    @media (max-width: 600px) {
+      .e404__cta { flex-direction: column; }
+      .e404__cap .nav-logo__text { display: none; }
+    }
+  </style>
+</head>
+
+<body class="fosc">
+
+  <div class="e404">
+
+    <header class="container e404__cap">
+      <a href="/" class="nav-logo" aria-label="Veterans Basquet Sitges — inici">
+        <img src="/assets/img/brand/simbolo-blanco.svg" alt="" width="62" height="41" class="nav-logo__simbol" />
+        <span class="nav-logo__text">
+          Veterans
+          <span class="nav-logo__sub">Basquet Sitges</span>
+        </span>
+      </a>
+
+      <div class="nav-lang" role="group" aria-label="Seleccionar idioma">
+        <button class="lang-btn" data-lang="ca" aria-label="Català">CA</button>
+        <button class="lang-btn" data-lang="es" aria-label="Castellà">ES</button>
+        <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
+      </div>
+    </header>
+
+    <main class="container e404__cos">
+      <span class="dorsal" data-n="404" aria-hidden="true">404</span>
+      <h1 class="titol" data-i18n="e404.title">Fora de banda</h1>
+      <p class="e404__text" data-i18n="e404.text">Aquesta pàgina no existeix o ja no és on era.</p>
+      <div class="e404__cta">
+        <a href="/" class="btn btn--blau" data-i18n="t2026.back">Tornar a l'inici</a>
+        <a href="/torneig-2026.html" class="btn btn--linia" data-i18n="t2026.nav">Torneig 2026</a>
+      </div>
+    </main>
+
+    <div class="costura" aria-hidden="true"></div>
+  </div>
+
+  <script src="/assets/js/i18n.js?v=202611110011"></script>
+  <script src="/assets/js/main.js?v=202611110004"></script>
+
+</body>
+</html>

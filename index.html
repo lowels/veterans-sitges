@@ -7,7 +7,7 @@
   <meta name="keywords" content="bàsquet Sitges, veterans bàsquet, torneig solidari, Pavelló Pins Vens, Parkinson, Club Bàsquet Sitges, esport solidari, Sitges 2026" />
   <meta name="author" content="Club Bàsquet Sitges" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="theme-color" content="#141613" />
+  <meta name="theme-color" content="#0C2116" />
   <link rel="canonical" href="https://veterans.clubbasquetsitges.com/" />
 
   <!-- hreflang (4 idiomes amb mateixa URL) -->
@@ -19,14 +19,18 @@
 
   <!-- Preload del LCP (hero) — variant segons amplada de pantalla -->
   <link rel="preload" as="image" href="assets/img/hero-sitges.webp" media="(min-width: 901px)" fetchpriority="high" />
-  <link rel="preload" as="image" href="assets/img/hero-sitges-mobile.webp" media="(max-width: 900px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/img/hero-sitges-840.webp" media="(max-width: 600px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/img/hero-sitges-mobile.webp" media="(min-width: 601px) and (max-width: 900px)" fetchpriority="high" />
+
+  <!-- El logo del hero és l'element més gran del primer pantallazo -->
+  <link rel="preload" as="image" type="image/svg+xml" href="assets/img/brand/logo-blanco.svg" fetchpriority="high" />
 
   <!-- Web manifest (PWA) -->
   <link rel="manifest" href="manifest.webmanifest" />
 
   <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
-  <meta property="og:site_name" content="Veterans Bàsquet Sitges" />
-  <meta property="og:title" content="Veterans Bàsquet Sitges — Torneig Solidari 2026" />
+  <meta property="og:site_name" content="Veterans Basquet Sitges" />
+  <meta property="og:title" content="Veterans Basquet Sitges — Torneig Solidari 2026" />
   <meta property="og:description" content="20 de juny de 2026 · Pavelló Pins Vens. Torneig solidari de veterans contra el Parkinson. Esport i solidaritat des de 1957." />
   <meta property="og:url" content="https://veterans.clubbasquetsitges.com/" />
   <meta property="og:type" content="website" />
@@ -39,38 +43,38 @@
   <meta property="og:image:type" content="image/webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Veterans Bàsquet Sitges — Torneig Solidari" />
+  <meta property="og:image:alt" content="Veterans Basquet Sitges — Torneig Solidari" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Veterans Bàsquet Sitges — Torneig Solidari 2026" />
+  <meta name="twitter:title" content="Veterans Basquet Sitges — Torneig Solidari 2026" />
   <meta name="twitter:description" content="20 de juny de 2026 · Pavelló Pins Vens. Torneig solidari de veterans contra el Parkinson." />
   <meta name="twitter:image" content="https://veterans.clubbasquetsitges.com/assets/img/og-image.webp?v=202605140017" />
-  <meta name="twitter:image:alt" content="Veterans Bàsquet Sitges — Torneig Solidari" />
+  <meta name="twitter:image:alt" content="Veterans Basquet Sitges — Torneig Solidari" />
 
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="apple-touch-icon" href="favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=202611110001" />
+  <link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png" />
 
-  <title>Veterans Bàsquet Sitges — Torneig Solidari 2026</title>
+  <title>Veterans Basquet Sitges — Torneig Solidari 2026</title>
 
-  <!-- Fonts self-hosted: Space Grotesk + Inter (càrrega no bloquejant) -->
-  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Inter-400-latin.woff2" crossorigin />
-  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Space-Grotesk-700-latin.woff2" crossorigin />
-  <link rel="preload" as="style" href="assets/fonts/fonts.css" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="assets/fonts/fonts.css" /></noscript>
+  <!-- Fonts self-hosted: Alfa Slab One + Barlow Condensed + Inter (càrrega no bloquejant) -->
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/AlfaSlabOne-Regular.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/BarlowCondensed-SemiBold.woff2" crossorigin />
+  <link rel="preload" as="style" href="assets/fonts/fonts.css?v=202611110010" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="assets/fonts/fonts.css?v=202611110010" /></noscript>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=202606101030" />
+  <link rel="stylesheet" href="assets/css/home.css?v=202611110009" />
 
   <!-- JSON-LD: SportsOrganization -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SportsOrganization",
-    "name": "Veterans Bàsquet Sitges",
+    "name": "Veterans Basquet Sitges",
     "alternateName": "Veterans CBS",
     "url": "https://veterans.clubbasquetsitges.com/",
-    "logo": "https://veterans.clubbasquetsitges.com/assets/img/equips/cb-sitges.webp",
+    "logo": "https://veterans.clubbasquetsitges.com/assets/img/brand/icon-512.png",
     "image": "https://veterans.clubbasquetsitges.com/assets/img/og-image.webp",
     "description": "Secció de veterans del Club Bàsquet Sitges, fundat el 1957. Organitza el Torneig Solidari anual al Pavelló Pins Vens.",
     "foundingDate": "1957",
@@ -98,7 +102,7 @@
   {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
-    "name": "4t Torneig Solidari de Veterans Bàsquet Sitges",
+    "name": "4t Torneig Solidari de Veterans Basquet Sitges",
     "description": "Torneig solidari de veterans de bàsquet a benefici de la lluita contra el Parkinson, amb l'Hospital Clínic de Barcelona i la Fundació Clínic-IDIBAPS. 10 equips, 1 causa.",
     "startDate": "2026-06-20",
     "endDate": "2026-06-20",
@@ -121,7 +125,7 @@
     },
     "organizer": {
       "@type": "SportsOrganization",
-      "name": "Veterans Bàsquet Sitges",
+      "name": "Veterans Basquet Sitges",
       "url": "https://veterans.clubbasquetsitges.com/"
     },
     "offers": {
@@ -140,7 +144,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Veterans Bàsquet Sitges",
+    "name": "Veterans Basquet Sitges",
     "url": "https://veterans.clubbasquetsitges.com/",
     "inLanguage": ["ca", "es", "en", "fr"]
   }
@@ -149,30 +153,13 @@
 
 <body>
 
-  <!-- ============================================================
-       SVG SPRITE — Icones inline (substitueix Lucide CDN)
-       ============================================================ -->
+  <!-- Icones en línia -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
     <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>
     </symbol>
-    <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 7v14"/><path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5"/><rect x="3" y="7" width="18" height="4" rx="1"/>
-    </symbol>
-    <symbol id="i-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>
-    </symbol>
-    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
-    </symbol>
     <symbol id="i-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>
-    </symbol>
-    <symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978"/><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978"/><path d="M18 9h1.5a1 1 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"/><path d="M6 9H4.5a1 1 0 0 1 0-5H6"/>
-    </symbol>
-    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/>
     </symbol>
   </svg>
 
@@ -182,12 +169,12 @@
   <nav id="main-nav" aria-label="Navegació principal">
     <div class="container">
 
-      <!-- Logo -->
-      <a href="#" class="nav-logo" aria-label="Veterans CBS — inici">
-        <img src="assets/img/equips/cb-sitges.webp" alt="" class="nav-logo__placeholder" aria-hidden="true" />
+      <a href="#" class="nav-logo" aria-label="Veterans Basquet Sitges — inici">
+        <img src="assets/img/brand/simbolo-blanco.svg" alt="" width="62" height="41" class="nav-logo__simbol nav-logo__simbol--blanc" />
+        <img src="assets/img/brand/simbolo-color.svg" alt="" width="62" height="41" class="nav-logo__simbol nav-logo__simbol--color" />
         <span class="nav-logo__text">
           Veterans
-          <span class="nav-logo__sub">Bàsquet Sitges</span>
+          <span class="nav-logo__sub">Basquet Sitges</span>
         </span>
       </a>
 
@@ -195,7 +182,7 @@
       <div id="nav-overlay" aria-hidden="true"></div>
 
       <!-- Menú -->
-      <div id="nav-menu" role="navigation">
+      <div id="nav-menu">
         <a href="#veterans" class="nav-link" data-i18n="nav.veterans">Els Veterans</a>
         <a href="#torneig" class="nav-link" data-i18n="nav.torneig">El Torneig</a>
         <a href="#collaborators" class="nav-link" data-i18n="nav.colabs">Col·laboradors</a>
@@ -220,189 +207,127 @@
     </div>
   </nav>
 
+  <main>
 
   <!-- ============================================================
-       HERO
+       HERO — el logo en blanc sobre la foto de família del club
        ============================================================ -->
-  <section id="hero" aria-label="Hero">
+  <section id="hero" class="hero" aria-label="Veterans Basquet Sitges">
 
-    <!-- Imatge de fons (parallax CSS) -->
-    <div class="hero-bg" role="img" aria-label="Foto de família de tots els equips del Club Bàsquet Sitges"></div>
+    <picture>
+      <source media="(max-width: 600px)" srcset="assets/img/hero-sitges-840.webp" />
+      <source media="(max-width: 900px)" srcset="assets/img/hero-sitges-mobile.webp" />
+      <img class="hero__foto" src="assets/img/hero-sitges.webp" width="2560" height="1414"
+           alt="Foto de família de tots els equips del Club Bàsquet Sitges" />
+    </picture>
 
-    <!-- Overlay -->
-    <div class="hero-overlay" aria-hidden="true"></div>
-
-    <!-- Contingut -->
-    <div class="hero-content">
-      <p class="hero-eyebrow" aria-hidden="true">
-        Club Bàsquet Sitges · 1957
-      </p>
-      <h1 class="hero-title">
-        <span data-i18n="hero.title">Veterans Bàsquet Sitges</span>
+    <div class="container hero__cos">
+      <h1>
+        <img class="hero__logo" src="assets/img/brand/logo-blanco.svg" width="2381" height="1961" alt="" fetchpriority="high" />
+        <span class="visually-hidden" data-i18n="hero.title">Veterans Basquet Sitges</span>
         <span class="visually-hidden" data-i18n="hero.title_seo">— Torneig Solidari de Bàsquet a Sitges contra el Parkinson</span>
       </h1>
-      <p class="hero-subtitle" data-i18n="hero.subtitle">Esport i solidaritat des de 1957</p>
-      <div class="hero-cta">
-        <a href="#section-2026" class="btn btn--accent btn--lg" data-i18n="hero.cta">
-          Torneig 2026 · 20 de juny
-        </a>
-        <a href="#veterans" class="btn btn--outline" data-i18n="hero.scroll">
-          Descobreix qui som
-        </a>
+      <p class="hero__lema etq" data-i18n="hero.subtitle">Esport i solidaritat des de 1957</p>
+      <div class="hero__cta">
+        <a href="#section-2026" class="btn btn--blau" data-i18n="hero.cta">Torneig 2026 · 20 de juny</a>
+        <a href="#veterans" class="btn btn--linia" data-i18n="hero.scroll">Descobreix qui som</a>
       </div>
     </div>
 
-    <!-- Scroll hint -->
-    <div class="hero-scroll" aria-hidden="true">
-      <div class="hero-scroll__arrow"></div>
-    </div>
-
+    <div class="costura" aria-hidden="true"></div>
   </section>
 
 
   <!-- ============================================================
        VETERANS — Qui som
        ============================================================ -->
-  <section id="veterans" class="section">
-    <div class="container">
+  <section id="veterans" class="veterans">
+    <div class="container veterans__graella">
 
-      <div class="section__header animate-on-scroll">
-        <span class="section__eyebrow" data-i18n="veterans.subtitle">Qui som</span>
-        <h2 class="section__title" data-i18n="veterans.title">Els Veterans</h2>
-      </div>
+      <div>
+        <p class="etq" data-i18n="veterans.subtitle">Qui som</p>
+        <h2 class="titol" data-i18n="veterans.title">Els Veterans</h2>
 
-      <div class="veterans-grid">
+        <p class="veterans__text" data-i18n="veterans.description">
+          La secció de Veterans del Club Bàsquet Sitges som un grup de jugadors que combinem la passió pel bàsquet amb el compromís amb la nostra comunitat. Cada temporada organitzem un torneig solidari per recaptar fons per a entitats socials i de recerca.
+        </p>
 
-        <!-- Columna info -->
-        <div class="veterans-info animate-on-scroll">
-          <p class="veterans-description" data-i18n="veterans.description">
-            La secció de Veterans del Club Bàsquet Sitges som un grup de jugadors que combinem la passió pel bàsquet amb el compromís amb la nostra comunitat. Cada temporada organitzem un torneig solidari per recaptar fons per a entitats socials i de recerca.
-          </p>
-
-          <!-- Valors -->
-          <h3 class="section__eyebrow" style="margin-bottom:1rem;" data-i18n="veterans.values_title">Els nostres valors</h3>
-          <div class="values-grid">
-
-            <div class="value-card animate-on-scroll animate-delay-1">
-              <div class="value-card__icon" aria-hidden="true">
-                <svg aria-hidden="true"><use href="#i-trophy"/></svg>
-              </div>
-              <span class="value-card__text" data-i18n="veterans.values.sport">Esport i formació integral</span>
-            </div>
-
-            <div class="value-card animate-on-scroll animate-delay-2">
-              <div class="value-card__icon" aria-hidden="true">
-                <svg aria-hidden="true"><use href="#i-users"/></svg>
-              </div>
-              <span class="value-card__text" data-i18n="veterans.values.team">Treball en equip i superació</span>
-            </div>
-
-            <div class="value-card animate-on-scroll animate-delay-3">
-              <div class="value-card__icon" aria-hidden="true">
-                <svg aria-hidden="true"><use href="#i-handshake"/></svg>
-              </div>
-              <span class="value-card__text" data-i18n="veterans.values.fellowship">Companyerisme i responsabilitat</span>
-            </div>
-
-            <div class="value-card animate-on-scroll animate-delay-4">
-              <div class="value-card__icon" aria-hidden="true">
-                <svg aria-hidden="true"><use href="#i-heart"/></svg>
-              </div>
-              <span class="value-card__text" data-i18n="veterans.values.solidarity">Solidaritat activa</span>
-            </div>
-
-          </div>
-
-          <!-- Patrocinadors anuals -->
-          <div class="sponsors-annual animate-on-scroll">
-            <p class="sponsors-annual__title" data-i18n="veterans.sponsors_title">Patrocinadors de l'equip</p>
-            <div class="sponsors-logos">
-              <!-- Flexic (confirmat) -->
-              <div class="sponsor-logo sponsor-logo--featured">
-                <a href="https://www.flexic.es/" target="_blank" rel="noopener">
-                  <img src="assets/img/logo-flexic.webp" alt="Flexic Audiovisual Studio" loading="lazy" />
-                </a>
-              </div>
-            </div>
-          </div>
-
+        <div class="valors">
+          <h3 class="etq" data-i18n="veterans.values_title">Els nostres valors</h3>
+          <ul class="valors__llista">
+            <li data-i18n="veterans.values.sport">Esport i formació integral</li>
+            <li data-i18n="veterans.values.team">Treball en equip i superació</li>
+            <li data-i18n="veterans.values.fellowship">Companyerisme i responsabilitat</li>
+            <li data-i18n="veterans.values.solidarity">Solidaritat activa</li>
+          </ul>
         </div>
 
-        <!-- Columna foto equip -->
-        <div class="veterans-photo animate-on-scroll animate-delay-2">
-          <div class="veterans-photo__img">
-            <img src="assets/img/foto-equip-veterans.webp" alt="Veterans CBS — Equip actual" width="1400" height="911" loading="lazy" />
-          </div>
-          <div class="veterans-photo__caption" aria-hidden="true">Veterans CBS</div>
+        <!-- Patrocinadors anuals -->
+        <div class="patrocini">
+          <a href="https://www.flexic.es/" target="_blank" rel="noopener">
+            <img src="assets/img/logo-flexic.webp" alt="Flexic Audiovisual Studio" width="68" height="68" loading="lazy" />
+          </a>
+          <p class="etq" data-i18n="veterans.sponsors_title">Patrocinadors de l'equip</p>
         </div>
-
       </div>
+
+      <figure class="veterans__foto">
+        <img src="assets/img/foto-equip-veterans.webp" srcset="assets/img/foto-equip-veterans-760.webp 760w, assets/img/foto-equip-veterans.webp 1400w" sizes="(max-width: 900px) 92vw, 42vw" alt="Veterans CBS — Equip actual" width="1400" height="911" loading="lazy" />
+        <figcaption class="etq" data-i18n="veterans.photo_caption">Veterans CBS — Equip actual</figcaption>
+      </figure>
+
     </div>
   </section>
 
 
   <!-- ============================================================
-       TORNEIG SOLIDARI — Intro + Timeline
+       TORNEIG SOLIDARI — Intro, total recaptat i les quatre edicions
        ============================================================ -->
-  <section id="torneig" class="section section--dark">
+  <section id="torneig" class="torneig">
     <div class="container">
 
-      <div class="torneig-intro animate-on-scroll">
-        <span class="section__eyebrow section__eyebrow--accent" data-i18n="torneig.subtitle">Quatre edicions, quatre causes</span>
-        <h2 class="section__title" style="color:white; margin-bottom:1.5rem;" data-i18n="torneig.title">El Torneig Solidari</h2>
-        <p data-i18n="torneig.intro">
-          Des de 2023, els Veterans Bàsquet Sitges organitzen anualment un torneig de bàsquet solidari al Pavelló Pins Vens de Sitges. Cada edició reuneix equips veterans de tot Catalunya i la resta d'Espanya per recaptar fons destinats a una causa diferent. Esport i solidaritat, junts a la pista.
+      <p class="etq" data-i18n="torneig.subtitle">Quatre edicions, quatre causes</p>
+      <h2 class="titol" data-i18n="torneig.title">El Torneig Solidari</h2>
+      <p class="torneig__text" data-i18n="torneig.intro">
+        Des de 2023, els Veterans Basquet Sitges organitzen anualment un torneig de bàsquet solidari al Pavelló Pins Vens de Sitges. Cada edició reuneix equips veterans de tot Catalunya i la resta d'Espanya per recaptar fons destinats a una causa diferent. Esport i solidaritat, junts a la pista.
+      </p>
+
+      <!-- Comptador total recaptat -->
+      <div class="recaptat">
+        <p class="recaptat__xifra">
+          <span class="raised-counter__number" data-target="11468">11.468</span><span class="recaptat__simbol">€</span>
         </p>
+        <p class="etq" data-i18n="torneig.total_raised">recaptats en 4 edicions</p>
       </div>
 
-      <!-- Contador total recaptat -->
-      <div class="raised-counter animate-on-scroll">
-        <div class="raised-counter__amount">
-          <span class="raised-counter__number" data-target="11468">0</span><span class="raised-counter__symbol">€</span>
-        </div>
-        <p class="raised-counter__label" data-i18n="torneig.total_raised">recaptats en 3 edicions</p>
-      </div>
+      <!-- Edicions: cada dorsal porta a la seva fitxa -->
+      <nav class="timeline" aria-label="Historial d'edicions">
+        <a class="timeline-node" href="#edition-2023" data-year="2023">
+          <span class="dorsal" data-n="23" aria-hidden="true">23</span>
+          <span class="timeline-node__edicio etq">1r torneig · 2023</span>
+          <span class="timeline-node__causa">Fundació #YoMeCorono</span>
+          <span class="timeline-node__import">1.018&nbsp;€</span>
+        </a>
+        <a class="timeline-node" href="#edition-2024" data-year="2024">
+          <span class="dorsal" data-n="24" aria-hidden="true">24</span>
+          <span class="timeline-node__edicio etq">2n torneig · 2024</span>
+          <span class="timeline-node__causa">IDIBELL</span>
+          <span class="timeline-node__import">950&nbsp;€</span>
+        </a>
+        <a class="timeline-node" href="#edition-2025" data-year="2025">
+          <span class="dorsal" data-n="25" aria-hidden="true">25</span>
+          <span class="timeline-node__edicio etq">3r torneig · 2025</span>
+          <span class="timeline-node__causa">Fundació Xana</span>
+          <span class="timeline-node__import">3.500&nbsp;€</span>
+        </a>
+        <a class="timeline-node" href="#edition-2026" data-year="2026">
+          <span class="dorsal" data-n="26" aria-hidden="true">26</span>
+          <span class="timeline-node__edicio etq">4t torneig · 2026</span>
+          <span class="timeline-node__causa">Fundació Clínic-IDIBAPS</span>
+          <span class="timeline-node__import">6.000&nbsp;€</span>
+        </a>
+      </nav>
 
-      <!-- Timeline -->
-      <div class="timeline" role="list" aria-label="Historial d'edicions">
-
-        <!-- 2023 -->
-        <div class="timeline-node" data-year="2023" role="listitem" tabindex="0" aria-label="Edició 2023 — Fundació #YoMeCorono">
-          <div class="timeline-dot" aria-hidden="true">1r</div>
-          <div>
-            <p class="timeline-year">2023</p>
-            <p class="timeline-label">Fundació #YoMeCorono<br>1.018€ recaptats</p>
-          </div>
-        </div>
-
-        <!-- 2024 -->
-        <div class="timeline-node" data-year="2024" role="listitem" tabindex="0" aria-label="Edició 2024 — IDIBELL">
-          <div class="timeline-dot" aria-hidden="true">2n</div>
-          <div>
-            <p class="timeline-year">2024</p>
-            <p class="timeline-label">IDIBELL<br>950€ recaptats</p>
-          </div>
-        </div>
-
-        <!-- 2025 -->
-        <div class="timeline-node" data-year="2025" role="listitem" tabindex="0" aria-label="Edició 2025 — Fundació Xana">
-          <div class="timeline-dot" aria-hidden="true">3r</div>
-          <div>
-            <p class="timeline-year">2025</p>
-            <p class="timeline-label">Fundació Xana<br>3.500€ recaptats</p>
-          </div>
-        </div>
-
-        <!-- 2026 — destacat -->
-        <div class="timeline-node" data-year="2026" role="listitem" tabindex="0" aria-label="Edició 2026 — Fundació Clínic-IDIBAPS + Parkinson">
-          <div class="timeline-dot" aria-hidden="true">4t</div>
-          <div>
-            <p class="timeline-year">2026</p>
-            <p class="timeline-label">Fundació Clínic-IDIBAPS<br>6.000€ recaptats</p>
-          </div>
-        </div>
-
-      </div>
     </div>
   </section>
 
@@ -410,424 +335,316 @@
   <!-- ============================================================
        EDICIONS DEL TORNEIG
        ============================================================ -->
-  <section class="editions-section section" aria-label="Historial d'edicions del torneig">
+  <section class="edicions" aria-label="Historial d'edicions del torneig">
     <div class="container">
 
-      <div class="section__header animate-on-scroll">
-        <span class="section__eyebrow" data-i18n="editions.section_title">Historial d'edicions</span>
-      </div>
+      <h2 class="etq" data-i18n="editions.section_title">Historial d'edicions</h2>
 
       <!-- ─────────────────── EDICIÓ 2023 ─────────────────── -->
-      <article class="edition-card animate-on-scroll" id="edition-2023" aria-labelledby="ed2023-title">
+      <article class="edicio" id="edition-2023" aria-labelledby="ed2023-title">
 
-        <div class="edition-header" style="position:relative;">
-          <div class="edition-header__left">
-            <p class="edition-header__num">1r Torneig · Abril 2023</p>
-            <h3 class="edition-header__title" id="ed2023-title" data-i18n="editions.e2023.lema">El Bàsquet fa Salut</h3>
+        <header class="edicio__cap">
+          <span class="dorsal" data-n="23" aria-hidden="true">23</span>
+          <div>
+            <p class="etq">1r Torneig · Abril 2023</p>
+            <h3 class="edicio__lema" id="ed2023-title" data-i18n="editions.e2023.lema">El Bàsquet fa Salut</h3>
           </div>
-          <div class="edition-raised" aria-label="Import recaptat">
-            <span class="edition-raised__amount">1.018€</span>
-            <span class="edition-raised__label" data-i18n="editions.raised_label">Recaptat</span>
-          </div>
-          <span class="edition-header__year" aria-hidden="true">2023</span>
-        </div>
+          <p class="edicio__recaptat">
+            <span class="edicio__import">1.018&nbsp;€</span>
+            <span class="etq" data-i18n="editions.raised_label">Recaptat</span>
+          </p>
+        </header>
 
-        <div class="edition-body">
+        <div class="edicio__cos">
 
-          <!-- Info -->
-          <div class="edition-info">
-
-            <!-- Fundació -->
-            <div class="edition-foundation">
-              <div class="foundation-logo" aria-hidden="true">
-                <img src="assets/img/fundacions/yomecorono.webp" alt="Logo Fundació #YoMeCorono" loading="lazy" />
+          <div class="edicio__info">
+            <dl class="fitxa">
+              <div>
+                <dt class="etq" data-i18n="editions.foundation_label">Entitat beneficiària</dt>
+                <dd class="fitxa__entitat">
+                  <img src="assets/img/fundacions/yomecorono.webp" alt="Logo Fundació #YoMeCorono" loading="lazy" />
+                  <span data-i18n="editions.e2023.foundation">Fundació #YoMeCorono / Fundació Lluita contra les Infeccions</span>
+                </dd>
               </div>
-              <div class="foundation-info">
-                <p class="foundation-info__label" data-i18n="editions.foundation_label">Entitat beneficiària</p>
-                <p class="foundation-info__name" data-i18n="editions.e2023.foundation">Fundació #YoMeCorono / Fundació Lluita contra les Infeccions</p>
+              <div>
+                <dt class="etq" data-i18n="editions.cause_label">Causa</dt>
+                <dd data-i18n="editions.e2023.cause">Investigació contra la COVID-19, vacunes, tractaments, COVID persistent i vigilància genòmica.</dd>
               </div>
-            </div>
+              <div>
+                <dt class="etq" data-i18n="editions.teams_title">Equips participants</dt>
+                <dd>
+                  <ul class="teams-list">
+                    <li class="team-item"><img src="assets/img/equips/mini/sweet-home-barcelona.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Sweet Home Barcelona <small>(ex-jugadors F.C. Barcelona)</small></span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/veterans-joventut.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Veterans Joventut Badalona</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/espanyol.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>S.D. Espanyol (Seccions Deportives)</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/cb-sitges.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>C.B. Sitges</span></li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt class="etq">Lloc</dt>
+                <dd class="fitxa__lloc">Pavelló Pins Vens, Sitges <span>Abril 2023</span></dd>
+              </div>
+            </dl>
 
-            <!-- Causa -->
-            <div class="edition-cause">
-              <p class="edition-cause__label" data-i18n="editions.cause_label">Causa</p>
-              <p class="edition-cause__text" data-i18n="editions.e2023.cause">Investigació contra la COVID-19, vacunes, tractaments, COVID persistent i vigilància genòmica.</p>
-            </div>
-
-            <!-- Equips 2023 -->
-            <div class="edition-teams">
-              <p class="edition-teams__title" data-i18n="editions.teams_title">Equips participants</p>
-              <ul class="teams-list">
-                <li class="team-item">
-                  <img src="assets/img/equips/sweet-home-barcelona.webp" alt="Sweet Home Barcelona" class="team-logo" loading="lazy" />
-                  Sweet Home Barcelona <small style="color:var(--color-text-muted); font-size:11px;">(ex-jugadors F.C. Barcelona)</small>
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/veterans-joventut.webp" alt="Veterans Joventut Badalona" class="team-logo" loading="lazy" />
-                  Veterans Joventut Badalona
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/espanyol.webp" alt="S.D. Espanyol" class="team-logo" loading="lazy" />
-                  S.D. Espanyol (Seccions Deportives)
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/cb-sitges.webp" alt="C.B. Sitges" class="team-logo" loading="lazy" />
-                  C.B. Sitges
-                </li>
-              </ul>
-            </div>
-
-            <!-- Testimoni Dr. Clotet -->
-            <div class="edition-testimonial">
-              <blockquote data-i18n="editions.e2023.testimonial">
-                "Hem de deixar de cometre els mateixos errors. Hem d'invertir per prevenir malalties i ajudar la humanitat a estar un pas per davant."
-              </blockquote>
-              <cite data-i18n="editions.e2023.testimonial_author">Dr. Buenaventura Clotet</cite>
-            </div>
+            <figure class="cita">
+              <blockquote data-i18n="editions.e2023.testimonial">"Hem de deixar de cometre els mateixos errors. Hem d'invertir per prevenir malalties i ajudar la humanitat a estar un pas per davant."</blockquote>
+              <figcaption class="etq" data-i18n="editions.e2023.testimonial_author">Dr. Buenaventura Clotet</figcaption>
+            </figure>
 
           </div>
 
-          <!-- Galeria 2023 -->
-          <div class="edition-gallery">
-            <p class="edition-gallery__title" data-i18n="editions.photos_title">Galeria de fotos</p>
-            <div class="gallery-grid">
-              <div class="gallery-item" data-lightbox="gallery-2023" data-caption="Entrega del xec solidari — Torneig 2023">
-                <img src="assets/img/torneig-2023/foto-01.webp" alt="Entrega del xec solidari — Torneig 2023" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2023" data-caption="Equip CB Sitges saludant el públic">
-                <img src="assets/img/torneig-2023/foto-02.webp" alt="Equip CB Sitges saludant el públic" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2023" data-caption="SD Espanyol al Pavelló Pins Vens">
-                <img src="assets/img/torneig-2023/foto-03.webp" alt="SD Espanyol al Pavelló Pins Vens" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2023" data-caption="Acció de joc — disputa de pilota">
-                <img src="assets/img/torneig-2023/foto-04.webp" alt="Acció de joc — disputa de pilota" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2023" data-caption="Foto conjunta de tots els equips">
-                <img src="assets/img/torneig-2023/foto-05.webp" alt="Foto conjunta de tots els equips" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2023" data-caption="CB Sitges i Veterans Joventut — foto final">
-                <img src="assets/img/torneig-2023/foto-06.webp" alt="CB Sitges i Veterans Joventut — foto final" loading="lazy" />
-              </div>
-            </div>
-
-            <!-- Info ubicació torneig 2023 -->
-            <div style="padding:1rem; background:var(--color-bg-alt); border-radius:var(--radius); margin-top:1rem;">
-              <p style="font-size:var(--text-xs); font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-text-muted); margin-bottom:0.25rem;">Lloc</p>
-              <p style="font-size:var(--text-sm); font-weight:500; color:var(--color-text);">Pavelló Pins Vens, Sitges</p>
-              <p style="font-size:var(--text-xs); color:var(--color-text-muted); margin-top:0.25rem;">Abril 2023</p>
-            </div>
-
+          <div class="galeria" role="group" aria-labelledby="gal2023-title">
+            <p class="visually-hidden" id="gal2023-title"><span data-i18n="editions.photos_title">Galeria de fotos</span> 2023</p>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2023" data-caption="Entrega del xec solidari — Torneig 2023">
+              <img src="assets/img/torneig-2023/foto-01.webp" srcset="assets/img/torneig-2023/foto-01-p.webp 480w, assets/img/torneig-2023/foto-01.webp 1600w" sizes="(max-width: 900px) 64vw, 32vw" alt="Entrega del xec solidari — Torneig 2023" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2023" data-caption="Equip CB Sitges saludant el públic">
+              <img src="assets/img/torneig-2023/foto-02.webp" srcset="assets/img/torneig-2023/foto-02-p.webp 480w, assets/img/torneig-2023/foto-02.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Equip CB Sitges saludant el públic" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2023" data-caption="SD Espanyol al Pavelló Pins Vens">
+              <img src="assets/img/torneig-2023/foto-03.webp" srcset="assets/img/torneig-2023/foto-03-p.webp 480w, assets/img/torneig-2023/foto-03.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="SD Espanyol al Pavelló Pins Vens" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2023" data-caption="Acció de joc — disputa de pilota">
+              <img src="assets/img/torneig-2023/foto-04.webp" srcset="assets/img/torneig-2023/foto-04-p.webp 480w, assets/img/torneig-2023/foto-04.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Acció de joc — disputa de pilota" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2023" data-caption="Foto conjunta de tots els equips">
+              <img src="assets/img/torneig-2023/foto-05.webp" srcset="assets/img/torneig-2023/foto-05-p.webp 480w, assets/img/torneig-2023/foto-05.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Foto conjunta de tots els equips" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2023" data-caption="CB Sitges i Veterans Joventut — foto final">
+              <img src="assets/img/torneig-2023/foto-06.webp" srcset="assets/img/torneig-2023/foto-06-p.webp 480w, assets/img/torneig-2023/foto-06.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="CB Sitges i Veterans Joventut — foto final" loading="lazy" />
+            </button>
           </div>
+
         </div>
       </article>
-
 
       <!-- ─────────────────── EDICIÓ 2024 ─────────────────── -->
-      <article class="edition-card animate-on-scroll" id="edition-2024" aria-labelledby="ed2024-title">
+      <article class="edicio" id="edition-2024" aria-labelledby="ed2024-title">
 
-        <div class="edition-header" style="position:relative;">
-          <div class="edition-header__left">
-            <p class="edition-header__num">2n Torneig · Juny 2024</p>
-            <h3 class="edition-header__title" id="ed2024-title" data-i18n="editions.e2024.lema">Recerca biomèdica</h3>
+        <header class="edicio__cap">
+          <span class="dorsal" data-n="24" aria-hidden="true">24</span>
+          <div>
+            <p class="etq">2n Torneig · Juny 2024</p>
+            <h3 class="edicio__lema" id="ed2024-title" data-i18n="editions.e2024.lema">Recerca biomèdica</h3>
           </div>
-          <div class="edition-raised">
-            <span class="edition-raised__amount">950€</span>
-            <span class="edition-raised__label" data-i18n="editions.raised_label">Recaptat</span>
-          </div>
-          <span class="edition-header__year" aria-hidden="true">2024</span>
-        </div>
+          <p class="edicio__recaptat">
+            <span class="edicio__import">950&nbsp;€</span>
+            <span class="etq" data-i18n="editions.raised_label">Recaptat</span>
+          </p>
+        </header>
 
-        <div class="edition-body">
+        <div class="edicio__cos">
 
-          <div class="edition-info">
-
-            <div class="edition-foundation">
-              <div class="foundation-logo" aria-hidden="true">
-                <img src="assets/img/fundacions/idibell.webp" alt="Logo IDIBELL" loading="lazy" />
+          <div class="edicio__info">
+            <dl class="fitxa">
+              <div>
+                <dt class="etq" data-i18n="editions.foundation_label">Entitat beneficiària</dt>
+                <dd class="fitxa__entitat">
+                  <img src="assets/img/fundacions/idibell.webp" alt="Logo IDIBELL" loading="lazy" />
+                  <span data-i18n="editions.e2024.foundation">IDIBELL — Institut d'Investigació Biomèdica de Bellvitge</span>
+                </dd>
               </div>
-              <div class="foundation-info">
-                <p class="foundation-info__label" data-i18n="editions.foundation_label">Entitat beneficiària</p>
-                <p class="foundation-info__name" data-i18n="editions.e2024.foundation">IDIBELL — Institut d'Investigació Biomèdica de Bellvitge</p>
+              <div>
+                <dt class="etq" data-i18n="editions.cause_label">Causa</dt>
+                <dd data-i18n="editions.e2024.cause">Suport a la recerca biomèdica de l'Institut d'Investigació Biomèdica de Bellvitge per millorar tractaments i trobar cures a malalties greus.</dd>
               </div>
-            </div>
-
-            <div class="edition-cause">
-              <p class="edition-cause__label" data-i18n="editions.cause_label">Causa</p>
-              <p class="edition-cause__text" data-i18n="editions.e2024.cause">Suport a la recerca biomèdica de l'Institut d'Investigació Biomèdica de Bellvitge per millorar tractaments i trobar cures a malalties greus.</p>
-            </div>
-
-            <div class="edition-teams">
-              <p class="edition-teams__title" data-i18n="editions.teams_title">Equips participants</p>
-              <ul class="teams-list">
-                <li class="team-item">
-                  <img src="assets/img/equips/sweet-home-barcelona.webp" alt="Sweet Home Barcelona" class="team-logo" loading="lazy" />
-                  Sweet Home Barcelona
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/veterans-la-seu.webp" alt="Veterans La Seu" class="team-logo" loading="lazy" />
-                  Veterans La Seu
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/espanyol.webp" alt="S.D. Espanyol" class="team-logo" loading="lazy" />
-                  S.D. Espanyol (Seccions Deportives)
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/cb-sitges.webp" alt="C.B. Sitges" class="team-logo" loading="lazy" />
-                  C.B. Sitges
-                </li>
-              </ul>
-            </div>
+              <div>
+                <dt class="etq" data-i18n="editions.teams_title">Equips participants</dt>
+                <dd>
+                  <ul class="teams-list">
+                    <li class="team-item"><img src="assets/img/equips/mini/sweet-home-barcelona.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Sweet Home Barcelona</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/veterans-la-seu.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Veterans La Seu</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/espanyol.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>S.D. Espanyol (Seccions Deportives)</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/cb-sitges.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>C.B. Sitges</span></li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt class="etq">Lloc</dt>
+                <dd class="fitxa__lloc">Pavelló Pins Vens, Sitges <span>Juny 2024</span></dd>
+              </div>
+            </dl>
 
           </div>
 
-          <div class="edition-gallery">
-            <p class="edition-gallery__title" data-i18n="editions.photos_title">Galeria de fotos</p>
-            <div class="gallery-grid">
-              <div class="gallery-item" data-lightbox="gallery-2024" data-caption="Entrega del xec solidari a IDIBELL — Torneig 2024">
-                <img src="assets/img/torneig-2024/foto-01.webp" alt="Entrega del xec solidari a IDIBELL" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2024" data-caption="Acció de joc — Espanyol vs Barcelona">
-                <img src="assets/img/torneig-2024/foto-02.webp" alt="Acció de joc — Espanyol vs Barcelona" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2024" data-caption="Disputa de pilota — Torneig 2024">
-                <img src="assets/img/torneig-2024/foto-03.webp" alt="Disputa de pilota — Torneig 2024" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2024" data-caption="Equip Sweet Home Barcelona">
-                <img src="assets/img/torneig-2024/foto-04.webp" alt="Equip Sweet Home Barcelona" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2024" data-caption="Acció de joc — Torneig 2024">
-                <img src="assets/img/torneig-2024/foto-05.webp" alt="Acció de joc — Torneig 2024" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2024" data-caption="SD Espanyol — victòria al marcador">
-                <img src="assets/img/torneig-2024/foto-06.webp" alt="SD Espanyol — victòria al marcador" loading="lazy" />
-              </div>
-            </div>
-
-            <div style="padding:1rem; background:var(--color-bg-alt); border-radius:var(--radius); margin-top:1rem;">
-              <p style="font-size:var(--text-xs); font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-text-muted); margin-bottom:0.25rem;">Lloc</p>
-              <p style="font-size:var(--text-sm); font-weight:500; color:var(--color-text);">Pavelló Pins Vens, Sitges</p>
-              <p style="font-size:var(--text-xs); color:var(--color-text-muted); margin-top:0.25rem;">Juny 2024</p>
-            </div>
+          <div class="galeria" role="group" aria-labelledby="gal2024-title">
+            <p class="visually-hidden" id="gal2024-title"><span data-i18n="editions.photos_title">Galeria de fotos</span> 2024</p>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2024" data-caption="Entrega del xec solidari a IDIBELL — Torneig 2024">
+              <img src="assets/img/torneig-2024/foto-01.webp" srcset="assets/img/torneig-2024/foto-01-p.webp 480w, assets/img/torneig-2024/foto-01.webp 1600w" sizes="(max-width: 900px) 64vw, 32vw" alt="Entrega del xec solidari a IDIBELL" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2024" data-caption="Acció de joc — Espanyol vs Barcelona">
+              <img src="assets/img/torneig-2024/foto-02.webp" srcset="assets/img/torneig-2024/foto-02-p.webp 480w, assets/img/torneig-2024/foto-02.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Acció de joc — Espanyol vs Barcelona" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2024" data-caption="Disputa de pilota — Torneig 2024">
+              <img src="assets/img/torneig-2024/foto-03.webp" srcset="assets/img/torneig-2024/foto-03-p.webp 480w, assets/img/torneig-2024/foto-03.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Disputa de pilota — Torneig 2024" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2024" data-caption="Equip Sweet Home Barcelona">
+              <img src="assets/img/torneig-2024/foto-04.webp" srcset="assets/img/torneig-2024/foto-04-p.webp 480w, assets/img/torneig-2024/foto-04.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Equip Sweet Home Barcelona" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2024" data-caption="Acció de joc — Torneig 2024">
+              <img src="assets/img/torneig-2024/foto-05.webp" srcset="assets/img/torneig-2024/foto-05-p.webp 480w, assets/img/torneig-2024/foto-05.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Acció de joc — Torneig 2024" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2024" data-caption="SD Espanyol — victòria al marcador">
+              <img src="assets/img/torneig-2024/foto-06.webp" srcset="assets/img/torneig-2024/foto-06-p.webp 480w, assets/img/torneig-2024/foto-06.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="SD Espanyol — victòria al marcador" loading="lazy" />
+            </button>
           </div>
 
         </div>
       </article>
 
-
       <!-- ─────────────────── EDICIÓ 2025 ─────────────────── -->
-      <article class="edition-card animate-on-scroll" id="edition-2025" aria-labelledby="ed2025-title">
+      <article class="edicio" id="edition-2025" aria-labelledby="ed2025-title">
 
-        <div class="edition-header" style="position:relative;">
-          <div class="edition-header__left">
-            <p class="edition-header__num">3r Torneig · Juny 2025</p>
-            <h3 class="edition-header__title" id="ed2025-title" data-i18n="editions.e2025.lema">Per als infants</h3>
+        <header class="edicio__cap">
+          <span class="dorsal" data-n="25" aria-hidden="true">25</span>
+          <div>
+            <p class="etq">3r Torneig · Juny 2025</p>
+            <h3 class="edicio__lema" id="ed2025-title" data-i18n="editions.e2025.lema">Per als infants</h3>
           </div>
-          <div class="edition-raised">
-            <span class="edition-raised__amount">3.500€</span>
-            <span class="edition-raised__label" data-i18n="editions.raised_label">Recaptat</span>
-          </div>
-          <span class="edition-header__year" aria-hidden="true">2025</span>
-        </div>
+          <p class="edicio__recaptat">
+            <span class="edicio__import">3.500&nbsp;€</span>
+            <span class="etq" data-i18n="editions.raised_label">Recaptat</span>
+          </p>
+        </header>
 
-        <div class="edition-body">
+        <div class="edicio__cos">
 
-          <div class="edition-info">
-
-            <div class="edition-foundation">
-              <div class="foundation-logo" aria-hidden="true">
-                <img src="assets/img/fundacions/xana.webp" alt="Logo Fundació Xana" loading="lazy" />
+          <div class="edicio__info">
+            <dl class="fitxa">
+              <div>
+                <dt class="etq" data-i18n="editions.foundation_label">Entitat beneficiària</dt>
+                <dd class="fitxa__entitat">
+                  <img src="assets/img/fundacions/xana.webp" alt="Logo Fundació Xana" loading="lazy" />
+                  <span data-i18n="editions.e2025.foundation">Fundació Xana</span>
+                </dd>
               </div>
-              <div class="foundation-info">
-                <p class="foundation-info__label" data-i18n="editions.foundation_label">Entitat beneficiària</p>
-                <p class="foundation-info__name" data-i18n="editions.e2025.foundation">Fundació Xana</p>
+              <div>
+                <dt class="etq" data-i18n="editions.cause_label">Causa</dt>
+                <dd data-i18n="editions.e2025.cause">Suport a nens i adolescents amb malalties greus i les seves famílies, vetllant pel seu benestar físic, emocional i social, vinculat a l'Hospital Vall d'Hebron.</dd>
               </div>
-            </div>
-
-            <div class="edition-cause">
-              <p class="edition-cause__label" data-i18n="editions.cause_label">Causa</p>
-              <p class="edition-cause__text" data-i18n="editions.e2025.cause">Suport a nens i adolescents amb malalties greus i les seves famílies, vetllant pel seu benestar físic, emocional i social, vinculat a l'Hospital Vall d'Hebron.</p>
-            </div>
-
-            <div class="edition-teams">
-              <p class="edition-teams__title" data-i18n="editions.teams_title">Equips participants</p>
-              <ul class="teams-list">
-                <li class="team-item">
-                  <img src="assets/img/equips/espanyol.webp" alt="S.D. Espanyol" class="team-logo" loading="lazy" />
-                  S.D. Espanyol
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/valencia-basket.webp" alt="Valencia Basket" class="team-logo" loading="lazy" />
-                  Valencia Basket
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/mvps.webp" alt="MVPs" class="team-logo" loading="lazy" />
-                  MVPs
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/no-surrender-towers.webp" alt="No Surrender Towers" class="team-logo" loading="lazy" />
-                  No Surrender Towers
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/noisy-le-grand.webp" alt="Noisy le Grand" class="team-logo" loading="lazy" />
-                  Noisy le Grand
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/vilabasquet-viladecans.webp" alt="Vilabasquet Viladecans" class="team-logo" loading="lazy" />
-                  Vilabasquet Viladecans
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/cb-sitges.webp" alt="C.B. Sitges" class="team-logo" loading="lazy" />
-                  C.B. Sitges
-                </li>
-              </ul>
-            </div>
+              <div>
+                <dt class="etq" data-i18n="editions.teams_title">Equips participants</dt>
+                <dd>
+                  <ul class="teams-list">
+                    <li class="team-item"><img src="assets/img/equips/mini/espanyol.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>S.D. Espanyol</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/valencia-basket.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Valencia Basket</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/mvps.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>MVPs</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/no-surrender-towers.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>No Surrender Towers</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/noisy-le-grand.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Noisy le Grand</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/vilabasquet-viladecans.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Vilabasquet Viladecans</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/cb-sitges.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>C.B. Sitges</span></li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt class="etq">Lloc</dt>
+                <dd class="fitxa__lloc">Pavelló Pins Vens, Sitges <span>Juny 2025</span></dd>
+              </div>
+            </dl>
 
           </div>
 
-          <div class="edition-gallery">
-            <p class="edition-gallery__title" data-i18n="editions.photos_title">Galeria de fotos</p>
-            <div class="gallery-grid">
-              <div class="gallery-item" data-lightbox="gallery-2025" data-caption="CB Sitges vs Valencia Basket — foto conjunta">
-                <img src="assets/img/torneig-2025/foto-01.webp" alt="CB Sitges vs Valencia Basket" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2025" data-caption="SD Espanyol al Pavelló Pins Vens — Torneig 2025">
-                <img src="assets/img/torneig-2025/foto-02.webp" alt="SD Espanyol al Pavelló Pins Vens" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2025" data-caption="No Surrender Towers — Torneig 2025">
-                <img src="assets/img/torneig-2025/foto-03.webp" alt="No Surrender Towers — Torneig 2025" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2025" data-caption="Veterans Viladecans — foto conjunta">
-                <img src="assets/img/torneig-2025/foto-04.webp" alt="Veterans Viladecans — foto conjunta" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2025" data-caption="Equip CB Sitges — Torneig 2025">
-                <img src="assets/img/torneig-2025/foto-05.webp" alt="Equip CB Sitges — Torneig 2025" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2025" data-caption="Aficionats CB Sitges a les grades">
-                <img src="assets/img/torneig-2025/foto-06.webp" alt="Aficionats CB Sitges a les grades" loading="lazy" />
-              </div>
-            </div>
-
-            <div style="padding:1rem; background:var(--color-bg-alt); border-radius:var(--radius); margin-top:1rem;">
-              <p style="font-size:var(--text-xs); font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-text-muted); margin-bottom:0.25rem;">Lloc</p>
-              <p style="font-size:var(--text-sm); font-weight:500; color:var(--color-text);">Pavelló Pins Vens, Sitges</p>
-              <p style="font-size:var(--text-xs); color:var(--color-text-muted); margin-top:0.25rem;">Juny 2025</p>
-            </div>
+          <div class="galeria" role="group" aria-labelledby="gal2025-title">
+            <p class="visually-hidden" id="gal2025-title"><span data-i18n="editions.photos_title">Galeria de fotos</span> 2025</p>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2025" data-caption="CB Sitges vs Valencia Basket — foto conjunta">
+              <img src="assets/img/torneig-2025/foto-01.webp" srcset="assets/img/torneig-2025/foto-01-p.webp 480w, assets/img/torneig-2025/foto-01.webp 1600w" sizes="(max-width: 900px) 64vw, 32vw" alt="CB Sitges vs Valencia Basket" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2025" data-caption="SD Espanyol al Pavelló Pins Vens — Torneig 2025">
+              <img src="assets/img/torneig-2025/foto-02.webp" srcset="assets/img/torneig-2025/foto-02-p.webp 480w, assets/img/torneig-2025/foto-02.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="SD Espanyol al Pavelló Pins Vens" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2025" data-caption="No Surrender Towers — Torneig 2025">
+              <img src="assets/img/torneig-2025/foto-03.webp" srcset="assets/img/torneig-2025/foto-03-p.webp 480w, assets/img/torneig-2025/foto-03.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="No Surrender Towers — Torneig 2025" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2025" data-caption="Veterans Viladecans — foto conjunta">
+              <img src="assets/img/torneig-2025/foto-04.webp" srcset="assets/img/torneig-2025/foto-04-p.webp 480w, assets/img/torneig-2025/foto-04.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Veterans Viladecans — foto conjunta" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2025" data-caption="Equip CB Sitges — Torneig 2025">
+              <img src="assets/img/torneig-2025/foto-05.webp" srcset="assets/img/torneig-2025/foto-05-p.webp 480w, assets/img/torneig-2025/foto-05.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Equip CB Sitges — Torneig 2025" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2025" data-caption="Aficionats CB Sitges a les grades">
+              <img src="assets/img/torneig-2025/foto-06.webp" srcset="assets/img/torneig-2025/foto-06-p.webp 480w, assets/img/torneig-2025/foto-06.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Aficionats CB Sitges a les grades" loading="lazy" />
+            </button>
           </div>
 
         </div>
       </article>
 
       <!-- ─────────────────── EDICIÓ 2026 ─────────────────── -->
-      <article class="edition-card animate-on-scroll" id="edition-2026" aria-labelledby="ed2026-title">
+      <article class="edicio" id="edition-2026" aria-labelledby="ed2026-title">
 
-        <div class="edition-header" style="position:relative;">
-          <div class="edition-header__left">
-            <p class="edition-header__num">4t Torneig · Juny 2026</p>
-            <h3 class="edition-header__title" id="ed2026-title" data-i18n="editions.e2026.lema">Contra el Parkinson</h3>
+        <header class="edicio__cap">
+          <span class="dorsal" data-n="26" aria-hidden="true">26</span>
+          <div>
+            <p class="etq">4t Torneig · Juny 2026</p>
+            <h3 class="edicio__lema" id="ed2026-title" data-i18n="editions.e2026.lema">Contra el Parkinson</h3>
           </div>
-          <div class="edition-raised">
-            <span class="edition-raised__amount">6.000€</span>
-            <span class="edition-raised__label" data-i18n="editions.raised_label">Recaptat</span>
-          </div>
-          <span class="edition-header__year" aria-hidden="true">2026</span>
-        </div>
+          <p class="edicio__recaptat">
+            <span class="edicio__import">6.000&nbsp;€</span>
+            <span class="etq" data-i18n="editions.raised_label">Recaptat</span>
+          </p>
+        </header>
 
-        <div class="edition-body">
+        <div class="edicio__cos">
 
-          <div class="edition-info">
-
-            <div class="edition-foundation">
-              <div class="foundation-logo" aria-hidden="true">
-                <img src="assets/img/fundacions/clinic-barcelona.webp" alt="Logo Hospital Clínic de Barcelona" loading="lazy" />
+          <div class="edicio__info">
+            <dl class="fitxa">
+              <div>
+                <dt class="etq" data-i18n="editions.foundation_label">Entitat beneficiària</dt>
+                <dd class="fitxa__entitat">
+                  <img src="assets/img/fundacions/clinic-barcelona.webp" alt="Logo Hospital Clínic de Barcelona" loading="lazy" />
+                  <span data-i18n="editions.e2026.foundation">Hospital Clínic de Barcelona + Fundació Clínic-IDIBAPS</span>
+                </dd>
               </div>
-              <div class="foundation-info">
-                <p class="foundation-info__label" data-i18n="editions.foundation_label">Entitat beneficiària</p>
-                <p class="foundation-info__name" data-i18n="editions.e2026.foundation">Hospital Clínic de Barcelona + Fundació Clínic-IDIBAPS</p>
+              <div>
+                <dt class="etq" data-i18n="editions.cause_label">Causa</dt>
+                <dd data-i18n="editions.e2026.cause">Suport a la recerca de l'Hospital Clínic de Barcelona i la Fundació Clínic-IDIBAPS per millorar el diagnòstic i el tractament de la malaltia de Parkinson.</dd>
               </div>
-            </div>
-
-            <div class="edition-cause">
-              <p class="edition-cause__label" data-i18n="editions.cause_label">Causa</p>
-              <p class="edition-cause__text" data-i18n="editions.e2026.cause">Suport a la recerca de l'Hospital Clínic de Barcelona i la Fundació Clínic-IDIBAPS per millorar el diagnòstic i el tractament de la malaltia de Parkinson.</p>
-            </div>
-
-            <div class="edition-teams">
-              <p class="edition-teams__title" data-i18n="editions.teams_title">Equips participants</p>
-              <ul class="teams-list">
-                <li class="team-item">
-                  <img src="assets/img/equips/cb-sitges.webp" alt="Bàsquet Sitges" class="team-logo" loading="lazy" />
-                  Bàsquet Sitges
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/valencia-basket.webp" alt="Valencia Basket" class="team-logo" loading="lazy" />
-                  Valencia Basket
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/mvps.webp" alt="MVPs" class="team-logo" loading="lazy" />
-                  MVPs
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/no-surrender-towers.webp" alt="No Surrender Towers" class="team-logo" loading="lazy" />
-                  No Surrender Towers
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/espanyol.webp" alt="S.D. Espanyol" class="team-logo" loading="lazy" />
-                  S.D. Espanyol
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/fcbarcelona-veterans.webp" alt="Veterans FC Barcelona" class="team-logo" loading="lazy" />
-                  Veterans FC Barcelona
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/veterans-girona.webp" alt="Veterans Girona" class="team-logo" loading="lazy" />
-                  Veterans Girona
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/veterans-sedis.webp" alt="Veterans del Sedis" class="team-logo" loading="lazy" />
-                  Veterans del Sedis
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/tehran.webp" alt="Tehran" class="team-logo" loading="lazy" />
-                  Tehran
-                </li>
-                <li class="team-item">
-                  <img src="assets/img/equips/french-connection.webp" alt="French Connection" class="team-logo" loading="lazy" />
-                  French Connection
-                </li>
-              </ul>
-            </div>
+              <div>
+                <dt class="etq" data-i18n="editions.teams_title">Equips participants</dt>
+                <dd>
+                  <ul class="teams-list">
+                    <li class="team-item"><img src="assets/img/equips/mini/cb-sitges.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Bàsquet Sitges</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/valencia-basket.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Valencia Basket</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/mvps.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>MVPs</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/no-surrender-towers.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>No Surrender Towers</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/espanyol.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>S.D. Espanyol</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/fcbarcelona-veterans.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Veterans FC Barcelona</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/veterans-girona.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Veterans Girona</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/veterans-sedis.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Veterans del Sedis</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/tehran.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Tehran</span></li>
+                    <li class="team-item"><img src="assets/img/equips/mini/french-connection.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>French Connection</span></li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt class="etq">Lloc</dt>
+                <dd class="fitxa__lloc">Pavelló Pins Vens, Sitges <span>Juny 2026</span></dd>
+              </div>
+            </dl>
 
           </div>
 
-          <div class="edition-gallery">
-            <p class="edition-gallery__title" data-i18n="editions.photos_title">Galeria de fotos</p>
-            <div class="gallery-grid">
-              <div class="gallery-item" data-lightbox="gallery-2026" data-caption="Foto conjunta dels equips — Torneig 2026">
-                <img src="assets/img/torneig-2026/foto-01.webp" alt="Foto conjunta dels equips — Torneig 2026" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2026" data-caption="Entrega del xec solidari de 6.000€ a la Fundació Clínic-IDIBAPS">
-                <img src="assets/img/torneig-2026/foto-02.webp" alt="Entrega del xec solidari de 6.000€ a la Fundació Clínic-IDIBAPS" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2026" data-caption="No Surrender Towers vs Veterans Girona">
-                <img src="assets/img/torneig-2026/foto-03.webp" alt="No Surrender Towers vs Veterans Girona" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2026" data-caption="Acció de joc — Torneig 2026">
-                <img src="assets/img/torneig-2026/foto-04.webp" alt="Acció de joc — Torneig 2026" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2026" data-caption="Veterans FC Barcelona vs Tehran">
-                <img src="assets/img/torneig-2026/foto-05.webp" alt="Veterans FC Barcelona vs Tehran" loading="lazy" />
-              </div>
-              <div class="gallery-item" data-lightbox="gallery-2026" data-caption="Acció de joc — Torneig 2026">
-                <img src="assets/img/torneig-2026/foto-06.webp" alt="Acció de joc — Torneig 2026" loading="lazy" />
-              </div>
-            </div>
-
-            <div style="padding:1rem; background:var(--color-bg-alt); border-radius:var(--radius); margin-top:1rem;">
-              <p style="font-size:var(--text-xs); font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-text-muted); margin-bottom:0.25rem;">Lloc</p>
-              <p style="font-size:var(--text-sm); font-weight:500; color:var(--color-text);">Pavelló Pins Vens, Sitges</p>
-              <p style="font-size:var(--text-xs); color:var(--color-text-muted); margin-top:0.25rem;">Juny 2026</p>
-            </div>
+          <div class="galeria" role="group" aria-labelledby="gal2026-title">
+            <p class="visually-hidden" id="gal2026-title"><span data-i18n="editions.photos_title">Galeria de fotos</span> 2026</p>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2026" data-caption="Foto conjunta dels equips — Torneig 2026">
+              <img src="assets/img/torneig-2026/foto-01.webp" srcset="assets/img/torneig-2026/foto-01-p.webp 480w, assets/img/torneig-2026/foto-01.webp 1600w" sizes="(max-width: 900px) 64vw, 32vw" alt="Foto conjunta dels equips — Torneig 2026" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2026" data-caption="Entrega del xec solidari de 6.000€ a la Fundació Clínic-IDIBAPS">
+              <img src="assets/img/torneig-2026/foto-02.webp" srcset="assets/img/torneig-2026/foto-02-p.webp 480w, assets/img/torneig-2026/foto-02.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Entrega del xec solidari de 6.000€ a la Fundació Clínic-IDIBAPS" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2026" data-caption="No Surrender Towers vs Veterans Girona">
+              <img src="assets/img/torneig-2026/foto-03.webp" srcset="assets/img/torneig-2026/foto-03-p.webp 480w, assets/img/torneig-2026/foto-03.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="No Surrender Towers vs Veterans Girona" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2026" data-caption="Acció de joc — Torneig 2026">
+              <img src="assets/img/torneig-2026/foto-04.webp" srcset="assets/img/torneig-2026/foto-04-p.webp 480w, assets/img/torneig-2026/foto-04.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Acció de joc — Torneig 2026" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2026" data-caption="Veterans FC Barcelona vs Tehran">
+              <img src="assets/img/torneig-2026/foto-05.webp" srcset="assets/img/torneig-2026/foto-05-p.webp 480w, assets/img/torneig-2026/foto-05.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Veterans FC Barcelona vs Tehran" loading="lazy" />
+            </button>
+            <button type="button" class="galeria__foto" data-lightbox="gallery-2026" data-caption="Acció de joc — Torneig 2026">
+              <img src="assets/img/torneig-2026/foto-06.webp" srcset="assets/img/torneig-2026/foto-06-p.webp 480w, assets/img/torneig-2026/foto-06.webp 1600w" sizes="(max-width: 900px) 32vw, 16vw" alt="Acció de joc — Torneig 2026" loading="lazy" />
+            </button>
           </div>
 
         </div>
@@ -838,145 +655,84 @@
 
 
   <!-- ============================================================
-       SECCIO 2026 — Hero secundari destacat
+       SECCIÓ 2026
        ============================================================ -->
-  <section id="section-2026" aria-labelledby="title-2026">
-    <div class="container">
+  <section id="section-2026" class="t2026 fosc" aria-labelledby="title-2026">
+    <div class="container t2026__graella">
 
-      <div class="next2026-grid">
+      <div class="t2026__cartell">
+        <img src="assets/img/cartell-2026.webp"
+             alt="Cartell oficial 4t Torneig de Veterans Sitges 2026 — Lluita contra el Parkinson"
+             width="1600" height="2572" loading="lazy" decoding="async" />
+      </div>
 
-        <!-- Cartell 2026 -->
-        <div class="next2026-poster animate-on-scroll">
-          <div class="next2026-poster__img-wrap">
-            <!--
-              El cartell 2026.jpeg es troba a /clients/cbsitges/2026.jpeg
-              Copia'l a assets/img/cartell-2026.webp per servir-lo des del web.
-              Fins aleshores s'utilitza la ruta relativa des d'aquesta carpeta:
-            -->
-            <img
-              src="assets/img/cartell-2026.webp"
-              alt="Cartell oficial 4t Torneig de Veterans Sitges 2026 — Lluita contra el Parkinson"
-              width="1600"
-              height="2572"
-              loading="eager"
-              fetchpriority="high"
-            />
-          </div>
-          <div class="next2026-poster__glow" aria-hidden="true"></div>
-        </div>
+      <div>
+        <p class="etq etq--verd" data-i18n="next2026.badge">Pròxim torneig</p>
+        <h2 class="titol" id="title-2026" data-i18n="next2026.title">4t Torneig Veterans Sitges</h2>
 
-        <!-- Info 2026 -->
-        <div class="next2026-info animate-on-scroll animate-delay-2">
-
-          <div class="next2026-badge" data-i18n="next2026.badge">Pròxim torneig</div>
-
-          <h2 class="next2026-title" id="title-2026" data-i18n="next2026.title">4t Torneig Veterans Sitges</h2>
-
-          <p class="next2026-date">
-            <svg style="width:20px;height:20px;" aria-hidden="true"><use href="#i-calendar"/></svg>
+        <div class="t2026__dades">
+          <p class="etq">
+            <svg aria-hidden="true"><use href="#i-calendar"/></svg>
             <span data-i18n="next2026.date">20 de juny de 2026</span>
           </p>
-
-          <p class="next2026-location">
-            <svg style="width:16px;height:16px;" aria-hidden="true"><use href="#i-map-pin"/></svg>
+          <p class="etq">
+            <svg aria-hidden="true"><use href="#i-map-pin"/></svg>
             <span data-i18n="next2026.location">Pavelló Pins Vens, Sitges</span>
           </p>
-
-          <p class="next2026-description" data-i18n="next2026.description">
-            El 20 de juny de 2026 celebrem el 4t Torneig de Veterans Sitges en benefici de la lluita contra el Parkinson, de la mà de l'Hospital Clínic de Barcelona i la Fundació Clínic-IDIBAPS. 10 equips, 1 causa.
-          </p>
-
-          <!-- Causa -->
-          <div class="next2026-cause">
-            <p class="next2026-cause__title" data-i18n="next2026.cause_title">La causa</p>
-            <p class="next2026-cause__name" data-i18n="next2026.cause">Lluita contra el Parkinson</p>
-            <p class="next2026-cause__foundation" data-i18n="next2026.foundation">Hospital Clínic de Barcelona + Fundació Clínic-IDIBAPS</p>
-          </div>
-
-          <!-- Equips 2026 -->
-          <div class="next2026-teams">
-            <p class="next2026-teams__title" data-i18n="next2026.teams_title">10 equips · 1 causa</p>
-            <ul class="teams-list">
-              <li class="team-item">
-                <img src="assets/img/equips/valencia-basket.webp" alt="Valencia Basket" class="team-logo" loading="lazy" />
-                Valencia Basket
-              </li>
-              <li class="team-item">
-                <img src="assets/img/equips/fcbarcelona-veterans.webp" alt="FC Barcelona Veterans" class="team-logo" loading="lazy" />
-                FC Barcelona Veterans
-              </li>
-              <li class="team-item">
-                <img src="assets/img/equips/veterans-girona.webp" alt="Veterans Girona" class="team-logo" loading="lazy" />
-                Veterans Girona
-              </li>
-              <li class="team-item">
-                <img src="assets/img/equips/espanyol.webp" alt="S.D. Espanyol" class="team-logo" loading="lazy" />
-                S.D. Espanyol
-              </li>
-              <li class="team-item">
-                <img src="assets/img/equips/no-surrender-towers.webp" alt="No Surrender Towers" class="team-logo" loading="lazy" />
-                No Surrender Towers
-              </li>
-              <li class="team-item">
-                <img src="assets/img/equips/french-connection.webp" alt="French Connection" class="team-logo" loading="lazy" />
-                French Connection
-              </li>
-              <li class="team-item">
-                <img src="assets/img/equips/veterans-sedis.webp" alt="Veterans del Sedis" class="team-logo" loading="lazy" />
-                Veterans del Sedis
-              </li>
-              <li class="team-item">
-                <img src="assets/img/equips/mvps.webp" alt="MVPs" class="team-logo" loading="lazy" />
-                MVPs
-              </li>
-              <li class="team-item">
-                <img src="assets/img/equips/tehran.webp" alt="Tehran" class="team-logo" loading="lazy" />
-                Tehran
-              </li>
-              <li class="team-item">
-                <img src="assets/img/equips/cb-sitges.webp" alt="C.B. Sitges" class="team-logo" loading="lazy" />
-                C.B. Sitges
-              </li>
-            </ul>
-          </div>
-
-          <a href="torneig-2026.html" class="btn btn--accent btn--lg" style="margin-top:1.75rem;" data-i18n="next2026.live_cta">Informació i resultats</a>
-
         </div>
+
+        <p class="t2026__text" data-i18n="next2026.description">
+          El 20 de juny de 2026 celebrem el 4t Torneig de Veterans Sitges en benefici de la lluita contra el Parkinson, de la mà de l'Hospital Clínic de Barcelona i la Fundació Clínic-IDIBAPS. 10 equips, 1 causa.
+        </p>
+
+        <div class="t2026__causa">
+          <p class="etq" data-i18n="next2026.cause_title">La causa</p>
+          <p class="t2026__causa-nom" data-i18n="next2026.cause">Lluita contra el Parkinson</p>
+          <p class="t2026__causa-entitat" data-i18n="next2026.foundation">Hospital Clínic de Barcelona + Fundació Clínic-IDIBAPS</p>
+        </div>
+
+        <div class="t2026__equips">
+          <p class="etq" data-i18n="next2026.teams_title">10 equips · 1 causa</p>
+          <ul class="teams-list">
+            <li class="team-item"><img src="assets/img/equips/mini/valencia-basket.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Valencia Basket</span></li>
+            <li class="team-item"><img src="assets/img/equips/mini/fcbarcelona-veterans.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>FC Barcelona Veterans</span></li>
+            <li class="team-item"><img src="assets/img/equips/mini/veterans-girona.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Veterans Girona</span></li>
+            <li class="team-item"><img src="assets/img/equips/mini/espanyol.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>S.D. Espanyol</span></li>
+            <li class="team-item"><img src="assets/img/equips/mini/no-surrender-towers.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>No Surrender Towers</span></li>
+            <li class="team-item"><img src="assets/img/equips/mini/french-connection.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>French Connection</span></li>
+            <li class="team-item"><img src="assets/img/equips/mini/veterans-sedis.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Veterans del Sedis</span></li>
+            <li class="team-item"><img src="assets/img/equips/mini/mvps.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>MVPs</span></li>
+            <li class="team-item"><img src="assets/img/equips/mini/tehran.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>Tehran</span></li>
+            <li class="team-item"><img src="assets/img/equips/mini/cb-sitges.webp" alt="" width="36" height="36" class="team-logo" loading="lazy" /><span>C.B. Sitges</span></li>
+          </ul>
+        </div>
+
+        <a href="torneig-2026.html" class="btn btn--blau" data-i18n="next2026.live_cta">Informació i resultats</a>
       </div>
+
     </div>
   </section>
 
 
   <!-- ============================================================
-       ACTIVITATS SOLIDARIES (secundari)
+       ACTIVITATS SOLIDÀRIES
        ============================================================ -->
-  <section class="activities-section section" aria-labelledby="activities-title">
-    <div class="container">
-      <div class="section__header animate-on-scroll">
-        <span class="section__eyebrow">Més solidaritat</span>
-        <h2 class="section__title" id="activities-title" data-i18n="activities.title">Altres activitats solidàries</h2>
+  <section class="activitats" aria-labelledby="activities-title">
+    <div class="container activitats__graella">
+      <div>
+        <p class="etq">Més solidaritat</p>
+        <h2 id="activities-title" data-i18n="activities.title">Altres activitats solidàries</h2>
       </div>
-      <div class="activities-list">
-        <div class="activity-card animate-on-scroll">
-          <div class="activity-card__icon" aria-hidden="true">
-            <svg aria-hidden="true"><use href="#i-gift"/></svg>
-          </div>
-          <div>
-            <p class="activity-card__date">Desembre 2023</p>
-            <p class="activity-card__text" data-i18n="activities.toys2023">Recollida de joguines · Càritas Sitges + Creu Roja Sitges</p>
-          </div>
-        </div>
-        <div class="activity-card animate-on-scroll animate-delay-1">
-          <div class="activity-card__icon" aria-hidden="true">
-            <svg aria-hidden="true"><use href="#i-gift"/></svg>
-          </div>
-          <div>
-            <p class="activity-card__date">Desembre 2024</p>
-            <p class="activity-card__text" data-i18n="activities.toys2024">Recollida de joguines · olvidados.org + Pels Menuts</p>
-          </div>
-        </div>
-      </div>
+      <ul class="activitats__llista">
+        <li>
+          <span class="etq">Desembre 2023</span>
+          <span data-i18n="activities.toys2023">Recollida de joguines · Càritas Sitges + Creu Roja Sitges</span>
+        </li>
+        <li>
+          <span class="etq">Desembre 2024</span>
+          <span data-i18n="activities.toys2024">Recollida de joguines · olvidados.org + Pels Menuts</span>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -984,47 +740,41 @@
   <!-- ============================================================
        COL·LABORADORS — Patrocinadors del torneig
        ============================================================ -->
-  <section id="collaborators" class="collaborators-section section" aria-labelledby="collaborators-title">
+  <section id="collaborators" class="collabs" aria-labelledby="collaborators-title">
     <div class="container">
 
-      <div class="section__header animate-on-scroll">
-        <span class="section__eyebrow" data-i18n="collaborators.eyebrow">Suport local</span>
-        <h2 class="section__title" id="collaborators-title" data-i18n="collaborators.title">Col·laboradors</h2>
-        <p class="section__intro" data-i18n="collaborators.intro">
+      <div class="collabs__cap">
+        <div>
+          <p class="etq" data-i18n="collaborators.eyebrow">Suport local</p>
+          <h2 class="titol" id="collaborators-title" data-i18n="collaborators.title">Col·laboradors</h2>
+        </div>
+        <p class="collabs__intro" data-i18n="collaborators.intro">
           Empreses i comerços que fan possible el Torneig Solidari de Veterans Sitges any rere any. Gràcies pel vostre suport.
         </p>
       </div>
 
-      <!-- Premium · principals -->
-      <div class="collabs-premium animate-on-scroll" aria-label="Col·laboradors principals">
+      <!-- Principals -->
+      <div class="collabs-premium" aria-label="Col·laboradors principals">
         <a href="https://www.instagram.com/seayousitges/" class="collab-card collab-card--premium" target="_blank" rel="sponsored noopener" aria-label="Sea You Sitges">
-          <span class="collab-card__media">
-            <img src="assets/img/sponsors/sea-you-sitges.webp" alt="Logo Sea You Sitges" loading="lazy" />
-          </span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/sea-you-sitges.webp" alt="Logo Sea You Sitges" loading="lazy" /></span>
           <span class="collab-card__name">Sea You Sitges</span>
         </a>
         <a href="https://pizzeriafrancesco.com/" class="collab-card collab-card--premium" target="_blank" rel="sponsored noopener" aria-label="Francesco">
-          <span class="collab-card__media">
-            <img src="assets/img/sponsors/francesco.webp" alt="Logo Francesco" loading="lazy" />
-          </span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/francesco.webp" alt="Logo Francesco" loading="lazy" /></span>
           <span class="collab-card__name">Francesco</span>
         </a>
         <a href="https://sunway.es/" class="collab-card collab-card--premium" target="_blank" rel="sponsored noopener" aria-label="Hotel Sunway">
-          <span class="collab-card__media">
-            <img src="assets/img/sponsors/sunway.webp" alt="Logo Hotel Sunway" loading="lazy" />
-          </span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/sunway.webp" alt="Logo Hotel Sunway" loading="lazy" /></span>
           <span class="collab-card__name">Hotel Sunway</span>
         </a>
         <a href="https://hotelsabaticsitges.com/" class="collab-card collab-card--premium" target="_blank" rel="sponsored noopener" aria-label="Hotel Sabàtic">
-          <span class="collab-card__media">
-            <img src="assets/img/sponsors/sabatic.webp" alt="Logo Hotel Sabàtic" loading="lazy" />
-          </span>
+          <span class="collab-card__media"><img src="assets/img/sponsors/sabatic.webp" alt="Logo Hotel Sabàtic" loading="lazy" /></span>
           <span class="collab-card__name">Hotel Sabàtic</span>
         </a>
       </div>
 
-      <!-- Standard · resta de col·laboradors -->
-      <div class="collabs-grid animate-on-scroll animate-delay-1" aria-label="Resta de col·laboradors">
+      <!-- Resta de col·laboradors -->
+      <div class="collabs-grid" aria-label="Resta de col·laboradors">
         <a href="https://www.sitges.cat/" class="collab-card" target="_blank" rel="sponsored noopener" aria-label="Ajuntament de Sitges">
           <span class="collab-card__media"><img src="assets/img/sponsors/ajuntament-sitges.webp" alt="Logo Ajuntament de Sitges" loading="lazy" /></span>
           <span class="collab-card__name">Ajuntament de Sitges</span>
@@ -1138,55 +888,44 @@
     </div>
   </section>
 
+  </main>
+
 
   <!-- ============================================================
-       FOOTER
+       PEU
        ============================================================ -->
-  <footer id="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-inner">
+  <footer id="footer">
+    <div class="costura" aria-hidden="true"></div>
+    <div class="container peu">
 
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <img src="assets/img/equips/cb-sitges.webp" alt="" class="footer-logo__placeholder" aria-hidden="true" style="width:40px;height:40px;object-fit:contain;border-radius:6px;" />
-            <span class="footer-logo__name">
-              Veterans Bàsquet Sitges
-              <span class="footer-logo__sub" data-i18n="footer.club">Secció de Veterans del Club Bàsquet Sitges</span>
-            </span>
-          </div>
-          <p class="footer-tagline" data-i18n="footer.tagline">Esport i solidaritat des de 1957</p>
-          <p class="footer-rights" data-i18n="footer.rights">Veterans Bàsquet Sitges © 2026</p>
-        </div>
+      <img class="peu__logo" src="assets/img/brand/logo-blanco.svg" width="2381" height="1961" alt="Veterans Basquet Sitges" loading="lazy" />
 
-        <div class="footer-links">
-          <a
-            href="https://www.instagram.com/veterans_sitges_/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="footer-instagram"
-            aria-label="Segueix Veterans CBS a Instagram (@veterans_sitges_)"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-            </svg>
-            <span data-i18n="footer.instagram">Segueix-nos a Instagram</span>
-          </a>
-          <span class="footer-handle">@veterans_sitges_</span>
-        </div>
-
+      <div>
+        <p class="peu__lema etq" data-i18n="footer.tagline">Esport i solidaritat des de 1957</p>
+        <p class="peu__club" data-i18n="footer.club">Secció de Veterans del Club Bàsquet Sitges</p>
+        <p class="peu__drets" data-i18n="footer.rights">Veterans Basquet Sitges © 2026</p>
       </div>
+
+      <div class="peu__xarxes">
+        <a href="https://www.instagram.com/veterans_sitges_/" target="_blank" rel="noopener noreferrer"
+           class="footer-instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+          <span data-i18n="footer.instagram">Segueix-nos a Instagram</span>
+        </a>
+        <span class="footer-handle">@veterans_sitges_</span>
+      </div>
+
     </div>
   </footer>
 
 
-  <!-- ============================================================
-       SCRIPTS
-       Ordre important: i18n primer, main després
-       ============================================================ -->
-  <script src="assets/js/i18n.js?v=202605140017"></script>
-  <script src="assets/js/main.js?v=202605140017"></script>
+  <!-- Scripts — i18n primer, main després -->
+  <script src="assets/js/i18n.js?v=202611110011"></script>
+  <script src="assets/js/main.js?v=202611110004"></script>
 
 </body>
 </html>

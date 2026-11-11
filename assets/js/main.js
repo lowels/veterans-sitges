@@ -248,50 +248,77 @@
 })();
 
 /* ──────────────────────────────────────────────────────────
-   8. CONTADOR TOTAL RECAPTAT — count-up animation
+   8. IMPORTS EN EUROS — xifres que roden
+   Cada xifra és una columna que llisca cap amunt fins al seu valor,
+   una darrere l'altra d'esquerra a dreta, quan l'import entra en
+   pantalla. Sense JS (o amb moviment reduït) es queda el número tal
+   com ve a l'HTML.
 ────────────────────────────────────────────────────────── */
-(function initCounter() {
-  const el = document.querySelector('.raised-counter__number');
-  if (!el) return;
+(function initRollingAmounts() {
+  const els = document.querySelectorAll('.raised-counter__number, .timeline-node__import, .edicio__import');
+  if (!els.length) return;
 
-  const target = parseInt(el.dataset.target, 10);
-  const duration = 1800;
-  let started = false;
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced || !('IntersectionObserver' in window)) return;
 
-  function easeOutQuart(t) {
-    return 1 - Math.pow(1 - t, 4);
-  }
+  const STEPS = 6;      // caselles que recorre cada columna
+  const STAGGER = 130;  // ms entre columna i columna
 
-  function formatNumber(n) {
-    return n.toLocaleString('ca-ES');
-  }
-
-  function runCounter() {
-    if (started) return;
-    started = true;
-    const start = performance.now();
-    function tick(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      el.textContent = formatNumber(Math.round(easeOutQuart(progress) * target));
-      if (progress < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          runCounter();
-          observer.unobserve(entry.target);
-        }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.roda__tira').forEach(strip => {
+        strip.style.transform = 'translateY(-' + STEPS + 'em)';
       });
-    }, { threshold: 0.3 });
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.6 });
+
+  els.forEach(el => {
+    const text = el.textContent;
+    if (!/\d/.test(text)) return;
+
+    const visual = document.createElement('span');
+    visual.setAttribute('aria-hidden', 'true');
+    let column = 0;
+
+    text.split('').forEach(ch => {
+      if (!/\d/.test(ch)) {
+        visual.appendChild(document.createTextNode(ch));
+        return;
+      }
+      const digit = Number(ch);
+      const wheel = document.createElement('span');
+      wheel.className = 'roda';
+
+      // còpia invisible de la xifra final: dona l'amplada a la columna
+      const size = document.createElement('span');
+      size.className = 'roda__mida';
+      size.textContent = ch;
+
+      const strip = document.createElement('span');
+      strip.className = 'roda__tira';
+      for (let i = STEPS; i >= 0; i--) {
+        const cell = document.createElement('span');
+        cell.textContent = String((((digit - i) % 10) + 10) % 10);
+        strip.appendChild(cell);
+      }
+      strip.style.transitionDelay = (column++ * STAGGER) + 'ms';
+
+      wheel.appendChild(size);
+      wheel.appendChild(strip);
+      visual.appendChild(wheel);
+    });
+
+    const spoken = document.createElement('span');
+    spoken.className = 'visually-hidden';
+    spoken.textContent = text;
+
+    el.textContent = '';
+    el.appendChild(spoken);
+    el.appendChild(visual);
     observer.observe(el);
-  } else {
-    runCounter();
-  }
+  });
 })();
 
 /* ──────────────────────────────────────────────────────────
